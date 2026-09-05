@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASCO101 Unit 8 — Work Smarter with AI</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
+  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
+  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
+  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
+}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.back{display:block;background:#E6F7F2;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#0B7A5F;border-bottom:2px solid var(--teal)}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.core-strip{max-width:1100px;margin:1.5rem auto 0;padding:0 1.5rem}
+.core-strip-in{background:var(--core-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.05rem}
+.core-strip .lab{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.core-strip .txt{font-size:.92rem;font-weight:600;color:var(--core-ink);line-height:1.55}
+.core-strip .ilo{margin-top:.5rem;padding-top:.45rem;border-top:1px solid rgba(37,99,235,.15);font-size:.73rem;color:#475569}
+.core-strip .ilo b{color:var(--core-ink)}
+main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1rem}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column;text-align:left;font-family:inherit;color:inherit;width:100%}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(22,35,61,.1);border-color:transparent}
+.card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(22,35,61,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.card,.slib-set-header{opacity:1!important;transform:none!important}}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.card-thumb{height:90px}}
+
+:root{--accent:#047857}
+</style>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
+</head>
+<body>
+
+<a class="back" href="./">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MASCO101 &middot; Unit 8 &middot; Mini-Hackathon · Capstone</div>
+  <h1>Work Smarter with AI: Productivity, Tools and Professional Judgment</h1>
+  <p>Select any framework to open its quick look, then the full A4 reference sheet</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">2</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">10</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">15&ndash;16</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+
+<div class="core-strip">
+  <div class="core-strip-in">
+    <div class="lab">Core message</div>
+    <div class="txt">Delegate the task, never the judgment — and be able to show exactly where you drew the line.</div>
+    <div class="ilo"><b>Learning focus</b> Productivity systems &amp; AI workflow judgment &middot; <b>ILO 1 &amp; 3</b><br>ILO 1 — Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.<br>ILO 3 — Investigate how to select, develop, plan, schedule and measure project outcomes and risks.</div>
+  </div>
+</div>
+
+<main>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#1D4ED8"></span>
+        <span class="slib-set-title">Slibrary 15 &mdash; Prioritisation &amp; Energy</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])" aria-label="Open Eisenhower Matrix">
+          <div class="card-accent" style="background:#1D4ED8"></div>
+          <div class="card-thumb" id="thumb-15-0"></div>
+          <div class="card-body">
+            <div class="card-title">Eisenhower Matrix</div>
+            <div class="card-desc">Urgency against importance, and where time leaks</div>
+            <span class="card-tag" style="background:#1D4ED8">Slibrary 15</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])" aria-label="Open Objectives & Key Results">
+          <div class="card-accent" style="background:#1D4ED8"></div>
+          <div class="card-thumb" id="thumb-15-1"></div>
+          <div class="card-body">
+            <div class="card-title">Objectives &amp; Key Results</div>
+            <div class="card-desc">One objective, three to five measurable results</div>
+            <span class="card-tag" style="background:#1D4ED8">Slibrary 15</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])" aria-label="Open The Rule of 3">
+          <div class="card-accent" style="background:#1D4ED8"></div>
+          <div class="card-thumb" id="thumb-15-2"></div>
+          <div class="card-body">
+            <div class="card-title">The Rule of 3</div>
+            <div class="card-desc">Three wins for today, the week, the month, the year</div>
+            <span class="card-tag" style="background:#1D4ED8">Slibrary 15</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])" aria-label="Open Monday Vision, Daily Wins, Friday Reflection">
+          <div class="card-accent" style="background:#1D4ED8"></div>
+          <div class="card-thumb" id="thumb-15-3"></div>
+          <div class="card-body">
+            <div class="card-title">Monday Vision, Daily Wins, Friday Reflection</div>
+            <div class="card-desc">Plan Monday, win daily, reflect Friday</div>
+            <span class="card-tag" style="background:#1D4ED8">Slibrary 15</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])" aria-label="Open Pareto 80/20">
+          <div class="card-accent" style="background:#1D4ED8"></div>
+          <div class="card-thumb" id="thumb-15-4"></div>
+          <div class="card-body">
+            <div class="card-title">Pareto 80/20</div>
+            <div class="card-desc">A small share of inputs produces most of the output</div>
+            <span class="card-tag" style="background:#1D4ED8">Slibrary 15</span>
+          </div>
+        </button></div>
+    </div>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#047857"></span>
+        <span class="slib-set-title">Slibrary 16 &mdash; AI Workflow &amp; Judgment</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])" aria-label="Open Prompt Anatomy">
+          <div class="card-accent" style="background:#047857"></div>
+          <div class="card-thumb" id="thumb-16-0"></div>
+          <div class="card-body">
+            <div class="card-title">Prompt Anatomy</div>
+            <div class="card-desc">Role, task, context, format as a specification</div>
+            <span class="card-tag" style="background:#047857">Slibrary 16</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])" aria-label="Open Delegate–Verify–Own Loop">
+          <div class="card-accent" style="background:#047857"></div>
+          <div class="card-thumb" id="thumb-16-1"></div>
+          <div class="card-body">
+            <div class="card-title">Delegate–Verify–Own Loop</div>
+            <div class="card-desc">AI drafts, you verify, you remain accountable</div>
+            <span class="card-tag" style="background:#047857">Slibrary 16</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])" aria-label="Open Automation–Augmentation Spectrum">
+          <div class="card-accent" style="background:#047857"></div>
+          <div class="card-thumb" id="thumb-16-2"></div>
+          <div class="card-body">
+            <div class="card-title">Automation–Augmentation Spectrum</div>
+            <div class="card-desc">From replacing the task to extending the person</div>
+            <span class="card-tag" style="background:#047857">Slibrary 16</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])" aria-label="Open The Jagged Frontier">
+          <div class="card-accent" style="background:#047857"></div>
+          <div class="card-thumb" id="thumb-16-3"></div>
+          <div class="card-body">
+            <div class="card-title">The Jagged Frontier</div>
+            <div class="card-desc">Capability is uneven and the edge is invisible</div>
+            <span class="card-tag" style="background:#047857">Slibrary 16</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])" aria-label="Open AI Attribution Ladder">
+          <div class="card-accent" style="background:#047857"></div>
+          <div class="card-thumb" id="thumb-16-4"></div>
+          <div class="card-body">
+            <div class="card-title">AI Attribution Ladder</div>
+            <div class="card-desc">Disclosure rungs from no use to substantive generation</div>
+            <span class="card-tag" style="background:#047857">Slibrary 16</span>
+          </div>
+        </button></div>
+    </div>
+</main>
+
+<footer class="footer">
+  <strong>MASCO101</strong> &middot; Tools for Success &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 8: Work Smarter with AI: Productivity, Tools and Professional Judgment
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+const FW = [{"pdfPage": 81, "name": "Eisenhower Matrix", "def": "A 2×2 sorting tasks by urgency and importance, exposing how much time is lost to urgent work that is not important.", "desc": "Urgency against importance, and where time leaks", "shape": "matrix", "details": ["Important and urgent: do it now", "Important, not urgent: schedule it — the growth quadrant", "Urgent, not important: delegate or automate", "Neither: delete without guilt"], "ref": "Covey, S.R. (1989) The 7 Habits of Highly Effective People. New York: Free Press.", "slibTitle": "Prioritisation &amp; Energy", "slibNum": 15, "color": "#1D4ED8"}, {"pdfPage": 82, "name": "Objectives &amp; Key Results", "def": "A goal system pairing one qualitative objective with three to five measurable key results that prove it was achieved.", "desc": "One objective, three to five measurable results", "shape": "layers", "details": ["Objective: qualitative, memorable, time-bound", "Key results: measurable, few, uncomfortable", "Set them publicly, score them honestly", "Works at personal scale, not only corporate"], "ref": "Doerr, J. (2018) Measure What Matters. New York: Portfolio/Penguin.", "slibTitle": "Prioritisation &amp; Energy", "slibNum": 15, "color": "#1D4ED8"}, {"pdfPage": 83, "name": "The Rule of 3", "def": "A nested commitment device: three wins for today, this week, this month, this quarter and this year, each level framing the one below.", "desc": "Three wins for today, the week, the month, the year", "shape": "layers", "details": ["Three is what you can hold without a list", "Daily wins ladder up to weekly wins", "Forces prioritisation at every horizon", "Outcomes, not tasks"], "ref": "Meier, J.D. (2010) Getting Results the Agile Way: A Personal Results System for Work and Life. Bellevue, WA: Innovation Playhouse.", "slibTitle": "Prioritisation &amp; Energy", "slibNum": 15, "color": "#1D4ED8"}, {"pdfPage": 84, "name": "Monday Vision, Daily Wins, Friday Reflection", "def": "A weekly rhythm of planning three outcomes on Monday, naming a win each day, and reviewing what went well and what to improve on Friday.", "desc": "Plan Monday, win daily, reflect Friday", "shape": "timeline", "details": ["Monday: three outcomes for the week", "Daily: name the win before you start", "Friday: what went well, what to improve", "Plan, do, review as a weekly loop"], "ref": "Meier, J.D. (2010) Getting Results the Agile Way: A Personal Results System for Work and Life. Bellevue, WA: Innovation Playhouse.", "slibTitle": "Prioritisation &amp; Energy", "slibNum": 15, "color": "#1D4ED8"}, {"pdfPage": 85, "name": "Pareto 80/20", "def": "An empirical regularity in which a small share of inputs accounts for most of the output, used to locate the work that actually matters.", "desc": "A small share of inputs produces most of the output", "shape": "bars", "details": ["Identify the vital few against the trivial many", "Applies to results, errors and time sinks alike", "Cut before you optimise", "Re-test the ratio; it drifts"], "ref": "Koch, R. (1998) The 80/20 Principle: The Secret of Achieving More with Less. London: Nicholas Brealey.", "slibTitle": "Prioritisation &amp; Energy", "slibNum": 15, "color": "#1D4ED8"}, {"pdfPage": 86, "name": "Prompt Anatomy", "def": "A four-part prompt structure — role, task, context, format — that turns a vague request into a specification the model can meet.", "desc": "Role, task, context, format as a specification", "shape": "pipeline", "details": ["Role: the expertise and stance to adopt", "Task: the single action required", "Context: constraints, audience, source material", "Format: length, structure, what to exclude"], "ref": "White, J. et al. (2023) 'A prompt pattern catalog to enhance prompt engineering with ChatGPT', arXiv preprint arXiv:2302.11382.", "slibTitle": "AI Workflow &amp; Judgment", "slibNum": 16, "color": "#047857"}, {"pdfPage": 87, "name": "Delegate–Verify–Own Loop", "def": "A working pattern in which AI produces a draft, the human verifies against a source, and the human retains accountability for the output.", "desc": "AI drafts, you verify, you remain accountable", "shape": "cycle", "details": ["Delegate the draft, not the decision", "Verify against a source you could cite", "Own the output publicly, errors included", "Verification effort scales with the stakes"], "ref": "Amershi, S. et al. (2019) 'Guidelines for human-AI interaction', Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems, pp. 1–13.", "slibTitle": "AI Workflow &amp; Judgment", "slibNum": 16, "color": "#047857"}, {"pdfPage": 88, "name": "Automation–Augmentation Spectrum", "def": "A task-level continuum from AI replacing the work entirely to AI extending what a person can do, with most roles sitting in between.", "desc": "From replacing the task to extending the person", "shape": "spectrum", "details": ["Analyse tasks, not whole jobs", "Automate the routine and the repeatable", "Augment where judgment carries the value", "The paradox: automating narrows future capability"], "ref": "Raisch, S. and Krakowski, S. (2021) 'Artificial intelligence and management: The automation-augmentation paradox', Academy of Management Review, 46(1), pp. 192–210.", "slibTitle": "AI Workflow &amp; Judgment", "slibNum": 16, "color": "#047857"}, {"pdfPage": 89, "name": "The Jagged Frontier", "def": "A finding that AI capability is uneven and invisible from outside: tasks of similar apparent difficulty fall on opposite sides of what the model can do well.", "desc": "Capability is uneven and the edge is invisible", "shape": "scurve", "details": ["Inside the frontier: large performance gains", "Outside it: confident, plausible errors", "The boundary is not where intuition puts it", "Centaur splits tasks; cyborg interleaves them"], "ref": "Dell'Acqua, F. et al. (2023) 'Navigating the jagged technological frontier', Harvard Business School Working Paper 24-013.", "slibTitle": "AI Workflow &amp; Judgment", "slibNum": 16, "color": "#047857"}, {"pdfPage": 90, "name": "AI Attribution Ladder", "def": "A disclosure scale running from no AI use, through assistance with drafting or editing, to substantive generation — each rung requiring a different declaration.", "desc": "Disclosure rungs from no use to substantive generation", "shape": "stairs", "details": ["Rung 1: no AI involvement", "Rung 2: language and formatting assistance", "Rung 3: structural or analytical contribution", "Rung 4: substantive generation — declare in full"], "ref": "UNESCO (2023) Guidance for Generative AI in Education and Research. Paris: UNESCO.", "slibTitle": "AI Workflow &amp; Judgment", "slibNum": 16, "color": "#047857"}];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return (SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-15-0').innerHTML=getSVG('matrix','#1D4ED8');
+document.getElementById('thumb-15-1').innerHTML=getSVG('layers','#1D4ED8');
+document.getElementById('thumb-15-2').innerHTML=getSVG('layers','#1D4ED8');
+document.getElementById('thumb-15-3').innerHTML=getSVG('timeline','#1D4ED8');
+document.getElementById('thumb-15-4').innerHTML=getSVG('bars','#1D4ED8');
+document.getElementById('thumb-16-0').innerHTML=getSVG('pipeline','#047857');
+document.getElementById('thumb-16-1').innerHTML=getSVG('cycle','#047857');
+document.getElementById('thumb-16-2').innerHTML=getSVG('spectrum','#047857');
+document.getElementById('thumb-16-3').innerHTML=getSVG('scurve','#047857');
+document.getElementById('thumb-16-4').innerHTML=getSVG('stairs','#047857');
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+
+let lastFocus=null;
+function openModal(fw){
+  lastFocus=document.activeElement;
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+    <div class="fw-sheet-cta"><button class="fw-sheet-cta-btn" onclick="FrameworkSheets.openPage(${fw.pdfPage})">View Full A4 Reference Sheet</button></div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  m.querySelector('.modal-close').focus();
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocus)lastFocus.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+<script src="assets/js/framework-viewer.js"></script>
+</body>
+</html>

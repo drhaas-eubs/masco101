@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASCO101 Unit 6 — Deliver Results</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
+  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
+  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
+  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
+}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.back{display:block;background:#E6F7F2;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#0B7A5F;border-bottom:2px solid var(--teal)}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.core-strip{max-width:1100px;margin:1.5rem auto 0;padding:0 1.5rem}
+.core-strip-in{background:var(--core-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.05rem}
+.core-strip .lab{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.core-strip .txt{font-size:.92rem;font-weight:600;color:var(--core-ink);line-height:1.55}
+.core-strip .ilo{margin-top:.5rem;padding-top:.45rem;border-top:1px solid rgba(37,99,235,.15);font-size:.73rem;color:#475569}
+.core-strip .ilo b{color:var(--core-ink)}
+main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1rem}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column;text-align:left;font-family:inherit;color:inherit;width:100%}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(22,35,61,.1);border-color:transparent}
+.card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(22,35,61,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.card,.slib-set-header{opacity:1!important;transform:none!important}}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.card-thumb{height:90px}}
+
+:root{--accent:#1D4ED8}
+</style>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
+</head>
+<body>
+
+<a class="back" href="./">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MASCO101 &middot; Unit 6 &middot; Project Simulation</div>
+  <h1>Deliver Results: Project Management Fundamentals</h1>
+  <p>Select any framework to open its quick look, then the full A4 reference sheet</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">2</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">10</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">11&ndash;12</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+
+<div class="core-strip">
+  <div class="core-strip-in">
+    <div class="lab">Core message</div>
+    <div class="txt">A plan is not a schedule — it is an argument about scope, risk and trade-offs that has to survive contact with reality.</div>
+    <div class="ilo"><b>Learning focus</b> Project planning, scheduling &amp; risk &middot; <b>ILO 2 &amp; 3</b><br>ILO 2 — Critically assess the roles and responsibilities of a project manager as part of an organisation's strategy.<br>ILO 3 — Investigate how to select, develop, plan, schedule and measure project outcomes and risks.</div>
+  </div>
+</div>
+
+<main>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#2563EB"></span>
+        <span class="slib-set-title">Slibrary 11 &mdash; Project Lifecycle &amp; Planning</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])" aria-label="Open Project Lifecycle">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-11-0"></div>
+          <div class="card-body">
+            <div class="card-title">Project Lifecycle</div>
+            <div class="card-desc">Initiate, plan, execute, monitor, close</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 11</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])" aria-label="Open Iron Triangle">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-11-1"></div>
+          <div class="card-body">
+            <div class="card-title">Iron Triangle</div>
+            <div class="card-desc">Scope, time and cost cannot all be fixed</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 11</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])" aria-label="Open Work Breakdown Structure">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-11-2"></div>
+          <div class="card-body">
+            <div class="card-title">Work Breakdown Structure</div>
+            <div class="card-desc">Scope decomposed into ownable work packages</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 11</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])" aria-label="Open Gantt Chart">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-11-3"></div>
+          <div class="card-body">
+            <div class="card-title">Gantt Chart</div>
+            <div class="card-desc">Tasks against calendar time, with dependencies</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 11</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])" aria-label="Open Critical Path Method">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-11-4"></div>
+          <div class="card-body">
+            <div class="card-title">Critical Path Method</div>
+            <div class="card-desc">The longest dependent chain sets the deadline</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 11</span>
+          </div>
+        </button></div>
+    </div>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#059669"></span>
+        <span class="slib-set-title">Slibrary 12 &mdash; Agile, Risk &amp; Control</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])" aria-label="Open Agile Manifesto Values">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-12-0"></div>
+          <div class="card-body">
+            <div class="card-title">Agile Manifesto Values</div>
+            <div class="card-desc">Four trade-offs, both sides valued, one preferred</div>
+            <span class="card-tag" style="background:#059669">Slibrary 12</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])" aria-label="Open Scrum Sprint Cycle">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-12-1"></div>
+          <div class="card-body">
+            <div class="card-title">Scrum Sprint Cycle</div>
+            <div class="card-desc">Fixed iteration: plan, work, review, retrospect</div>
+            <span class="card-tag" style="background:#059669">Slibrary 12</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])" aria-label="Open Stacey Matrix">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-12-2"></div>
+          <div class="card-body">
+            <div class="card-title">Stacey Matrix</div>
+            <div class="card-desc">Agreement against certainty picks the method</div>
+            <span class="card-tag" style="background:#059669">Slibrary 12</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])" aria-label="Open Probability–Impact Risk Matrix">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-12-3"></div>
+          <div class="card-body">
+            <div class="card-title">Probability–Impact Risk Matrix</div>
+            <div class="card-desc">Likelihood against consequence sets the response</div>
+            <span class="card-tag" style="background:#059669">Slibrary 12</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])" aria-label="Open Earned Value S-Curve">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-12-4"></div>
+          <div class="card-body">
+            <div class="card-title">Earned Value S-Curve</div>
+            <div class="card-desc">Planned, earned and actual plotted against time</div>
+            <span class="card-tag" style="background:#059669">Slibrary 12</span>
+          </div>
+        </button></div>
+    </div>
+</main>
+
+<footer class="footer">
+  <strong>MASCO101</strong> &middot; Tools for Success &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 6: Deliver Results: Project Management Fundamentals
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+const FW = [{"pdfPage": 61, "name": "Project Lifecycle", "def": "The five process groups — initiating, planning, executing, monitoring and controlling, closing — that structure any project regardless of method.", "desc": "Initiate, plan, execute, monitor, close", "shape": "pipeline", "details": ["Initiating: authorise and appoint", "Planning: scope, schedule, cost, risk, quality", "Executing with monitoring running in parallel", "Closing: handover, lessons, release"], "ref": "Project Management Institute (2021) A Guide to the Project Management Body of Knowledge (PMBOK Guide). 7th edn. Newtown Square, PA: PMI.", "slibTitle": "Project Lifecycle &amp; Planning", "slibNum": 11, "color": "#2563EB"}, {"pdfPage": 62, "name": "Iron Triangle", "def": "The constraint model in which scope, time and cost are interdependent, so any change to one forces a change in at least one other.", "desc": "Scope, time and cost cannot all be fixed", "shape": "triangle", "details": ["Fix any two and the third must move", "Quality sits inside, squeezed by all three", "Most failures are undeclared scope change", "State the trade-off before you accept the change"], "ref": "Atkinson, R. (1999) 'Project management: cost, time and quality, two best guesses and a phenomenon', International Journal of Project Management, 17(6), pp. 337–342.", "slibTitle": "Project Lifecycle &amp; Planning", "slibNum": 11, "color": "#2563EB"}, {"pdfPage": 63, "name": "Work Breakdown Structure", "def": "A hierarchical decomposition of the total scope into deliverables and work packages small enough to be estimated and owned.", "desc": "Scope decomposed into ownable work packages", "shape": "tree", "details": ["Deliverable-oriented, not activity-oriented", "100% rule: the children equal the parent", "Decompose until a package has one owner", "Anything not in the WBS is not in scope"], "ref": "Project Management Institute (2019) Practice Standard for Work Breakdown Structures. 3rd edn. Newtown Square, PA: PMI.", "slibTitle": "Project Lifecycle &amp; Planning", "slibNum": 11, "color": "#2563EB"}, {"pdfPage": 64, "name": "Gantt Chart", "def": "A horizontal bar schedule plotting tasks against calendar time to show duration, sequence and overlap at a glance.", "desc": "Tasks against calendar time, with dependencies", "shape": "timeline", "details": ["Bar length is duration, position is timing", "Dependencies show what blocks what", "Milestones mark decision points", "It shows the plan, not the progress"], "ref": "Clark, W. (1922) The Gantt Chart: A Working Tool of Management. New York: Ronald Press.", "slibTitle": "Project Lifecycle &amp; Planning", "slibNum": 11, "color": "#2563EB"}, {"pdfPage": 65, "name": "Critical Path Method", "def": "A scheduling technique identifying the longest chain of dependent tasks, which sets the minimum project duration and has zero float.", "desc": "The longest dependent chain sets the deadline", "shape": "network", "details": ["Critical path has zero float by definition", "Delay on it delays the whole project", "Float elsewhere is available for reallocation", "Recalculate after every scope change"], "ref": "Kelley, J.E. and Walker, M.R. (1959) 'Critical-path planning and scheduling', Proceedings of the Eastern Joint Computer Conference, pp. 160–173.", "slibTitle": "Project Lifecycle &amp; Planning", "slibNum": 11, "color": "#2563EB"}, {"pdfPage": 66, "name": "Agile Manifesto Values", "def": "Four value trade-offs preferring individuals, working output, customer collaboration and responsiveness over process, documentation, contracts and plans.", "desc": "Four trade-offs, both sides valued, one preferred", "shape": "split", "details": ["Individuals and interactions over processes", "Working software over comprehensive documentation", "Customer collaboration over contract negotiation", "Responding to change over following a plan"], "ref": "Beck, K. et al. (2001) Manifesto for Agile Software Development. Available at: agilemanifesto.org.", "slibTitle": "Agile, Risk &amp; Control", "slibNum": 12, "color": "#059669"}, {"pdfPage": 67, "name": "Scrum Sprint Cycle", "def": "A fixed-length iteration containing planning, daily coordination, a review of the increment and a retrospective on the process itself.", "desc": "Fixed iteration: plan, work, review, retrospect", "shape": "cycle", "details": ["Sprint length is fixed; scope is not", "Daily coordination surfaces blockers early", "Review inspects the increment with stakeholders", "Retrospective changes how the team works"], "ref": "Schwaber, K. and Sutherland, J. (2020) The Scrum Guide. Available at: scrumguides.org.", "slibTitle": "Agile, Risk &amp; Control", "slibNum": 12, "color": "#059669"}, {"pdfPage": 68, "name": "Stacey Matrix", "def": "A 2×2 plotting agreement on requirements against certainty of technology, used to choose between plan-driven and adaptive approaches.", "desc": "Agreement against certainty picks the method", "shape": "matrix", "details": ["Close to agreement and certainty: plan-driven", "Far from both: adaptive and experimental", "The middle zone is where agile earns its keep", "Method follows the problem, not preference"], "ref": "Stacey, R.D. (1996) Complexity and Creativity in Organizations. San Francisco, CA: Berrett-Koehler.", "slibTitle": "Agile, Risk &amp; Control", "slibNum": 12, "color": "#059669"}, {"pdfPage": 69, "name": "Probability–Impact Risk Matrix", "def": "A grid scoring each identified risk by likelihood and consequence to set the response: avoid, mitigate, transfer or accept.", "desc": "Likelihood against consequence sets the response", "shape": "matrix", "details": ["Score likelihood and consequence separately", "High-high: avoid or mitigate now", "Low-high: transfer or build contingency", "Every risk needs a named owner and a trigger"], "ref": "International Organization for Standardization (2018) ISO 31000:2018 Risk Management — Guidelines. Geneva: ISO.", "slibTitle": "Agile, Risk &amp; Control", "slibNum": 12, "color": "#059669"}, {"pdfPage": 70, "name": "Earned Value S-Curve", "def": "A control technique comparing planned value, earned value and actual cost over time to detect schedule and cost variance early.", "desc": "Planned, earned and actual plotted against time", "shape": "scurve", "details": ["Planned value: what should have been done", "Earned value: what was actually delivered", "Actual cost: what it truly consumed", "Variance appears here before it appears in status"], "ref": "Project Management Institute (2019) The Standard for Earned Value Management. Newtown Square, PA: PMI.", "slibTitle": "Agile, Risk &amp; Control", "slibNum": 12, "color": "#059669"}];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return (SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-11-0').innerHTML=getSVG('pipeline','#2563EB');
+document.getElementById('thumb-11-1').innerHTML=getSVG('triangle','#2563EB');
+document.getElementById('thumb-11-2').innerHTML=getSVG('tree','#2563EB');
+document.getElementById('thumb-11-3').innerHTML=getSVG('timeline','#2563EB');
+document.getElementById('thumb-11-4').innerHTML=getSVG('network','#2563EB');
+document.getElementById('thumb-12-0').innerHTML=getSVG('split','#059669');
+document.getElementById('thumb-12-1').innerHTML=getSVG('cycle','#059669');
+document.getElementById('thumb-12-2').innerHTML=getSVG('matrix','#059669');
+document.getElementById('thumb-12-3').innerHTML=getSVG('matrix','#059669');
+document.getElementById('thumb-12-4').innerHTML=getSVG('scurve','#059669');
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+
+let lastFocus=null;
+function openModal(fw){
+  lastFocus=document.activeElement;
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+    <div class="fw-sheet-cta"><button class="fw-sheet-cta-btn" onclick="FrameworkSheets.openPage(${fw.pdfPage})">View Full A4 Reference Sheet</button></div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  m.querySelector('.modal-close').focus();
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocus)lastFocus.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+<script src="assets/js/framework-viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASCO101 — Framework Authors</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
+  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
+  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
+  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
+}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+html{scroll-behavior:smooth}
+a{color:inherit}
+.back{display:block;background:#E6F7F2;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#0B7A5F;border-bottom:2px solid var(--teal)}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2rem;color:#fff;font-weight:700;margin-bottom:.3rem}
+.hero p{color:#94A3B8;font-size:.9rem}
+nav.jump{max-width:1000px;margin:1.2rem auto 0;padding:0 1.5rem;display:flex;flex-wrap:wrap;gap:.4rem}
+nav.jump a{font-size:.72rem;font-weight:700;text-decoration:none;padding:.3rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--navy)}
+nav.jump a:hover{border-color:var(--teal)}
+main{max-width:1000px;margin:0 auto;padding:1.5rem 1.5rem 2rem}
+.a-unit{margin-bottom:2.4rem;scroll-margin-top:1rem}
+.a-unit h2{font-size:1.05rem;display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem}
+.a-num{width:1.7rem;height:1.7rem;border-radius:6px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.a-blurb{font-size:.78rem;color:var(--muted);margin-bottom:.9rem}
+.a-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.8rem}
+.a-card{display:flex;gap:.8rem;background:#fff;border:1px solid var(--border);border-left:3px solid var(--ac);border-radius:10px;padding:.85rem .95rem}
+.a-mono{width:2.4rem;height:2.4rem;border-radius:8px;background:var(--ac);color:#fff;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.a-body h3{font-size:.88rem;margin-bottom:.2rem}
+.a-works{font-size:.74rem;color:var(--ac);font-weight:600;margin-bottom:.3rem}
+.a-ref{font-size:.7rem;color:var(--muted);line-height:1.45}
+footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem}
+footer strong{color:var(--teal)}
+</style>
+</head>
+<body>
+<a class="back" href="./">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MASCO101 &middot; Framework Authors</div>
+  <h1>The Thinkers Behind the Frameworks</h1>
+  <p>72 authors &middot; 8 units &middot; 16 Slibraries &middot; 80 frameworks</p>
+</header>
+<nav class="jump">
+  <a href="#unit1">Unit 1</a>
+  <a href="#unit2">Unit 2</a>
+  <a href="#unit3">Unit 3</a>
+  <a href="#unit4">Unit 4</a>
+  <a href="#unit5">Unit 5</a>
+  <a href="#unit6">Unit 6</a>
+  <a href="#unit7">Unit 7</a>
+  <a href="#unit8">Unit 8</a>
+</nav>
+<main>
+  <section class="a-unit" id="unit1">
+    <h2><span class="a-num" style="background:#1E40AF">1</span>Introduction to Tools for Success &amp; Digital/AI Literacy</h2>
+    <p class="a-blurb">10 thinkers anchoring Slibraries 1–2.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">GT</div>
+        <div class="a-body">
+          <h3>George T. Doran</h3>
+          <p class="a-works">SMART Goal Frame</p>
+          <p class="a-ref">Doran, G.T. (1981) 'There's a S.M.A.R.T. way to write management's goals and objectives', Management Review, 70(11), pp. 35–36.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">DA</div>
+        <div class="a-body">
+          <h3>David A. Kolb</h3>
+          <p class="a-works">Kolb Experiential Learning Cycle</p>
+          <p class="a-ref">Kolb, D.A. (1984) Experiential Learning: Experience as the Source of Learning and Development. Englewood Cliffs, NJ: Prentice Hall.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">AK</div>
+        <div class="a-body">
+          <h3>Anderson &amp; Krathwohl</h3>
+          <p class="a-works">Bloom's Taxonomy (Revised)</p>
+          <p class="a-ref">Anderson, L.W. and Krathwohl, D.R. (eds.) (2001) A Taxonomy for Learning, Teaching, and Assessing. New York: Longman.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">DD</div>
+        <div class="a-body">
+          <h3>Dreyfus &amp; Dreyfus</h3>
+          <p class="a-works">Dreyfus Skill Acquisition Model</p>
+          <p class="a-ref">Dreyfus, S.E. and Dreyfus, H.L. (1980) A Five-Stage Model of the Mental Activities Involved in Directed Skill Acquisition. Berkeley, CA: University of California, Operations Research Center.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">KA</div>
+        <div class="a-body">
+          <h3>K. Anders Ericsson</h3>
+          <p class="a-works">Deliberate Practice Loop</p>
+          <p class="a-ref">Ericsson, K.A., Krampe, R.T. and Tesch-Römer, C. (1993) 'The role of deliberate practice in the acquisition of expert performance', Psychological Review, 100(3), pp. 363–406.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">EC</div>
+        <div class="a-body">
+          <h3>European Commission (JRC)</h3>
+          <p class="a-works">DigComp 2.2 Competence Wheel</p>
+          <p class="a-ref">Vuorikari, R., Kluzer, S. and Punie, Y. (2022) DigComp 2.2: The Digital Competence Framework for Citizens. Luxembourg: Publications Office of the European Union.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">SB</div>
+        <div class="a-body">
+          <h3>Sarah Blakeslee</h3>
+          <p class="a-works">CRAAP Source Test</p>
+          <p class="a-ref">Blakeslee, S. (2004) 'The CRAAP test', LOEX Quarterly, 31(3), pp. 6–7.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">FD</div>
+        <div class="a-body">
+          <h3>Fred D. Davis</h3>
+          <p class="a-works">Technology Acceptance Model</p>
+          <p class="a-ref">Davis, F.D. (1989) 'Perceived usefulness, perceived ease of use, and user acceptance of information technology', MIS Quarterly, 13(3), pp. 319–340.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">PR</div>
+        <div class="a-body">
+          <h3>Parasuraman &amp; Riley</h3>
+          <p class="a-works">Automation Bias Curve</p>
+          <p class="a-ref">Parasuraman, R. and Riley, V. (1997) 'Humans and automation: Use, misuse, disuse, abuse', Human Factors, 39(2), pp. 230–253.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1E40AF">
+        <div class="a-mono">EM</div>
+        <div class="a-body">
+          <h3>Ethan Mollick</h3>
+          <p class="a-works">Co-Intelligence Working Rules</p>
+          <p class="a-ref">Mollick, E. (2024) Co-Intelligence: Living and Working with AI. New York: Portfolio/Penguin.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit2">
+    <h2><span class="a-num" style="background:#6D28D9">2</span>Know Yourself: Self-Assessment as a Strategic Tool</h2>
+    <p class="a-blurb">9 thinkers anchoring Slibraries 3–4.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">HW</div>
+        <div class="a-body">
+          <h3>Heinz Weihrich</h3>
+          <p class="a-works">Personal SWOT Matrix</p>
+          <p class="a-ref">Weihrich, H. (1982) 'The TOWS matrix — a tool for situational analysis', Long Range Planning, 15(2), pp. 54–66.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">LI</div>
+        <div class="a-body">
+          <h3>Luft &amp; Ingham</h3>
+          <p class="a-works">Johari Window</p>
+          <p class="a-ref">Luft, J. and Ingham, H. (1955) 'The Johari window, a graphic model of interpersonal awareness', Proceedings of the Western Training Laboratory in Group Development. Los Angeles: UCLA.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">GM</div>
+        <div class="a-body">
+          <h3>García &amp; Miralles</h3>
+          <p class="a-works">Ikigai Purpose Venn</p>
+          <p class="a-ref">García, H. and Miralles, F. (2016) Ikigai: The Japanese Secret to a Long and Happy Life. London: Hutchinson.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">JD</div>
+        <div class="a-body">
+          <h3>J.D. Meier</h3>
+          <p class="a-works">Firm Foundation: Vision, Mission, Values, Personal Energy Model</p>
+          <p class="a-ref">Meier, J.D. (2010) Getting Results the Agile Way: A Personal Results System for Work and Life. Bellevue, WA: Innovation Playhouse.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">MB</div>
+        <div class="a-body">
+          <h3>Myers &amp; Briggs</h3>
+          <p class="a-works">MBTI Four Dichotomies</p>
+          <p class="a-ref">Myers, I.B. and McCaulley, M.H. (1985) Manual: A Guide to the Development and Use of the Myers-Briggs Type Indicator. Palo Alto, CA: Consulting Psychologists Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">WM</div>
+        <div class="a-body">
+          <h3>William M. Marston</h3>
+          <p class="a-works">DISC Behavioural Quadrant</p>
+          <p class="a-ref">Marston, W.M. (1928) Emotions of Normal People. London: Kegan Paul, Trench, Trubner &amp; Co.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">CM</div>
+        <div class="a-body">
+          <h3>Costa &amp; McCrae</h3>
+          <p class="a-works">Big Five (OCEAN)</p>
+          <p class="a-ref">Costa, P.T. and McCrae, R.R. (1992) Revised NEO Personality Inventory (NEO-PI-R) and NEO Five-Factor Inventory (NEO-FFI) Professional Manual. Odessa, FL: Psychological Assessment Resources.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">HM</div>
+        <div class="a-body">
+          <h3>Honey &amp; Mumford</h3>
+          <p class="a-works">Honey &amp; Mumford Learning Styles</p>
+          <p class="a-ref">Honey, P. and Mumford, A. (1986) The Manual of Learning Styles. Maidenhead: Peter Honey Publications.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#6D28D9">
+        <div class="a-mono">CS</div>
+        <div class="a-body">
+          <h3>Carol S. Dweck</h3>
+          <p class="a-works">Growth vs. Fixed Mindset Fork</p>
+          <p class="a-ref">Dweck, C.S. (2006) Mindset: The New Psychology of Success. New York: Random House.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit3">
+    <h2><span class="a-num" style="background:#BE123C">3</span>Think Better: Critical Thinking &amp; Analytical Reasoning</h2>
+    <p class="a-blurb">10 thinkers anchoring Slibraries 5–6.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">BM</div>
+        <div class="a-body">
+          <h3>Barbara Minto</h3>
+          <p class="a-works">SCQA Structure</p>
+          <p class="a-ref">Minto, B. (1996) The Pyramid Principle: Logic in Writing and Thinking. London: Minto International.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">EM</div>
+        <div class="a-body">
+          <h3>Ethan M. Rasiel</h3>
+          <p class="a-works">MECE Issue Tree</p>
+          <p class="a-ref">Rasiel, E.M. (1999) The McKinsey Way. New York: McGraw-Hill.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">MW</div>
+        <div class="a-body">
+          <h3>Max Wertheimer</h3>
+          <p class="a-works">First Principles Decomposition</p>
+          <p class="a-ref">Wertheimer, M. (1945) Productive Thinking. New York: Harper &amp; Brothers.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">DC</div>
+        <div class="a-body">
+          <h3>Design Council</h3>
+          <p class="a-works">Double Diamond</p>
+          <p class="a-ref">Design Council (2005) The Design Process: What is the Double Diamond? London: Design Council.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">SB</div>
+        <div class="a-body">
+          <h3>Snowden &amp; Boone</h3>
+          <p class="a-works">Cynefin Framework</p>
+          <p class="a-ref">Snowden, D.J. and Boone, M.E. (2007) 'A leader's framework for decision making', Harvard Business Review, 85(11), pp. 68–76.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">DK</div>
+        <div class="a-body">
+          <h3>Daniel Kahneman</h3>
+          <p class="a-works">System 1 / System 2</p>
+          <p class="a-ref">Kahneman, D. (2011) Thinking, Fast and Slow. New York: Farrar, Straus and Giroux.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">RS</div>
+        <div class="a-body">
+          <h3>Raymond S. Nickerson</h3>
+          <p class="a-works">Confirmation Bias Loop</p>
+          <p class="a-ref">Nickerson, R.S. (1998) 'Confirmation bias: A ubiquitous phenomenon in many guises', Review of General Psychology, 2(2), pp. 175–220.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">TK</div>
+        <div class="a-body">
+          <h3>Tversky &amp; Kahneman</h3>
+          <p class="a-works">Anchoring &amp; Adjustment</p>
+          <p class="a-ref">Tversky, A. and Kahneman, D. (1974) 'Judgment under uncertainty: Heuristics and biases', Science, 185(4157), pp. 1124–1131.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">CA</div>
+        <div class="a-body">
+          <h3>Chris Argyris</h3>
+          <p class="a-works">Ladder of Inference</p>
+          <p class="a-ref">Argyris, C. (1990) Overcoming Organizational Defenses: Facilitating Organizational Learning. Boston, MA: Allyn and Bacon.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#BE123C">
+        <div class="a-mono">KD</div>
+        <div class="a-body">
+          <h3>Kruger &amp; Dunning</h3>
+          <p class="a-works">Dunning–Kruger Curve</p>
+          <p class="a-ref">Kruger, J. and Dunning, D. (1999) 'Unskilled and unaware of it', Journal of Personality and Social Psychology, 77(6), pp. 1121–1134.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit4">
+    <h2><span class="a-num" style="background:#C2410C">4</span>Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills</h2>
+    <p class="a-blurb">10 thinkers anchoring Slibraries 7–8.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">DA</div>
+        <div class="a-body">
+          <h3>David A. Aaker</h3>
+          <p class="a-works">Brand Pyramid</p>
+          <p class="a-ref">Aaker, D.A. (1996) Building Strong Brands. New York: Free Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">MP</div>
+        <div class="a-body">
+          <h3>Mark &amp; Pearson</h3>
+          <p class="a-works">Twelve Brand Archetypes</p>
+          <p class="a-ref">Mark, M. and Pearson, C.S. (2001) The Hero and the Outlaw: Building Extraordinary Brands Through the Power of Archetypes. New York: McGraw-Hill.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">DM</div>
+        <div class="a-body">
+          <h3>Donald Miller</h3>
+          <p class="a-works">StoryBrand SB7 Framework</p>
+          <p class="a-ref">Miller, D. (2017) Building a StoryBrand: Clarify Your Message So Customers Will Listen. Nashville, TN: HarperCollins Leadership.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">SS</div>
+        <div class="a-body">
+          <h3>Simon Sinek</h3>
+          <p class="a-works">Golden Circle</p>
+          <p class="a-ref">Sinek, S. (2009) Start With Why: How Great Leaders Inspire Everyone to Take Action. New York: Portfolio/Penguin.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">O</div>
+        <div class="a-body">
+          <h3>Osterwalder et al.</h3>
+          <p class="a-works">Personal Value Proposition Canvas</p>
+          <p class="a-ref">Osterwalder, A., Pigneur, Y., Bernarda, G. and Smith, A. (2014) Value Proposition Design. Hoboken, NJ: Wiley.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">KB</div>
+        <div class="a-body">
+          <h3>Kurt Bostelaar</h3>
+          <p class="a-works">Message Strategy Spectrum</p>
+          <p class="a-ref">Bostelaar, K. (2024) Clarify Your Core Message. Leverlo Playbook. Available at: leverlo.com.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">CG</div>
+        <div class="a-body">
+          <h3>Carmine Gallo</h3>
+          <p class="a-works">Problem → Insight → Recommendation</p>
+          <p class="a-ref">Gallo, C. (2014) Talk Like TED: The 9 Public-Speaking Secrets of the World's Top Minds. New York: St. Martin's Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">MA</div>
+        <div class="a-body">
+          <h3>Michael Alley</h3>
+          <p class="a-works">Assertion–Evidence Slide Model</p>
+          <p class="a-ref">Alley, M. (2013) The Craft of Scientific Presentations. 2nd edn. New York: Springer.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">AM</div>
+        <div class="a-body">
+          <h3>Albert Mehrabian</h3>
+          <p class="a-works">Mehrabian 7–38–55</p>
+          <p class="a-ref">Mehrabian, A. (1971) Silent Messages. Belmont, CA: Wadsworth.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#C2410C">
+        <div class="a-mono">AW</div>
+        <div class="a-body">
+          <h3>Alison Wood Brooks</h3>
+          <p class="a-works">Anxiety Reappraisal</p>
+          <p class="a-ref">Brooks, A.W. (2014) 'Get excited: Reappraising pre-performance anxiety as excitement', Journal of Experimental Psychology: General, 143(3), pp. 1144–1158.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit5">
+    <h2><span class="a-num" style="background:#0F766E">5</span>Communicate with Impact: Executive Presence &amp; Business Communication</h2>
+    <p class="a-blurb">9 thinkers anchoring Slibraries 9–10.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">BM</div>
+        <div class="a-body">
+          <h3>Barbara Minto</h3>
+          <p class="a-works">Pyramid Principle</p>
+          <p class="a-ref">Minto, B. (1996) The Pyramid Principle: Logic in Writing and Thinking. London: Minto International.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">KB</div>
+        <div class="a-body">
+          <h3>Kurt Bostelaar</h3>
+          <p class="a-works">Distil → Decompose → Prioritise, Storyline Canvas</p>
+          <p class="a-ref">Bostelaar, K. (2024) Clarify Your Core Message. Leverlo Playbook. Available at: leverlo.com.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">SE</div>
+        <div class="a-body">
+          <h3>Stephen E. Toulmin</h3>
+          <p class="a-works">Toulmin Argument Model</p>
+          <p class="a-ref">Toulmin, S.E. (1958) The Uses of Argument. Cambridge: Cambridge University Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">JD</div>
+        <div class="a-body">
+          <h3>Jean-luc Doumont</h3>
+          <p class="a-works">BLUF Executive Structure</p>
+          <p class="a-ref">Doumont, J.-L. (2009) Trees, Maps, and Theorems: Effective Communication for Rational Minds. Kraainem: Principiae.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">SW</div>
+        <div class="a-body">
+          <h3>Shannon &amp; Weaver</h3>
+          <p class="a-works">Shannon–Weaver Model</p>
+          <p class="a-ref">Shannon, C.E. and Weaver, W. (1949) The Mathematical Theory of Communication. Urbana, IL: University of Illinois Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">GH</div>
+        <div class="a-body">
+          <h3>Geert Hofstede</h3>
+          <p class="a-works">Hofstede Cultural Dimensions</p>
+          <p class="a-ref">Hofstede, G. (2001) Culture's Consequences: Comparing Values, Behaviors, Institutions and Organizations Across Nations. 2nd edn. Thousand Oaks, CA: Sage.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">EM</div>
+        <div class="a-body">
+          <h3>Erin Meyer</h3>
+          <p class="a-works">The Culture Map (Eight Scales)</p>
+          <p class="a-ref">Meyer, E. (2014) The Culture Map: Breaking Through the Invisible Boundaries of Global Business. New York: PublicAffairs.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">ET</div>
+        <div class="a-body">
+          <h3>Edward T. Hall</h3>
+          <p class="a-works">High- and Low-Context Communication</p>
+          <p class="a-ref">Hall, E.T. (1976) Beyond Culture. New York: Anchor Press/Doubleday.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#0F766E">
+        <div class="a-mono">AL</div>
+        <div class="a-body">
+          <h3>Aubrey L. Mendelow</h3>
+          <p class="a-works">Power–Interest Grid</p>
+          <p class="a-ref">Mendelow, A.L. (1981) 'Environmental scanning: The impact of the stakeholder concept', Proceedings of the Second International Conference on Information Systems, pp. 407–417.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit6">
+    <h2><span class="a-num" style="background:#1D4ED8">6</span>Deliver Results: Project Management Fundamentals</h2>
+    <p class="a-blurb">8 thinkers anchoring Slibraries 11–12.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">PM</div>
+        <div class="a-body">
+          <h3>Project Management Institute</h3>
+          <p class="a-works">Project Lifecycle, Work Breakdown Structure, Earned Value S-Curve</p>
+          <p class="a-ref">Project Management Institute (2021) A Guide to the Project Management Body of Knowledge (PMBOK Guide). 7th edn. Newtown Square, PA: PMI.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">RA</div>
+        <div class="a-body">
+          <h3>Roger Atkinson</h3>
+          <p class="a-works">Iron Triangle</p>
+          <p class="a-ref">Atkinson, R. (1999) 'Project management: cost, time and quality, two best guesses and a phenomenon', International Journal of Project Management, 17(6), pp. 337–342.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">HL</div>
+        <div class="a-body">
+          <h3>Henry L. Gantt</h3>
+          <p class="a-works">Gantt Chart</p>
+          <p class="a-ref">Clark, W. (1922) The Gantt Chart: A Working Tool of Management. New York: Ronald Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">KW</div>
+        <div class="a-body">
+          <h3>Kelley &amp; Walker</h3>
+          <p class="a-works">Critical Path Method</p>
+          <p class="a-ref">Kelley, J.E. and Walker, M.R. (1959) 'Critical-path planning and scheduling', Proceedings of the Eastern Joint Computer Conference, pp. 160–173.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">B</div>
+        <div class="a-body">
+          <h3>Beck et al.</h3>
+          <p class="a-works">Agile Manifesto Values</p>
+          <p class="a-ref">Beck, K. et al. (2001) Manifesto for Agile Software Development. Available at: agilemanifesto.org.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">SS</div>
+        <div class="a-body">
+          <h3>Schwaber &amp; Sutherland</h3>
+          <p class="a-works">Scrum Sprint Cycle</p>
+          <p class="a-ref">Schwaber, K. and Sutherland, J. (2020) The Scrum Guide. Available at: scrumguides.org.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">RD</div>
+        <div class="a-body">
+          <h3>Ralph D. Stacey</h3>
+          <p class="a-works">Stacey Matrix</p>
+          <p class="a-ref">Stacey, R.D. (1996) Complexity and Creativity in Organizations. San Francisco, CA: Berrett-Koehler.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#1D4ED8">
+        <div class="a-mono">I</div>
+        <div class="a-body">
+          <h3>ISO 31000</h3>
+          <p class="a-works">Probability–Impact Risk Matrix</p>
+          <p class="a-ref">International Organization for Standardization (2018) ISO 31000:2018 Risk Management — Guidelines. Geneva: ISO.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit7">
+    <h2><span class="a-num" style="background:#475569">7</span>Negotiate &amp; Influence: Getting What You Need Without Formal Authority</h2>
+    <p class="a-blurb">10 thinkers anchoring Slibraries 13–14.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">FU</div>
+        <div class="a-body">
+          <h3>Fisher &amp; Ury</h3>
+          <p class="a-works">BATNA</p>
+          <p class="a-ref">Fisher, R. and Ury, W. (1981) Getting to Yes: Negotiating Agreement Without Giving In. Boston, MA: Houghton Mifflin.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">HR</div>
+        <div class="a-body">
+          <h3>Howard Raiffa</h3>
+          <p class="a-works">Zone of Possible Agreement</p>
+          <p class="a-ref">Raiffa, H. (1982) The Art and Science of Negotiation. Cambridge, MA: Harvard University Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">FU</div>
+        <div class="a-body">
+          <h3>Fisher, Ury &amp; Patton</h3>
+          <p class="a-works">Principled Negotiation</p>
+          <p class="a-ref">Fisher, R., Ury, W. and Patton, B. (2011) Getting to Yes: Negotiating Agreement Without Giving In. 3rd edn. New York: Penguin Books.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">TK</div>
+        <div class="a-body">
+          <h3>Thomas &amp; Kilmann</h3>
+          <p class="a-works">Dual Concerns Conflict Modes</p>
+          <p class="a-ref">Thomas, K.W. and Kilmann, R.H. (1974) Thomas-Kilmann Conflict Mode Instrument. Tuxedo, NY: Xicom.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">WM</div>
+        <div class="a-body">
+          <h3>Walton &amp; McKersie</h3>
+          <p class="a-works">Distributive ↔ Integrative Spectrum</p>
+          <p class="a-ref">Walton, R.E. and McKersie, R.B. (1965) A Behavioral Theory of Labor Negotiations. New York: McGraw-Hill.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">RB</div>
+        <div class="a-body">
+          <h3>Robert B. Cialdini</h3>
+          <p class="a-works">Six Principles of Influence</p>
+          <p class="a-ref">Cialdini, R.B. (1984) Influence: The Psychology of Persuasion. New York: Harper Business.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">FR</div>
+        <div class="a-body">
+          <h3>French &amp; Raven</h3>
+          <p class="a-works">French &amp; Raven Power Bases</p>
+          <p class="a-ref">French, J.R.P. and Raven, B. (1959) 'The bases of social power', in Cartwright, D. (ed.) Studies in Social Power. Ann Arbor, MI: University of Michigan, pp. 150–167.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">CB</div>
+        <div class="a-body">
+          <h3>Cohen &amp; Bradford</h3>
+          <p class="a-works">Influence Currencies</p>
+          <p class="a-ref">Cohen, A.R. and Bradford, D.L. (2005) Influence Without Authority. 2nd edn. Hoboken, NJ: Wiley.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">CV</div>
+        <div class="a-body">
+          <h3>Chris Voss</h3>
+          <p class="a-works">Tactical Empathy</p>
+          <p class="a-ref">Voss, C. (2016) Never Split the Difference: Negotiating As If Your Life Depended On It. New York: HarperBusiness.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#475569">
+        <div class="a-mono">CR</div>
+        <div class="a-body">
+          <h3>Cass R. Sunstein</h3>
+          <p class="a-works">Persuasion ↔ Manipulation Line</p>
+          <p class="a-ref">Sunstein, C.R. (2016) The Ethics of Influence: Government in the Age of Behavioral Science. New York: Cambridge University Press.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="a-unit" id="unit8">
+    <h2><span class="a-num" style="background:#047857">8</span>Work Smarter with AI: Productivity, Tools and Professional Judgment</h2>
+    <p class="a-blurb">9 thinkers anchoring Slibraries 15–16.</p>
+    <div class="a-grid">
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">SR</div>
+        <div class="a-body">
+          <h3>Stephen R. Covey</h3>
+          <p class="a-works">Eisenhower Matrix</p>
+          <p class="a-ref">Covey, S.R. (1989) The 7 Habits of Highly Effective People. New York: Free Press.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">JD</div>
+        <div class="a-body">
+          <h3>John Doerr</h3>
+          <p class="a-works">Objectives &amp; Key Results</p>
+          <p class="a-ref">Doerr, J. (2018) Measure What Matters. New York: Portfolio/Penguin.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">JD</div>
+        <div class="a-body">
+          <h3>J.D. Meier</h3>
+          <p class="a-works">The Rule of 3, Monday Vision, Daily Wins, Friday Reflection</p>
+          <p class="a-ref">Meier, J.D. (2010) Getting Results the Agile Way: A Personal Results System for Work and Life. Bellevue, WA: Innovation Playhouse.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">RK</div>
+        <div class="a-body">
+          <h3>Richard Koch</h3>
+          <p class="a-works">Pareto 80/20</p>
+          <p class="a-ref">Koch, R. (1998) The 80/20 Principle: The Secret of Achieving More with Less. London: Nicholas Brealey.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">W</div>
+        <div class="a-body">
+          <h3>White et al.</h3>
+          <p class="a-works">Prompt Anatomy</p>
+          <p class="a-ref">White, J. et al. (2023) 'A prompt pattern catalog to enhance prompt engineering with ChatGPT', arXiv preprint arXiv:2302.11382.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">A</div>
+        <div class="a-body">
+          <h3>Amershi et al.</h3>
+          <p class="a-works">Delegate–Verify–Own Loop</p>
+          <p class="a-ref">Amershi, S. et al. (2019) 'Guidelines for human-AI interaction', Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems, pp. 1–13.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">RK</div>
+        <div class="a-body">
+          <h3>Raisch &amp; Krakowski</h3>
+          <p class="a-works">Automation–Augmentation Spectrum</p>
+          <p class="a-ref">Raisch, S. and Krakowski, S. (2021) 'Artificial intelligence and management: The automation-augmentation paradox', Academy of Management Review, 46(1), pp. 192–210.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">D</div>
+        <div class="a-body">
+          <h3>Dell'Acqua et al.</h3>
+          <p class="a-works">The Jagged Frontier</p>
+          <p class="a-ref">Dell'Acqua, F. et al. (2023) 'Navigating the jagged technological frontier', Harvard Business School Working Paper 24-013.</p>
+        </div>
+      </article>
+      <article class="a-card" style="--ac:#047857">
+        <div class="a-mono">U</div>
+        <div class="a-body">
+          <h3>UNESCO</h3>
+          <p class="a-works">AI Attribution Ladder</p>
+          <p class="a-ref">UNESCO (2023) Guidance for Generative AI in Education and Research. Paris: UNESCO.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+<footer>
+  <strong>MASCO101</strong> &middot; Tools for Success &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School
+</footer>
+</body>
+</html>

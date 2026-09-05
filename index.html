@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASCO101 — Tools for Success</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
+  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
+  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
+  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
+}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ─── HERO ─────────────────────────────────────────── */
+.hero{background:var(--navy);padding:3rem 2rem 2.5rem;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-pre{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.6rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.3rem}
+.hero .sub{color:#94A3B8;font-size:1rem;margin-bottom:.35rem}
+.hero .thread{color:var(--teal);font-size:.85rem;font-weight:600;margin-bottom:.55rem}
+.hero .copy{color:#64748B;font-size:.78rem;font-style:italic}
+.stats{display:flex;justify-content:center;gap:2.5rem;margin-top:1.5rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .n{font-size:2rem;color:var(--teal);font-weight:700;line-height:1}
+.stat .l{font-size:.65rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.15em;margin-top:.2rem}
+
+/* ─── SEARCH ───────────────────────────────────────── */
+.search-wrap{max-width:900px;margin:1.5rem auto .5rem;padding:0 1.5rem}
+.search-box{position:relative}
+.search-box input{width:100%;padding:.7rem 1rem .7rem 2.6rem;border:1px solid var(--border);border-radius:10px;font-family:Arial,Helvetica,sans-serif;font-size:.9rem;background:#fff;color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s}
+.search-box input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,164,127,.14)}
+.search-box input::placeholder{color:#94A3B8}
+.search-icon{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:#94A3B8;font-size:.95rem;pointer-events:none}
+.search-results{margin-top:.5rem;display:none}
+.search-results.active{display:block}
+.sr-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;cursor:pointer;transition:background .1s}
+.sr-item:hover{background:#F1F5F9}
+.sr-badge{width:1.6rem;height:1.6rem;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+.sr-title{font-size:.85rem;font-weight:600;color:var(--navy)}
+.sr-sub{font-size:.72rem;color:var(--muted)}
+.sr-empty{padding:.8rem;text-align:center;font-size:.85rem;color:var(--muted);font-style:italic}
+
+.section-title{max-width:900px;margin:2rem auto 1rem;padding:0 1.5rem;font-size:1.1rem;color:var(--navy);font-weight:700}
+
+/* ─── UNIT ACCORDION ───────────────────────────────── */
+.units{max-width:900px;margin:0 auto 2rem;padding:0 1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.unit{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.unit.search-hidden{display:none}
+.unit-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;cursor:pointer;user-select:none;transition:background .15s}
+.unit-header:hover{background:#F8FAFC}
+.unit-header:focus-visible{outline:3px solid var(--teal);outline-offset:-3px}
+.unit-num{width:2.2rem;height:2.2rem;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.unit-info{flex:1;min-width:0}
+.unit-title{font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.3}
+.unit-format{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;margin-top:.2rem;color:var(--muted);background:#F1F5F9;border:1px solid var(--border)}
+.unit-toggle{font-size:1.2rem;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.unit.open .unit-toggle{transform:rotate(180deg)}
+.unit-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.unit.open .unit-body{max-height:1200px}
+
+/* ─── CORE MESSAGE ─────────────────────────────────── */
+.unit-core{margin:.1rem 1.2rem .7rem;background:var(--core-bg);border-left:3px solid var(--core-line);border-radius:0 8px 8px 0;padding:.75rem .95rem .7rem}
+.core-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--core-line);margin-bottom:.3rem}
+.core-text{font-size:.88rem;line-height:1.55;color:var(--core-ink);font-weight:600}
+.core-ilo{margin-top:.55rem;padding-top:.5rem;border-top:1px solid rgba(37,99,235,.15);font-size:.73rem;color:#475569}
+.core-ilo-key{font-weight:700;color:var(--core-ink)}
+.core-sep{color:#94A3B8;margin:0 .15rem}
+.core-ilo-badge{display:inline-block;background:#fff;border:1px solid rgba(37,99,235,.3);color:var(--core-line);font-weight:700;font-size:.68rem;padding:.06rem .4rem;border-radius:4px;cursor:help}
+
+/* ─── RESOURCE ROWS ────────────────────────────────── */
+.unit-links{padding:0 1.2rem 1rem;display:flex;flex-direction:column;gap:.4rem}
+.link-card{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;border:1px solid var(--border);transition:all .15s;text-decoration:none}
+.link-card:hover{border-color:var(--teal);box-shadow:0 2px 8px rgba(15,164,127,.12);transform:translateY(-1px)}
+.link-card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.link-card.search-highlight{border-color:var(--teal);background:#F0FDF9}
+.link-badge{width:1.8rem;height:1.8rem;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.link-body{flex:1;min-width:0}
+.link-title{font-size:.85rem;font-weight:600;color:var(--navy)}
+.link-desc{font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-tag{font-size:.62rem;color:var(--muted);font-weight:500;flex-shrink:0}
+
+.gallery-link{max-width:900px;margin:1rem auto 2rem;padding:0 1.5rem}
+.gallery-link a,.gallery-link button{display:block;width:100%;padding:1rem 1.5rem;background:var(--navy);color:#fff;border:none;border-radius:10px;text-align:center;font-weight:700;font-size:.95rem;font-family:inherit;cursor:pointer;transition:all .15s}
+.gallery-link a:hover,.gallery-link button:hover{background:#22314F;transform:translateY(-1px)}
+.gallery-link span{color:var(--teal)}
+
+footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem}
+footer strong{color:var(--teal)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:600px){
+  .hero h1{font-size:1.5rem}
+  .stats{gap:1.4rem}
+  .stat .n{font-size:1.5rem}
+  .link-desc{white-space:normal}
+}
+</style>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-pre">MASCO101 — Masters Level 7 · AY 2026/27</div>
+  <h1>Tools for Success</h1>
+  <div class="sub">5 ECTS · Term 1 · FHEQ Level 7</div>
+  <div class="thread">Your Human Edge in an AI World</div>
+  <div class="copy">© 2026 Dr. Hildegard Haas · EU Business School</div>
+  <div class="stats">
+    <div class="stat"><div class="n">8</div><div class="l">Units</div></div>
+    <div class="stat"><div class="n">16</div><div class="l">Slibraries</div></div>
+    <div class="stat"><div class="n">80</div><div class="l">Frameworks</div></div>
+    <div class="stat"><div class="n">72</div><div class="l">Authors</div></div>
+  </div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Search frameworks, cases, activities, units…" autocomplete="off">
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<div class="section-title">Course Units</div>
+
+<div class="units" id="unitContainer">
+
+  <div class="unit open" data-unit="1">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="true">
+      <div class="unit-num" style="background:var(--unit1)">1</div>
+      <div class="unit-info">
+        <div class="unit-title">Introduction to Tools for Success &amp; Digital/AI Literacy</div>
+        <div class="unit-format">Guided Discovery</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit1)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">Your value at work is no longer what you can execute — it is what you can judge, and judgment has to be built on purpose.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Foundations &amp; digital fluency
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit1.html" data-search="framework gallery slibraries 1–2 smart goal frame kolb experiential learning cycle bloom's taxonomy (revised) dreyfus skill acquisition model deliberate practice loop digcomp 2.2 competence wheel craap source test technology acceptance model automation bias curve co-intelligence working rules">
+          <div class="link-badge" style="background:var(--unit1)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 1–2</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit1_Activities.html" data-search="guided discovery gallery walk source audit framework pitch digital literacy AI tools onboarding">
+          <div class="link-badge" style="background:var(--unit1-muted)">GD</div>
+          <div class="link-body"><div class="link-title">Guided Discovery — Framework Exploration</div><div class="link-desc">7-phase session — gallery walk, source audit, framework pitch</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit1_Case.html" data-search="vantage consulting case hallucination fabricated citation client deliverable accountability">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Vantage Consulting — The Intern Who Cited a Ghost</div><div class="link-desc">A fabricated AI citation reaches a client deliverable</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit1_PreReading.html" data-search="pre-reading skills beat tools digcomp competence wheel digital literacy">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Why Skills Beat Tools</div><div class="link-desc">Key framework: DigComp 2.2 Competence Wheel</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit1_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit1" data-search="framework authors slibrary thinkers george t. doran david a. kolb anderson & krathwohl dreyfus & dreyfus k. anders ericsson european commission (jrc) sarah blakeslee fred d. davis parasuraman & riley ethan mollick">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · George T. Doran, David A. Kolb, Anderson &amp; Krathwohl, Dreyfus &amp; Dreyfus, K. Anders Ericsson, European Commission (JRC), …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="2">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit2)">2</div>
+      <div class="unit-info">
+        <div class="unit-title">Know Yourself: Self-Assessment as a Strategic Tool</div>
+        <div class="unit-format">Self-Diagnostic Workshop</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit2)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">You cannot position what you have not diagnosed — self-knowledge is the one input no model can generate for you.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Self-assessment &amp; personal positioning
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit2.html" data-search="framework gallery slibraries 3–4 personal swot matrix johari window ikigai purpose venn firm foundation: vision, mission, values personal energy model mbti four dichotomies disc behavioural quadrant big five (ocean) honey & mumford learning styles growth vs. fixed mindset fork">
+          <div class="link-badge" style="background:var(--unit2)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 3–4</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit2_Activities.html" data-search="self diagnostic workshop personal swot johari window peer feedback blind spot development roadmap">
+          <div class="link-badge" style="background:var(--unit2-muted)">SW</div>
+          <div class="link-body"><div class="link-title">Self-Diagnostic Workshop — Personal SWOT &amp; Johari Round</div><div class="link-desc">Individual diagnostic, peer blind-spot round, development roadmap</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit2_Case.html" data-search="lea fontaine case two offers blind spot career decision self assessment">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Léa Fontaine — Two Offers, One Blind Spot</div><div class="link-desc">A graduate chooses between roles using the wrong self-model</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit2_PreReading.html" data-search="pre-reading profiling johari window self awareness human edge">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: What AI Can Profile About You, and What It Cannot</div><div class="link-desc">Key framework: Johari Window</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit2_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit2" data-search="framework authors slibrary thinkers heinz weihrich luft & ingham garcía & miralles j.d. meier myers & briggs william m. marston costa & mccrae honey & mumford carol s. dweck">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Heinz Weihrich, Luft &amp; Ingham, García &amp; Miralles, J.D. Meier, Myers &amp; Briggs, William M. Marston, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="3">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit3)">3</div>
+      <div class="unit-info">
+        <div class="unit-title">Think Better: Critical Thinking &amp; Analytical Reasoning</div>
+        <div class="unit-format">Head-to-Head Analysis Lab</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit3)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">AI accelerates answers; only structured thinking decides whether the answer was the right one to look for.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Critical thinking &amp; structured problem-solving
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit3.html" data-search="framework gallery slibraries 5–6 scqa structure mece issue tree first principles decomposition double diamond cynefin framework system 1 / system 2 confirmation bias loop anchoring & adjustment ladder of inference dunning–kruger curve">
+          <div class="link-badge" style="background:var(--unit3)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 5–6</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit3_Activities.html" data-search="head to head lab ai assisted unaided analysis reasoning comparison bias mece issue tree">
+          <div class="link-badge" style="background:var(--unit3-muted)">HL</div>
+          <div class="link-body"><div class="link-title">Head-to-Head Lab — AI-Assisted vs. Unaided Analysis</div><div class="link-desc">Two teams, one problem, one hour — then compare the reasoning trail</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit3_Case.html" data-search="nordwind logistics case margin problem statement root cause analysis critical thinking">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Nordwind Logistics — The Margin That Disappeared</div><div class="link-desc">A confident diagnosis built on the wrong problem statement</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit3_PreReading.html" data-search="pre-reading structure before search mece issue tree problem decomposition">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Structure Before Search</div><div class="link-desc">Key framework: MECE Issue Tree</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit3_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit3" data-search="framework authors slibrary thinkers barbara minto ethan m. rasiel max wertheimer design council snowden & boone daniel kahneman raymond s. nickerson tversky & kahneman chris argyris kruger & dunning">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · Barbara Minto, Ethan M. Rasiel, Max Wertheimer, Design Council, Snowden &amp; Boone, Daniel Kahneman, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="4">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit4)">4</div>
+      <div class="unit-info">
+        <div class="unit-title">Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills</div>
+        <div class="unit-format">Pitch Arena</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit4)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">A personal brand is not what you claim about yourself; it is the one sentence other people can repeat when you are not in the room.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Personal branding &amp; persuasive delivery
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 5: Critically review the communication process, stakeholder communication and communication in diverse work groups.">ILO 5</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit4.html" data-search="framework gallery slibraries 7–8 brand pyramid twelve brand archetypes storybrand sb7 framework golden circle personal value proposition canvas message strategy spectrum problem → insight → recommendation assertion–evidence slide model mehrabian 7–38–55 anxiety reappraisal">
+          <div class="link-badge" style="background:var(--unit4)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 7–8</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit4_Activities.html" data-search="pitch arena elevator pitch live scoring rubric personal brand delivery rebuild">
+          <div class="link-badge" style="background:var(--unit4-muted)">PA</div>
+          <div class="link-body"><div class="link-title">Pitch Arena — 90 Seconds, Live Scoring, Two Rebuilds</div><div class="link-desc">Pitch, peer scoring against a rubric, rebuild, pitch again</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit4_Case.html" data-search="marco ruiz case cv positioning personal brand narrative interview linkedin">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Marco Ruiz — Same CV, Three Different Stories</div><div class="link-desc">One candidate, three positioning choices, three outcomes</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit4_PreReading.html" data-search="pre-reading one sentence test message strategy spectrum convince clarify bostelaar">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: The One-Sentence Test</div><div class="link-desc">Key framework: Message Strategy Spectrum (Convince ↔ Clarify)</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit4_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit4" data-search="framework authors slibrary thinkers david a. aaker mark & pearson donald miller simon sinek osterwalder et al. kurt bostelaar carmine gallo michael alley albert mehrabian alison wood brooks">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · David A. Aaker, Mark &amp; Pearson, Donald Miller, Simon Sinek, Osterwalder et al., Kurt Bostelaar, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="5">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit5)">5</div>
+      <div class="unit-info">
+        <div class="unit-title">Communicate with Impact: Executive Presence &amp; Business Communication</div>
+        <div class="unit-format">Message Clinic</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit5)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">Executives do not read to discover your conclusion — put it first, then make every sentence after it earn its place.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Business communication &amp; executive presence
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 5: Critically review the communication process, stakeholder communication and communication in diverse work groups.">ILO 5</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit5.html" data-search="framework gallery slibraries 9–10 pyramid principle distil → decompose → prioritise toulmin argument model bluf executive structure storyline canvas shannon–weaver model hofstede cultural dimensions the culture map (eight scales) high- and low-context communication power–interest grid">
+          <div class="link-badge" style="background:var(--unit5)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 9–10</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit5_Activities.html" data-search="message clinic distil decompose prioritise rewrite core message executive summary pyramid principle">
+          <div class="link-badge" style="background:var(--unit5-muted)">MC</div>
+          <div class="link-body"><div class="link-title">Message Clinic — Distil, Decompose, Prioritise, Rewrite</div><div class="link-desc">Four rounds from a full paragraph to a single defensible sentence</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit5_Case.html" data-search="helvetia medtech case email contract executive summary miscommunication bluf">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Helvetia Medtech — The Email That Cost a Contract</div><div class="link-desc">A technically correct message that buried its own conclusion</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit5_PreReading.html" data-search="pre-reading answer first pyramid principle minto executive writing">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Answer First</div><div class="link-desc">Key framework: Pyramid Principle</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit5_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit5" data-search="framework authors slibrary thinkers barbara minto kurt bostelaar stephen e. toulmin jean-luc doumont shannon & weaver geert hofstede erin meyer edward t. hall aubrey l. mendelow">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Barbara Minto, Kurt Bostelaar, Stephen E. Toulmin, Jean-luc Doumont, Shannon &amp; Weaver, Geert Hofstede, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="6">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit6)">6</div>
+      <div class="unit-info">
+        <div class="unit-title">Deliver Results: Project Management Fundamentals</div>
+        <div class="unit-format">Project Simulation</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit6)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">A plan is not a schedule — it is an argument about scope, risk and trade-offs that has to survive contact with reality.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Project planning, scheduling &amp; risk
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 2: Critically assess the roles and responsibilities of a project manager as part of an organisation&#x27;s strategy. ILO 3: Investigate how to select, develop, plan, schedule and measure project outcomes and risks.">ILO 2 &amp; 3</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit6.html" data-search="framework gallery slibraries 11–12 project lifecycle iron triangle work breakdown structure gantt chart critical path method agile manifesto values scrum sprint cycle stacey matrix probability–impact risk matrix earned value s-curve">
+          <div class="link-badge" style="background:var(--unit6)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 11–12</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit6_Activities.html" data-search="project simulation scope work breakdown structure stakeholder map risk register gantt scope change">
+          <div class="link-badge" style="background:var(--unit6-muted)">PS</div>
+          <div class="link-body"><div class="link-title">Project Simulation — Scope, WBS, Stakeholders, Risk Register</div><div class="link-desc">Build a defensible project plan, then absorb an unannounced scope change</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit6_Case.html" data-search="aurora rail case project status dashboard reporting risk escalation earned value">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Aurora Rail — Green Until It Wasn't</div><div class="link-desc">A status dashboard that stayed green three months too long</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit6_PreReading.html" data-search="pre-reading projects fail iron triangle scope time cost quality constraints">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Why Projects Fail Before They Start</div><div class="link-desc">Key framework: Iron Triangle</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit6_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit6" data-search="framework authors slibrary thinkers project management institute roger atkinson henry l. gantt kelley & walker beck et al. schwaber & sutherland ralph d. stacey iso 31000">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">8 thinkers · Project Management Institute, Roger Atkinson, Henry L. Gantt, Kelley &amp; Walker, Beck et al., Schwaber &amp; Sutherland, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="7">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit7)">7</div>
+      <div class="unit-info">
+        <div class="unit-title">Negotiate &amp; Influence: Getting What You Need Without Formal Authority</div>
+        <div class="unit-format">Negotiation Simulation</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit7)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">Leverage is prepared, not improvised — know your walk-away before you walk in.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Negotiation, influence &amp; ethical boundaries
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 4: Evaluate the keys to successful negotiation and differentiate negotiation styles, strategies, and tactics.">ILO 4</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit7.html" data-search="framework gallery slibraries 13–14 batna zone of possible agreement principled negotiation dual concerns conflict modes distributive ↔ integrative spectrum six principles of influence french & raven power bases influence currencies tactical empathy persuasion ↔ manipulation line">
+          <div class="link-badge" style="background:var(--unit7)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 13–14</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit7_Activities.html" data-search="negotiation simulation role play batna zopa concessions ethics debrief influence tactics">
+          <div class="link-badge" style="background:var(--unit7-muted)">NS</div>
+          <div class="link-body"><div class="link-title">Negotiation Simulation — Three Rounds, Then the Ethics Debrief</div><div class="link-desc">Paired role play with hidden constraints and a manipulation-line review</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit7_Case.html" data-search="brightline studio case budget negotiation resources influence without authority stakeholders">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Brightline Studio — The Budget Nobody Would Move</div><div class="link-desc">A junior lead negotiating resources across three unwilling departments</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit7_PreReading.html" data-search="pre-reading batna zopa fisher ury walk away reservation price negotiation preparation">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Your BATNA Is Your Only Real Power</div><div class="link-desc">Key framework: BATNA ↔ ZOPA</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit7_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit7" data-search="framework authors slibrary thinkers fisher & ury howard raiffa fisher, ury & patton thomas & kilmann walton & mckersie robert b. cialdini french & raven cohen & bradford chris voss cass r. sunstein">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · Fisher &amp; Ury, Howard Raiffa, Fisher, Ury &amp; Patton, Thomas &amp; Kilmann, Walton &amp; McKersie, Robert B. Cialdini, …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="unit" data-unit="8">
+    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
+      <div class="unit-num" style="background:var(--unit8)">8</div>
+      <div class="unit-info">
+        <div class="unit-title">Work Smarter with AI: Productivity, Tools and Professional Judgment</div>
+        <div class="unit-format">Mini-Hackathon · Capstone</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-core" style="--core-line:var(--unit8)">
+        <div class="core-label">Core message</div>
+        <p class="core-text">Delegate the task, never the judgment — and be able to show exactly where you drew the line.</p>
+        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Productivity systems &amp; AI workflow judgment
+          <span class="core-sep">·</span>
+          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation. ILO 3: Investigate how to select, develop, plan, schedule and measure project outcomes and risks.">ILO 1 &amp; 3</span>
+        </div>
+      </div>
+      <div class="unit-links">
+        <a class="link-card" href="unit8.html" data-search="framework gallery slibraries 15–16 eisenhower matrix objectives & key results the rule of 3 monday vision, daily wins, friday reflection pareto 80/20 prompt anatomy delegate–verify–own loop automation–augmentation spectrum the jagged frontier ai attribution ladder">
+          <div class="link-badge" style="background:var(--unit8)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 15–16</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="activities/Unit8_Activities.html" data-search="mini hackathon capstone personal ai workflow prompt library delegation defence productivity system">
+          <div class="link-badge" style="background:var(--unit8-muted)">MH</div>
+          <div class="link-body"><div class="link-title">Mini-Hackathon — Build and Defend a Personal AI Workflow</div><div class="link-desc">Three hours to build a workflow, ten minutes to defend every delegation</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="cases/Unit8_Case.html" data-search="talia berg case automation analyst deskilling judgment attribution productivity">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Talia Berg — The Analyst Who Automated Herself</div><div class="link-desc">Efficiency gains that quietly removed the analyst's own judgment</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="prereading/Unit8_PreReading.html" data-search="pre-reading delegate keep automation augmentation spectrum human in the loop judgment">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: What to Delegate, What to Keep</div><div class="link-desc">Key framework: Automation–Augmentation Spectrum</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="reflections/Unit8_Reflection.html" data-search="reflection prompt questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="slibrary.html#unit8" data-search="framework authors slibrary thinkers stephen r. covey john doerr j.d. meier richard koch white et al. amershi et al. raisch & krakowski dell'acqua et al. unesco">
+          <div class="link-badge" style="background:var(--teal)">AU</div>
+          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Stephen R. Covey, John Doerr, J.D. Meier, Richard Koch, White et al., Amershi et al., …</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-title">Complete Gallery</div>
+<div class="gallery-link">
+  <button type="button" onclick="FrameworkSheets.openPicker()">■ All 80 Frameworks — <span>Complete Reference Sheet Library</span></button>
+</div>
+
+<div class="section-title">Framework Authors</div>
+<div class="gallery-link">
+  <a href="slibrary.html">■ 72 Framework Authors — <span>The Thinkers Behind the Frameworks</span></a>
+</div>
+
+<footer>
+  <strong>MASCO101</strong> · Tools for Success · © 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier’s <strong>Thumbnail Thinking</strong> (2025) and Kurt Bostelaar’s <strong>core-message method</strong> across the entire course
+</footer>
+
+<script>
+function toggle(h){ const u=h.parentElement; u.classList.toggle('open');
+  h.setAttribute('aria-expanded', u.classList.contains('open')); }
+document.querySelectorAll('.unit-header').forEach(h=>{
+  h.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(h);} });
+});
+
+const searchInput=document.getElementById('searchInput');
+const searchResults=document.getElementById('searchResults');
+const units=Array.from(document.querySelectorAll('.unit'));
+const searchIndex=[];
+units.forEach(u=>{
+  const unitNum=u.dataset.unit;
+  const unitTitle=u.querySelector('.unit-title').textContent;
+  const core=u.querySelector('.core-text').textContent;
+  u.querySelectorAll('.link-card').forEach(card=>{
+    searchIndex.push({
+      card, unitNum, href:card.getAttribute('href'),
+      title:card.querySelector('.link-title').textContent,
+      desc:card.querySelector('.link-desc').textContent,
+      badgeText:card.querySelector('.link-badge').textContent,
+      badgeColor:card.querySelector('.link-badge').style.background,
+      haystack:(unitTitle+' '+core+' '+card.querySelector('.link-title').textContent+' '+
+                card.querySelector('.link-desc').textContent+' '+
+                (card.dataset.search||'')+' unit '+unitNum).toLowerCase()
+    });
+  });
+});
+
+let debounceTimer;
+searchInput.addEventListener('input',()=>{clearTimeout(debounceTimer);debounceTimer=setTimeout(runSearch,150);});
+
+function runSearch(){
+  const q=searchInput.value.trim().toLowerCase();
+  document.querySelectorAll('.link-card.search-highlight').forEach(c=>c.classList.remove('search-highlight'));
+  units.forEach(u=>u.classList.remove('search-hidden'));
+  if(q.length<2){searchResults.classList.remove('active');searchResults.innerHTML='';return;}
+  const terms=q.split(/\s+/);
+  const matches=searchIndex.filter(i=>terms.every(t=>i.haystack.includes(t)));
+  if(matches.length===0){
+    searchResults.innerHTML='<div class="sr-empty">No results for "'+q.replace(/</g,'&lt;')+'"</div>';
+    searchResults.classList.add('active');
+    units.forEach(u=>u.classList.add('search-hidden'));
+    return;
+  }
+  const matched=new Set(matches.map(m=>m.unitNum));
+  units.forEach(u=>{
+    if(matched.has(u.dataset.unit)){u.classList.remove('search-hidden');u.classList.add('open');}
+    else u.classList.add('search-hidden');
+  });
+  matches.forEach(m=>m.card.classList.add('search-highlight'));
+  searchResults.innerHTML=matches.slice(0,8).map(m=>
+    '<a class="sr-item" href="'+m.href+'"><div class="sr-badge" style="background:'+m.badgeColor+'">'+
+    m.badgeText+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">Unit '+
+    m.unitNum+' · '+m.desc+'</div></div></a>').join('')+
+    (matches.length>8?'<div class="sr-empty">'+(matches.length-8)+' more results…</div>':'');
+  searchResults.classList.add('active');
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))searchResults.classList.remove('active');});
+searchInput.addEventListener('keydown',e=>{if(e.key==='Escape'){searchInput.value='';runSearch();searchInput.blur();}});
+</script>
+<script src="assets/js/framework-viewer.js"></script>
+</body>
+</html>

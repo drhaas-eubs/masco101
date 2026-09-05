@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASCO101 Unit 4 — Present & Position Yourself</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
+  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
+  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
+  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
+}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.back{display:block;background:#E6F7F2;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#0B7A5F;border-bottom:2px solid var(--teal)}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.core-strip{max-width:1100px;margin:1.5rem auto 0;padding:0 1.5rem}
+.core-strip-in{background:var(--core-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.05rem}
+.core-strip .lab{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.core-strip .txt{font-size:.92rem;font-weight:600;color:var(--core-ink);line-height:1.55}
+.core-strip .ilo{margin-top:.5rem;padding-top:.45rem;border-top:1px solid rgba(37,99,235,.15);font-size:.73rem;color:#475569}
+.core-strip .ilo b{color:var(--core-ink)}
+main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 1rem}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column;text-align:left;font-family:inherit;color:inherit;width:100%}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(22,35,61,.1);border-color:transparent}
+.card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(22,35,61,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.card,.slib-set-header{opacity:1!important;transform:none!important}}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}.card-thumb{height:90px}}
+
+:root{--accent:#C2410C}
+</style>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
+</head>
+<body>
+
+<a class="back" href="./">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MASCO101 &middot; Unit 4 &middot; Pitch Arena</div>
+  <h1>Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills</h1>
+  <p>Select any framework to open its quick look, then the full A4 reference sheet</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">2</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">10</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">7&ndash;8</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+
+<div class="core-strip">
+  <div class="core-strip-in">
+    <div class="lab">Core message</div>
+    <div class="txt">A personal brand is not what you claim about yourself; it is the one sentence other people can repeat when you are not in the room.</div>
+    <div class="ilo"><b>Learning focus</b> Personal branding &amp; persuasive delivery &middot; <b>ILO 5</b><br>ILO 5 — Critically review the communication process, stakeholder communication and communication in diverse work groups.</div>
+  </div>
+</div>
+
+<main>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#C2410C"></span>
+        <span class="slib-set-title">Slibrary 7 &mdash; Personal Brand &amp; Positioning</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])" aria-label="Open Brand Pyramid">
+          <div class="card-accent" style="background:#C2410C"></div>
+          <div class="card-thumb" id="thumb-7-0"></div>
+          <div class="card-body">
+            <div class="card-title">Brand Pyramid</div>
+            <div class="card-desc">From context at the base to purpose at the apex</div>
+            <span class="card-tag" style="background:#C2410C">Slibrary 7</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])" aria-label="Open Twelve Brand Archetypes">
+          <div class="card-accent" style="background:#C2410C"></div>
+          <div class="card-thumb" id="thumb-7-1"></div>
+          <div class="card-body">
+            <div class="card-title">Twelve Brand Archetypes</div>
+            <div class="card-desc">Twelve identities grouped by four core motivations</div>
+            <span class="card-tag" style="background:#C2410C">Slibrary 7</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])" aria-label="Open StoryBrand SB7 Framework">
+          <div class="card-accent" style="background:#C2410C"></div>
+          <div class="card-thumb" id="thumb-7-2"></div>
+          <div class="card-body">
+            <div class="card-title">StoryBrand SB7 Framework</div>
+            <div class="card-desc">The audience is the hero; you are the guide</div>
+            <span class="card-tag" style="background:#C2410C">Slibrary 7</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])" aria-label="Open Golden Circle">
+          <div class="card-accent" style="background:#C2410C"></div>
+          <div class="card-thumb" id="thumb-7-3"></div>
+          <div class="card-body">
+            <div class="card-title">Golden Circle</div>
+            <div class="card-desc">Start from why, then how, then what</div>
+            <span class="card-tag" style="background:#C2410C">Slibrary 7</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])" aria-label="Open Personal Value Proposition Canvas">
+          <div class="card-accent" style="background:#C2410C"></div>
+          <div class="card-thumb" id="thumb-7-4"></div>
+          <div class="card-body">
+            <div class="card-title">Personal Value Proposition Canvas</div>
+            <div class="card-desc">Match their jobs, pains and gains to your offer</div>
+            <span class="card-tag" style="background:#C2410C">Slibrary 7</span>
+          </div>
+        </button></div>
+    </div>
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#D97706"></span>
+        <span class="slib-set-title">Slibrary 8 &mdash; Pitch &amp; Delivery</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><button type="button" class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])" aria-label="Open Message Strategy Spectrum">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-8-0"></div>
+          <div class="card-body">
+            <div class="card-title">Message Strategy Spectrum</div>
+            <div class="card-desc">Convince at one end, clarify at the other</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 8</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])" aria-label="Open Problem → Insight → Recommendation">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-8-1"></div>
+          <div class="card-body">
+            <div class="card-title">Problem → Insight → Recommendation</div>
+            <div class="card-desc">Three beats: problem, insight, recommendation</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 8</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])" aria-label="Open Assertion–Evidence Slide Model">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-8-2"></div>
+          <div class="card-body">
+            <div class="card-title">Assertion–Evidence Slide Model</div>
+            <div class="card-desc">One sentence claim, one supporting visual, no bullets</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 8</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])" aria-label="Open Mehrabian 7–38–55">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-8-3"></div>
+          <div class="card-body">
+            <div class="card-title">Mehrabian 7–38–55</div>
+            <div class="card-desc">When words and delivery conflict, delivery wins</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 8</span>
+          </div>
+        </button><button type="button" class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])" aria-label="Open Anxiety Reappraisal">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-8-4"></div>
+          <div class="card-body">
+            <div class="card-title">Anxiety Reappraisal</div>
+            <div class="card-desc">Relabel nerves as excitement instead of suppressing them</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 8</span>
+          </div>
+        </button></div>
+    </div>
+</main>
+
+<footer class="footer">
+  <strong>MASCO101</strong> &middot; Tools for Success &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 4: Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<script>
+const FW = [{"pdfPage": 41, "name": "Brand Pyramid", "def": "A layered model building from context and target audience through needs and offering to the story and the purpose at the apex.", "desc": "From context at the base to purpose at the apex", "shape": "pyramid", "details": ["Context: the forces acting on the brand", "Audience and offering: who and what", "Truths and story: the ten-second pitch", "Purpose: why the audience believes you exist"], "ref": "Aaker, D.A. (1996) Building Strong Brands. New York: Free Press.", "slibTitle": "Personal Brand &amp; Positioning", "slibNum": 7, "color": "#C2410C"}, {"pdfPage": 42, "name": "Twelve Brand Archetypes", "def": "A wheel of twelve recognisable identities — from Innocent to Ruler — grouped by four core motivations, used to make positioning instantly legible.", "desc": "Twelve identities grouped by four core motivations", "shape": "circle", "details": ["Provide structure: Ruler, Creator, Caregiver", "Seek paradise: Innocent, Sage, Explorer", "Leave a mark: Hero, Magician, Outlaw", "Connect: Everyman, Jester, Lover"], "ref": "Mark, M. and Pearson, C.S. (2001) The Hero and the Outlaw: Building Extraordinary Brands Through the Power of Archetypes. New York: McGraw-Hill.", "slibTitle": "Personal Brand &amp; Positioning", "slibNum": 7, "color": "#C2410C"}, {"pdfPage": 43, "name": "StoryBrand SB7 Framework", "def": "A seven-part narrative in which the audience is the hero with a problem, and you are the guide who offers a plan and calls them to act.", "desc": "The audience is the hero; you are the guide", "shape": "timeline", "details": ["A character with a problem", "Meets a guide who gives them a plan", "Who calls them to action", "Avoiding failure and ending in success"], "ref": "Miller, D. (2017) Building a StoryBrand: Clarify Your Message So Customers Will Listen. Nashville, TN: HarperCollins Leadership.", "slibTitle": "Personal Brand &amp; Positioning", "slibNum": 7, "color": "#C2410C"}, {"pdfPage": 44, "name": "Golden Circle", "def": "A three-ring model arguing that communication should start from why, move to how, and reach what last.", "desc": "Start from why, then how, then what", "shape": "circle", "details": ["Why: the belief that drives the work", "How: the distinctive method", "What: the deliverable itself", "Most people pitch the rings backwards"], "ref": "Sinek, S. (2009) Start With Why: How Great Leaders Inspire Everyone to Take Action. New York: Portfolio/Penguin.", "slibTitle": "Personal Brand &amp; Positioning", "slibNum": 7, "color": "#C2410C"}, {"pdfPage": 45, "name": "Personal Value Proposition Canvas", "def": "A two-sided fit test matching what an audience needs — jobs, pains, gains — against what you actually offer.", "desc": "Match their jobs, pains and gains to your offer", "shape": "split", "details": ["Their side: jobs to be done, pains, gains", "Your side: offer, pain relievers, gain creators", "Fit is proven by evidence, not assertion", "Rewrite the offer, not the audience"], "ref": "Osterwalder, A., Pigneur, Y., Bernarda, G. and Smith, A. (2014) Value Proposition Design. Hoboken, NJ: Wiley.", "slibTitle": "Personal Brand &amp; Positioning", "slibNum": 7, "color": "#C2410C"}, {"pdfPage": 46, "name": "Message Strategy Spectrum", "def": "A continuum from convince to clarify, where motivational content builds trust in the message and informational content unpacks its detail.", "desc": "Convince at one end, clarify at the other", "shape": "spectrum", "details": ["Convince: motivational, why it matters, builds trust", "Clarify: informational, what it is, unpacks detail", "Read audience skill, awareness and resistance", "Every message is a blend, not a pole"], "ref": "Bostelaar, K. (2024) Clarify Your Core Message. Leverlo Playbook. Available at: leverlo.com.", "slibTitle": "Pitch &amp; Delivery", "slibNum": 8, "color": "#D97706"}, {"pdfPage": 47, "name": "Problem → Insight → Recommendation", "def": "A three-beat pitch structure that names the problem, delivers the non-obvious insight, and closes on a specific recommendation.", "desc": "Three beats: problem, insight, recommendation", "shape": "pipeline", "details": ["Problem: the tension the audience already feels", "Insight: the thing they had not seen", "Recommendation: one specific, testable ask", "Ninety seconds is the working constraint"], "ref": "Gallo, C. (2014) Talk Like TED: The 9 Public-Speaking Secrets of the World's Top Minds. New York: St. Martin's Press.", "slibTitle": "Pitch &amp; Delivery", "slibNum": 8, "color": "#D97706"}, {"pdfPage": 48, "name": "Assertion–Evidence Slide Model", "def": "A slide design rule replacing topic headers and bullet lists with a full-sentence assertion supported by a single visual.", "desc": "One sentence claim, one supporting visual, no bullets", "shape": "layers", "details": ["Headline states a claim, not a topic", "Body carries visual evidence for that claim", "Bullet lists split attention and reduce recall", "One slide carries exactly one assertion"], "ref": "Alley, M. (2013) The Craft of Scientific Presentations. 2nd edn. New York: Springer.", "slibTitle": "Pitch &amp; Delivery", "slibNum": 8, "color": "#D97706"}, {"pdfPage": 49, "name": "Mehrabian 7–38–55", "def": "A finding that when words and delivery conflict in emotional messages, listeners weight tone and expression far above the words themselves.", "desc": "When words and delivery conflict, delivery wins", "shape": "bars", "details": ["7% words, 38% tone, 55% expression", "Holds only for conflicting emotional signals", "Widely over-generalised — cite it carefully", "Useful point: incongruence destroys credibility"], "ref": "Mehrabian, A. (1971) Silent Messages. Belmont, CA: Wadsworth.", "slibTitle": "Pitch &amp; Delivery", "slibNum": 8, "color": "#D97706"}, {"pdfPage": 50, "name": "Anxiety Reappraisal", "def": "A pre-performance technique that relabels arousal as excitement rather than suppressing it, improving observed performance under pressure.", "desc": "Relabel nerves as excitement instead of suppressing them", "shape": "arrow", "details": ["Arousal is the same physiologically either way", "Saying 'I am excited' outperforms 'calm down'", "Opportunity framing beats threat framing", "Works because arousal cannot be switched off"], "ref": "Brooks, A.W. (2014) 'Get excited: Reappraising pre-performance anxiety as excitement', Journal of Experimental Psychology: General, 143(3), pp. 1144–1158.", "slibTitle": "Pitch &amp; Delivery", "slibNum": 8, "color": "#D97706"}];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return (SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-7-0').innerHTML=getSVG('pyramid','#C2410C');
+document.getElementById('thumb-7-1').innerHTML=getSVG('circle','#C2410C');
+document.getElementById('thumb-7-2').innerHTML=getSVG('timeline','#C2410C');
+document.getElementById('thumb-7-3').innerHTML=getSVG('circle','#C2410C');
+document.getElementById('thumb-7-4').innerHTML=getSVG('split','#C2410C');
+document.getElementById('thumb-8-0').innerHTML=getSVG('spectrum','#D97706');
+document.getElementById('thumb-8-1').innerHTML=getSVG('pipeline','#D97706');
+document.getElementById('thumb-8-2').innerHTML=getSVG('layers','#D97706');
+document.getElementById('thumb-8-3').innerHTML=getSVG('bars','#D97706');
+document.getElementById('thumb-8-4').innerHTML=getSVG('arrow','#D97706');
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+
+let lastFocus=null;
+function openModal(fw){
+  lastFocus=document.activeElement;
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+    <div class="fw-sheet-cta"><button class="fw-sheet-cta-btn" onclick="FrameworkSheets.openPage(${fw.pdfPage})">View Full A4 Reference Sheet</button></div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  m.querySelector('.modal-close').focus();
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocus)lastFocus.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+<script src="assets/js/framework-viewer.js"></script>
+</body>
+</html>
