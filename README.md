@@ -17,7 +17,7 @@ slibrary.html               Framework Authors, anchored #unit1 … #unit8
 activities/  cases/  prereading/  reflections/
 assets/css/framework-viewer.css
 assets/js/framework-viewer.js
-assets/pdf/framework-library.pdf   ← not included, see below
+assets/pdf/framework-library.pdf
 ```
 
 ## The landing page
@@ -61,9 +61,6 @@ page = 10 + 5 × (slibrary − 1) + sheet
 Unit entry points: U1 p.11, U2 p.21, U3 p.31, U4 p.41, U5 p.51, U6 p.61, U7 p.71, U8 p.81.
 
 ## Still to add
-
-- **`assets/pdf/framework-library.pdf`** — the 90-page A4 sheet library. Until it is
-  present, tier 3 opens and reports the missing file; tiers 1 and 2 work fully.
 - **`activities/`, `cases/`, `prereading/`** — scaffolded pages with the correct
   header, core message and ILO block, plus an outline of what each page carries.
   Reflection prompts in `reflections/` are complete.
