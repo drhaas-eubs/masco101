@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Framework Gallery — MASCO101 Tools for Success</title>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
+<style>
+:root{--navy:#16233D;--teal:#0FA47F;--bg:#FAFBFC;--card:#FFF;--text:#16233D;
+  --muted:#6B7280;--border:#E5E7EB;--amber:#D4872C;--accent:#0FA47F}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.topbar{background:#0E1729;color:#fff;padding:.7rem 1.5rem;display:flex;
+  justify-content:space-between;align-items:center;font-size:.8rem}
+.topbar .brand b{font-weight:700}.topbar .brand span{color:var(--accent);font-weight:700}
+.topbar .who{font-style:italic;color:#cdd9ea}
+.hero{background:var(--navy);padding:2.4rem 1.5rem 1.6rem}
+.hero .inner{max-width:1180px;margin:0 auto}
+.eyebrow{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:.5rem}
+.hero h1{color:#fff;font-size:2.3rem;font-weight:700;line-height:1.1}
+.hero p{color:#B6C4D8;font-size:.95rem;margin-top:.6rem;max-width:62ch;line-height:1.5}
+.hero .copy{color:#7C8CA6;font-size:.8rem;font-style:italic;margin-top:.7rem}
+.stats{display:flex;gap:2.6rem;margin-top:1.4rem}
+.stat b{display:block;color:var(--accent);font-size:1.5rem;line-height:1}
+.stat span{font-size:.66rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.15em}
+.topnav{display:flex;gap:18px;margin-top:1.4rem;flex-wrap:wrap}
+.topnav a,.topnav button{font-size:13px;font-weight:700;color:#cdd9ea;text-decoration:none;
+  background:none;border:none;border-bottom:2px solid transparent;padding-bottom:3px;
+  font-family:inherit;cursor:pointer;transition:color .2s ease,border-color .2s ease}
+.topnav a:hover,.topnav a.active,.topnav button:hover{color:#fff;border-color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:1.6rem 1.5rem 4rem}
+#q{width:100%;padding:.85rem 1.1rem;font-size:.95rem;font-family:inherit;
+  border:1px solid var(--border);border-radius:8px;background:#fff}
+#q:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,164,127,.13)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 .9rem}
+.filters button{font-family:inherit;font-size:.82rem;font-weight:600;padding:.42rem 1rem;
+  border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--muted);
+  cursor:pointer;transition:.15s}
+.filters button:hover{border-color:var(--teal);color:var(--teal)}
+.filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.count{font-size:.82rem;color:var(--muted);padding-bottom:.9rem;border-bottom:1px solid var(--border)}
+.ublock{margin-top:2rem}
+.uhead{display:flex;align-items:center;gap:.7rem;padding-bottom:.7rem;
+  border-bottom:2px solid var(--border);margin-bottom:1.2rem}
+.unum{width:26px;height:26px;border-radius:6px;background:var(--navy);color:#fff;
+  font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.uhead .t{font-size:1rem;font-weight:700}
+.uhead .m{font-size:.82rem;color:var(--muted)}
+.sblock{margin-bottom:1.6rem}
+.shead{display:flex;align-items:center;gap:.55rem;margin-bottom:.7rem;font-size:.9rem;font-weight:700}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.shead .n{font-size:.78rem;color:var(--muted);font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+@media(max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.grid{grid-template-columns:1fr}}
+.fcard{background:var(--card);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;padding:0;
+  display:flex;flex-direction:column;transition:.18s;border-top:3px solid var(--c)}
+.fcard:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(22,35,61,.13)}
+.fcard .ic{background:#F5F7FA;display:flex;align-items:center;justify-content:center;
+  padding:1.5rem 0;color:var(--c)}
+.fcard .ic svg{width:52px;height:44px;fill:currentColor}
+.fcard .bd{padding:.85rem .95rem 1rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.fcard .nm{font-size:.92rem;font-weight:700;line-height:1.25}
+.fcard .ds{font-size:.8rem;color:var(--muted);line-height:1.4;flex:1}
+.badge{align-self:flex-start;margin-top:.5rem;font-size:.66rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--c);
+  padding:.28rem .6rem;border-radius:4px}
+.empty{padding:3rem 0;text-align:center;color:var(--muted);font-size:.92rem}
+mark{background:#FDE9A9;color:inherit;border-radius:2px;padding:0 1px}
+@media(max-width:640px){.hero h1{font-size:1.6rem}.stats{gap:1.5rem}}
+</style></head>
+<body>
+<div class="topbar"><div class="brand"><b>Genedia</b> <span>EDUCATION</span></div>
+  <div class="who">Dr. Hildegard Haas</div></div>
+<header class="hero"><div class="inner">
+  <div class="eyebrow">Genedia Education &middot; MASCO101 &middot; Reference</div>
+  <h1>Framework Gallery</h1>
+  <p>All eighty decision-grade frameworks, grouped by unit and Slibrary. Search or filter by unit,
+     then open any card for its full A4 reference sheet.</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="stats">
+    <div class="stat"><b>80</b><span>Frameworks</span></div>
+    <div class="stat"><b>16</b><span>Slibraries</span></div>
+    <div class="stat"><b>8</b><span>Units</span></div>
+  </div>
+  <nav class="topnav">
+    <a href="index.html">Course Units</a>
+    <a href="gallery.html" class="active">Framework Gallery</a>
+    <a href="slibrary.html">Framework Authors</a>
+  </nav>
+</div></header>
+<main class="wrap">
+  <input id="q" type="search" placeholder="Search frameworks, Slibraries&hellip;" autocomplete="off">
+  <div class="filters" id="filters"></div>
+  <div class="count" id="count"></div>
+  <div id="out"></div>
+</main>
+<script src="assets/js/framework-viewer.js"></script>
+<script>
+const META = {"smart-goals": {"d": "Specific · Measurable · Achievable · Relevant · Time-bound", "g": "bands"}, "kolb-cycle": {"d": "Experience · Reflect · Conceptualise · Test", "g": "cycle"}, "blooms-taxonomy": {"d": "Remember · Understand · Apply · Analyse · Evaluate · Create", "g": "pyramid"}, "dreyfus-model": {"d": "Novice · Advanced beginner · Competent · Proficient · Expert", "g": "stages"}, "deliberate-practice": {"d": "Stretch task · Immediate feedback · Targeted repetition", "g": "cycle"}, "digcomp-wheel": {"d": "Five competence areas, twenty-one competences, eight proficiency levels", "g": "hub"}, "craap-test": {"d": "Currency · Relevance · Authority · Accuracy · Purpose", "g": "bands"}, "tam-model": {"d": "Perceived usefulness × perceived ease of use → intention → actual use", "g": "chain"}, "automation-bias": {"d": "Use · Misuse · Disuse · Abuse", "g": "crosscurve"}, "co-intelligence-rules": {"d": "Invite it to the table · Be the human in the loop · Tell it who to be ·…", "g": "rules"}, "personal-swot": {"d": "Strengths · Weaknesses · Opportunities · Threats", "g": "quad"}, "johari-window": {"d": "Open · Blind · Hidden · Unknown", "g": "quad"}, "ikigai-venn": {"d": "Love · Skill · Need · Payment", "g": "venn"}, "firm-foundation": {"d": "Where you are going · what you do · what you will not trade", "g": "pillars"}, "personal-energy-model": {"d": "Physical · Emotional · Mental · Spiritual", "g": "pillars"}, "mbti-dichotomies": {"d": "E–I · S–N · T–F · J–P", "g": "poles"}, "disc-quadrant": {"d": "Dominance · Influence · Steadiness · Conscientiousness", "g": "quad"}, "big-five": {"d": "Openness · Conscientiousness · Extraversion · Agreeableness · Neuroticism", "g": "scales"}, "honey-mumford": {"d": "Activist · Reflector · Theorist · Pragmatist", "g": "cycle"}, "mindset-fork": {"d": "Ability as trainable or as fixed", "g": "fork"}, "scqa": {"d": "Situation · Complication · Question · Answer", "g": "chain"}, "mece-issue-tree": {"d": "Mutually exclusive, collectively exhaustive", "g": "tree"}, "first-principles": {"d": "Strip the assumption · reach the fundamentals · rebuild from there", "g": "chain"}, "double-diamond": {"d": "Discover · Define · Develop · Deliver", "g": "diamond"}, "cynefin": {"d": "Clear · Complicated · Complex · Chaotic", "g": "quad"}, "system-1-2": {"d": "Fast, automatic, always on · slow, effortful, easily displaced", "g": "fork"}, "confirmation-bias": {"d": "Hypothesis · selective search · biased interpretation · reinforced belief", "g": "cycle"}, "anchoring": {"d": "An arbitrary starting number moves the final estimate", "g": "anchorline"}, "ladder-of-inference": {"d": "Data · selection · meaning · assumption · conclusion · belief · action", "g": "ladder"}, "dunning-kruger": {"d": "Least competent, least able to know it", "g": "dkcurve"}, "brand-pyramid": {"d": "Attributes · Functional benefits · Emotional rewards · Values · Essence", "g": "pyramid"}, "brand-archetypes": {"d": "Twelve recurring characters", "g": "tiles"}, "storybrand-sb7": {"d": "The customer is the hero; you are the guide", "g": "chain"}, "golden-circle": {"d": "Why · How · What", "g": "rings"}, "value-prop-canvas": {"d": "Their jobs, pains and gains against your services, relievers and creators", "g": "tiles"}, "message-strategy-spectrum": {"d": "Convince ←→ Clarify", "g": "poles"}, "elevator-pitch": {"d": "Three moves that turn analysis into a decision someone can take", "g": "chain"}, "assertion-evidence": {"d": "A sentence headline carrying the claim, supported by a visual", "g": "slidemock"}, "mehrabian": {"d": "Words · tone · face", "g": "proportions"}, "anxiety-reappraisal": {"d": "Say 'I am excited'", "g": "fork"}, "pyramid-principle": {"d": "Answer first, then grouped support, then data", "g": "tree"}, "distill-decompose": {"d": "Write long, break it apart, force a ranking", "g": "chain"}, "toulmin-model": {"d": "Claim · grounds · warrant · backing · qualifier · rebuttal", "g": "chain"}, "bluf-structure": {"d": "Bottom line up front", "g": "bands"}, "storyline-canvas": {"d": "Plot, character and story mapped across beginning, middle and end", "g": "matrix"}, "shannon-weaver": {"d": "Source · transmitter · channel · receiver · destination", "g": "chain"}, "hofstede-dimensions": {"d": "Six dimensions on which national cultures differ", "g": "scales"}, "culture-map": {"d": "Communicating · evaluating · persuading · leading · deciding · trusting ·…", "g": "poles"}, "high-low-context": {"d": "How much meaning sits in the words, and how much in everything around them", "g": "spectrum"}, "stakeholder-matrix": {"d": "Who can affect the outcome, and who cares", "g": "quad"}, "project-lifecycle": {"d": "Initiating · planning · executing · monitoring and controlling · closing", "g": "chain"}, "iron-triangle": {"d": "Scope · time · cost, with quality in the middle", "g": "triangle3"}, "wbs": {"d": "Deliverables decomposed until each package can be estimated, assigned and…", "g": "tree"}, "gantt-chart": {"d": "Tasks against a calendar", "g": "gantt"}, "critical-path": {"d": "The longest path sets the duration", "g": "cpm"}, "agile-manifesto": {"d": "Four preferences, each stated as 'over' rather than 'instead of'", "g": "poles"}, "scrum-cycle": {"d": "Plan · work daily · review · retrospect", "g": "cycle"}, "stacey-matrix": {"d": "Agreement on what, certainty about how", "g": "quad"}, "risk-matrix": {"d": "How likely, how bad", "g": "quad"}, "earned-value": {"d": "Planned value, earned value, actual cost", "g": "scurve"}, "batna": {"d": "Best Alternative To a Negotiated Agreement", "g": "chain"}, "zopa": {"d": "The overlap between two reservation values", "g": "rangebar"}, "principled-negotiation": {"d": "People · interests · options · criteria", "g": "rules"}, "thomas-kilmann": {"d": "Assertiveness against cooperativeness", "g": "quad"}, "distributive-integrative": {"d": "Claiming value and creating it", "g": "spectrum"}, "cialdini-principles": {"d": "Reciprocity · commitment · social proof · authority · liking · scarcity", "g": "tiles"}, "french-raven": {"d": "Legitimate · reward · coercive · expert · referent", "g": "hub"}, "influence-currencies": {"d": "Find what they value, then trade for it", "g": "tiles"}, "tactical-empathy": {"d": "Demonstrate that you understand their position", "g": "rules"}, "persuasion-manipulation": {"d": "Does the technique work through their reasoning, or around it?", "g": "spectrum"}, "eisenhower-matrix": {"d": "Urgent against important", "g": "quad"}, "okrs": {"d": "One qualitative objective, three to five measurable key results", "g": "tree"}, "rule-of-3": {"d": "Three outcomes for the day, three for the week, three for the year", "g": "pillars"}, "monday-vision": {"d": "Set the week, work the day, close the loop", "g": "cycle"}, "pareto-principle": {"d": "A minority of inputs accounts for a majority of outputs", "g": "matrix"}, "prompt-anatomy": {"d": "Role · task · context · format · constraints · examples", "g": "bands"}, "human-in-the-loop": {"d": "Delegate the task, verify the output, own the result", "g": "cycle"}, "automation-augmentation": {"d": "Replace the task or amplify the person", "g": "spectrum"}, "jagged-frontier": {"d": "AI capability has an uneven boundary", "g": "frontier"}, "attribution-ladder": {"d": "From no use to generated content", "g": "ladder"}};
+const GLYPH = {"pyramid": "<polygon points=\"24,6 42,34 6,34\"/><path d=\"M13 24h22M17 17h14\" stroke=\"#fff\" stroke-width=\"2\" fill=\"none\"/>", "triangle3": "<polygon points=\"24,6 42,34 6,34\" opacity=\".35\"/><circle cx=\"24\" cy=\"6\" r=\"3.5\"/><circle cx=\"42\" cy=\"34\" r=\"3.5\"/><circle cx=\"6\" cy=\"34\" r=\"3.5\"/>", "cycle": "<circle cx=\"24\" cy=\"20\" r=\"13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><polygon points=\"24,3 30,10 18,10\"/>", "rings": "<circle cx=\"24\" cy=\"20\" r=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"20\" r=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><circle cx=\"24\" cy=\"20\" r=\"4\"/>", "hub": "<circle cx=\"24\" cy=\"20\" r=\"5\"/><circle cx=\"24\" cy=\"5\" r=\"3\"/><circle cx=\"38\" cy=\"15\" r=\"3\"/><circle cx=\"33\" cy=\"33\" r=\"3\"/><circle cx=\"15\" cy=\"33\" r=\"3\"/><circle cx=\"10\" cy=\"15\" r=\"3\"/>", "bands": "<rect x=\"7\" y=\"6\" width=\"34\" height=\"6\" rx=\"2\"/><rect x=\"7\" y=\"15\" width=\"34\" height=\"6\" rx=\"2\" opacity=\".7\"/><rect x=\"7\" y=\"24\" width=\"34\" height=\"6\" rx=\"2\" opacity=\".45\"/>", "rules": "<rect x=\"7\" y=\"7\" width=\"34\" height=\"7\" rx=\"2\"/><rect x=\"7\" y=\"18\" width=\"34\" height=\"7\" rx=\"2\" opacity=\".65\"/><rect x=\"7\" y=\"29\" width=\"34\" height=\"7\" rx=\"2\" opacity=\".4\"/>", "ladder": "<rect x=\"9\" y=\"28\" width=\"30\" height=\"6\" rx=\"2\" opacity=\".35\"/><rect x=\"9\" y=\"19\" width=\"30\" height=\"6\" rx=\"2\" opacity=\".6\"/><rect x=\"9\" y=\"10\" width=\"30\" height=\"6\" rx=\"2\"/>", "pillars": "<rect x=\"8\" y=\"6\" width=\"9\" height=\"24\" rx=\"2\"/><rect x=\"20\" y=\"6\" width=\"9\" height=\"24\" rx=\"2\" opacity=\".7\"/><rect x=\"32\" y=\"6\" width=\"9\" height=\"24\" rx=\"2\" opacity=\".45\"/><rect x=\"6\" y=\"33\" width=\"37\" height=\"4\" rx=\"2\"/>", "scales": "<rect x=\"6\" y=\"8\" width=\"36\" height=\"5\" rx=\"2.5\" opacity=\".35\"/><rect x=\"6\" y=\"8\" width=\"24\" height=\"5\" rx=\"2.5\"/><rect x=\"6\" y=\"18\" width=\"36\" height=\"5\" rx=\"2.5\" opacity=\".35\"/><rect x=\"6\" y=\"18\" width=\"14\" height=\"5\" rx=\"2.5\"/><rect x=\"6\" y=\"28\" width=\"36\" height=\"5\" rx=\"2.5\" opacity=\".35\"/><rect x=\"6\" y=\"28\" width=\"30\" height=\"5\" rx=\"2.5\"/>", "proportions": "<rect x=\"6\" y=\"14\" width=\"7\" height=\"12\" rx=\"2\" opacity=\".4\"/><rect x=\"15\" y=\"14\" width=\"12\" height=\"12\" rx=\"2\" opacity=\".7\"/><rect x=\"29\" y=\"14\" width=\"13\" height=\"12\" rx=\"2\"/>", "quad": "<rect x=\"7\" y=\"6\" width=\"15\" height=\"13\" rx=\"2\"/><rect x=\"26\" y=\"6\" width=\"15\" height=\"13\" rx=\"2\" opacity=\".7\"/><rect x=\"7\" y=\"23\" width=\"15\" height=\"13\" rx=\"2\" opacity=\".55\"/><rect x=\"26\" y=\"23\" width=\"15\" height=\"13\" rx=\"2\" opacity=\".35\"/>", "matrix": "<rect x=\"6\" y=\"8\" width=\"10\" height=\"9\" rx=\"1.5\"/><rect x=\"19\" y=\"8\" width=\"10\" height=\"9\" rx=\"1.5\" opacity=\".7\"/><rect x=\"32\" y=\"8\" width=\"10\" height=\"9\" rx=\"1.5\" opacity=\".45\"/><rect x=\"6\" y=\"21\" width=\"10\" height=\"9\" rx=\"1.5\" opacity=\".7\"/><rect x=\"19\" y=\"21\" width=\"10\" height=\"9\" rx=\"1.5\" opacity=\".5\"/><rect x=\"32\" y=\"21\" width=\"10\" height=\"9\" rx=\"1.5\" opacity=\".3\"/>", "tiles": "<rect x=\"7\" y=\"7\" width=\"14\" height=\"11\" rx=\"2\"/><rect x=\"27\" y=\"7\" width=\"14\" height=\"11\" rx=\"2\" opacity=\".7\"/><rect x=\"7\" y=\"22\" width=\"14\" height=\"11\" rx=\"2\" opacity=\".55\"/><rect x=\"27\" y=\"22\" width=\"14\" height=\"11\" rx=\"2\" opacity=\".35\"/>", "chain": "<rect x=\"4\" y=\"14\" width=\"11\" height=\"10\" rx=\"2\"/><rect x=\"19\" y=\"14\" width=\"11\" height=\"10\" rx=\"2\" opacity=\".7\"/><rect x=\"34\" y=\"14\" width=\"11\" height=\"10\" rx=\"2\" opacity=\".45\"/><path d=\"M16 19h2M31 19h2\" stroke=\"currentColor\" stroke-width=\"2\"/>", "stages": "<rect x=\"5\" y=\"26\" width=\"9\" height=\"9\" rx=\"2\" opacity=\".4\"/><rect x=\"15\" y=\"20\" width=\"9\" height=\"15\" rx=\"2\" opacity=\".6\"/><rect x=\"25\" y=\"14\" width=\"9\" height=\"21\" rx=\"2\" opacity=\".8\"/><rect x=\"35\" y=\"7\" width=\"9\" height=\"28\" rx=\"2\"/>", "tree": "<rect x=\"16\" y=\"4\" width=\"16\" height=\"8\" rx=\"2\"/><rect x=\"4\" y=\"24\" width=\"16\" height=\"8\" rx=\"2\" opacity=\".65\"/><rect x=\"28\" y=\"24\" width=\"16\" height=\"8\" rx=\"2\" opacity=\".65\"/><path d=\"M24 12v6M12 18h24M12 18v6M36 18v6\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\"/>", "cpm": "<rect x=\"4\" y=\"8\" width=\"12\" height=\"8\" rx=\"2\"/><rect x=\"20\" y=\"8\" width=\"12\" height=\"8\" rx=\"2\"/><rect x=\"36\" y=\"8\" width=\"8\" height=\"8\" rx=\"2\"/><rect x=\"8\" y=\"26\" width=\"12\" height=\"7\" rx=\"2\" opacity=\".4\"/><rect x=\"26\" y=\"26\" width=\"12\" height=\"7\" rx=\"2\" opacity=\".4\"/>", "gantt": "<rect x=\"5\" y=\"8\" width=\"18\" height=\"6\" rx=\"2\"/><rect x=\"14\" y=\"17\" width=\"20\" height=\"6\" rx=\"2\" opacity=\".7\"/><rect x=\"24\" y=\"26\" width=\"19\" height=\"6\" rx=\"2\" opacity=\".45\"/>", "diamond": "<polygon points=\"6,20 15,8 24,20 15,32\"/><polygon points=\"24,20 33,8 42,20 33,32\" opacity=\".55\"/>", "venn": "<circle cx=\"18\" cy=\"20\" r=\"11\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><circle cx=\"30\" cy=\"20\" r=\"11\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/>", "poles": "<circle cx=\"8\" cy=\"11\" r=\"4\"/><circle cx=\"40\" cy=\"11\" r=\"4\" opacity=\".45\"/><path d=\"M12 11h24\" stroke=\"currentColor\" stroke-width=\"2.5\"/><circle cx=\"8\" cy=\"29\" r=\"4\"/><circle cx=\"40\" cy=\"29\" r=\"4\" opacity=\".45\"/><path d=\"M12 29h24\" stroke=\"currentColor\" stroke-width=\"2.5\"/>", "spectrum": "<rect x=\"5\" y=\"16\" width=\"38\" height=\"8\" rx=\"4\" opacity=\".3\"/><circle cx=\"13\" cy=\"20\" r=\"4\"/><circle cx=\"24\" cy=\"20\" r=\"4\"/><circle cx=\"35\" cy=\"20\" r=\"4\"/>", "rangebar": "<rect x=\"5\" y=\"10\" width=\"24\" height=\"8\" rx=\"3\"/><rect x=\"19\" y=\"23\" width=\"24\" height=\"8\" rx=\"3\" opacity=\".6\"/>", "anchorline": "<path d=\"M5 20h38\" stroke=\"currentColor\" stroke-width=\"3\"/><circle cx=\"13\" cy=\"20\" r=\"5\"/><circle cx=\"23\" cy=\"20\" r=\"5\" opacity=\".65\"/><circle cx=\"38\" cy=\"20\" r=\"5\" opacity=\".3\"/>", "fork": "<rect x=\"17\" y=\"4\" width=\"14\" height=\"8\" rx=\"2\"/><rect x=\"4\" y=\"24\" width=\"16\" height=\"9\" rx=\"2\" opacity=\".65\"/><rect x=\"28\" y=\"24\" width=\"16\" height=\"9\" rx=\"2\" opacity=\".65\"/><path d=\"M24 12v5M12 17h24M12 17v7M36 17v7\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\"/>", "crosscurve": "<path d=\"M5 32C16 30 28 16 43 8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M5 8C16 14 28 28 43 32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" opacity=\".4\" stroke-dasharray=\"4 3\"/>", "dkcurve": "<path d=\"M5 32C9 8 16 6 20 24C24 38 30 34 43 10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/>", "scurve": "<path d=\"M5 32C16 31 26 16 43 8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M5 32C17 28 27 22 43 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" opacity=\".45\"/>", "frontier": "<path d=\"M4 26L12 14L20 24L28 12L36 22L44 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><circle cx=\"14\" cy=\"33\" r=\"3\" opacity=\".5\"/><circle cx=\"32\" cy=\"33\" r=\"3\" opacity=\".5\"/>", "slidemock": "<rect x=\"4\" y=\"8\" width=\"18\" height=\"24\" rx=\"2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"/><rect x=\"26\" y=\"8\" width=\"18\" height=\"24\" rx=\"2\"/><path d=\"M8 14h10M8 19h10M8 24h7\" stroke=\"currentColor\" stroke-width=\"1.8\"/>"};
+const UNITS = {
+ 1:"Introduction to Tools for Success & Digital/AI Literacy",
+ 2:"Know Yourself: Self-Assessment as a Strategic Tool",
+ 3:"Think Better: Critical Thinking & Analytical Reasoning",
+ 4:"Present & Position Yourself: Personal Branding & Presentation Skills",
+ 5:"Communicate with Impact: Executive Presence & Business Communication",
+ 6:"Deliver Results: Project Management Fundamentals",
+ 7:"Negotiate & Influence: Getting What You Need Without Formal Authority",
+ 8:"Work Smarter with AI: Productivity, Tools and Professional Judgment"};
+let FW=[], SL={}, unit=0, term="";
+
+function boot(){
+  if(!window.FrameworkSheets){ setTimeout(boot,120); return; }
+  FW = FrameworkSheets.list();
+  FrameworkSheets.slibraries().forEach(s=>SL[s.num]=s);
+  const f=document.getElementById('filters');
+  f.innerHTML = '<button class="on" data-u="0">All units</button>' +
+    [1,2,3,4,5,6,7,8].map(u=>`<button data-u="${u}">Unit ${u}</button>`).join('');
+  f.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    unit=+b.dataset.u;
+    [...f.children].forEach(x=>x.classList.toggle('on',x===b));
+    render();
+  });
+  document.getElementById('q').addEventListener('input',e=>{
+    term=e.target.value.trim().toLowerCase(); render();
+  });
+  render();
+}
+const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function hi(s){
+  if(!term) return esc(s);
+  const i=s.toLowerCase().indexOf(term);
+  return i<0 ? esc(s)
+    : esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+term.length))+'</mark>'+esc(s.slice(i+term.length));
+}
+function render(){
+  const hits = FW.filter(f=>{
+    if(unit && f.unit!==unit) return false;
+    if(!term) return true;
+    const m=META[f.slug]||{};
+    return (f.name+' '+(m.d||'')+' '+(SL[f.slibrary]||{}).title).toLowerCase().includes(term);
+  });
+  document.getElementById('count').textContent =
+    hits.length + (hits.length===1?' framework':' frameworks');
+  const out=document.getElementById('out');
+  if(!hits.length){ out.innerHTML='<div class="empty">No frameworks match that search.</div>'; return; }
+  let h='';
+  for(const u of [1,2,3,4,5,6,7,8]){
+    const inU=hits.filter(f=>f.unit===u); if(!inU.length) continue;
+    const slibs=[...new Set(inU.map(f=>f.slibrary))].sort((a,b)=>a-b);
+    h+=`<section class="ublock"><div class="uhead"><span class="unum">${u}</span>
+        <span class="t">Unit ${u} — ${esc(UNITS[u])}</span>
+        <span class="m">Slibraries ${slibs.join(' & ')} · ${inU.length} frameworks</span></div>`;
+    for(const sn of slibs){
+      const s=SL[sn], cards=inU.filter(f=>f.slibrary===sn).sort((a,b)=>a.sheet-b.sheet);
+      h+=`<div class="sblock"><div class="shead"><span class="dot" style="background:${s.color}"></span>
+          Slibrary ${sn} — ${esc(s.title)} <span class="n">${cards.length} frameworks</span></div><div class="grid">`;
+      for(const f of cards){
+        const m=META[f.slug]||{d:'',g:'bands'};
+        h+=`<button class="fcard" style="--c:${s.color}" onclick="FrameworkSheets.openSlug('${f.slug}')">
+            <span class="ic"><svg viewBox="0 0 48 40">${GLYPH[m.g]||GLYPH.bands}</svg></span>
+            <span class="bd"><span class="nm">${hi(f.name)}</span>
+            <span class="ds">${hi(m.d||'')}</span>
+            <span class="badge">Slibrary ${sn}</span></span></button>`;
+      }
+      h+='</div></div>';
+    }
+    h+='</section>';
+  }
+  out.innerHTML=h;
+}
+boot();
+</script>
+</body></html>
