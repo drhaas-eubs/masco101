@@ -38,6 +38,13 @@ main{max-width:1000px;margin:0 auto;padding:1.5rem 1.5rem 2rem}
 .a-ref{font-size:.7rem;color:var(--muted);line-height:1.45}
 footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem}
 footer strong{color:var(--teal)}
+
+/* ---- site navigation ------------------------------------------------ */
+.topnav{display:flex;gap:18px;margin-top:1.4rem;flex-wrap:wrap}
+.topnav a{font-size:13px;font-weight:700;color:#cdd9ea;text-decoration:none;
+  border-bottom:2px solid transparent;padding-bottom:3px;
+  transition:color .2s ease,border-color .2s ease}
+.topnav a:hover,.topnav a.active{color:#fff;border-color:var(--teal)}
 </style>
 </head>
 <body>
@@ -46,6 +53,11 @@ footer strong{color:var(--teal)}
   <div class="hero-tag">MASCO101 &middot; Framework Authors</div>
   <h1>The Thinkers Behind the Frameworks</h1>
   <p>72 authors &middot; 8 units &middot; 16 Slibraries &middot; 80 frameworks</p>
+  <nav class="topnav">
+    <a href="index.html">Course Units</a>
+    <a href="gallery.html">Framework Gallery</a>
+    <a href="slibrary.html" class="active">Framework Authors</a>
+  </nav>
 </header>
 <nav class="jump">
   <a href="#unit1">Unit 1</a>
