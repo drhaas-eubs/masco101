@@ -3,61 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MASCO101 Unit 2 — Session Plan</title>
-<style>:root{--ac:#6D28D9}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#FAFBFC;color:#16233D;line-height:1.6}
-a{color:inherit}
-.back{display:block;background:#E6F7F2;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#0B7A5F;border-bottom:2px solid #0FA47F}
-.hero{background:#16233D;padding:2.3rem 2rem 1.9rem;position:relative}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--ac)}
-.hero .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#D4872C;font-weight:700;margin-bottom:.5rem}
-.hero h1{font-size:1.8rem;color:#fff;font-weight:700;line-height:1.25;margin-bottom:.35rem}
-.hero p{color:#94A3B8;font-size:.9rem}
-main{max-width:760px;margin:0 auto;padding:1.6rem 1.5rem 2.5rem}
-.core{background:#EEF4FF;border-left:3px solid var(--ac);border-radius:0 8px 8px 0;padding:.85rem 1.05rem;margin-bottom:1.5rem}
-.core .lab{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:.3rem}
-.core .txt{font-size:.95rem;font-weight:600;color:#1E3A8A}
-.core .ilo{margin-top:.55rem;padding-top:.5rem;border-top:1px solid rgba(37,99,235,.15);font-size:.75rem;color:#475569}
-.core .ilo b{color:#1E3A8A}
-h2{font-size:1.05rem;margin:1.6rem 0 .7rem}
-ol.q{list-style:none;counter-reset:q;padding:0}
-ol.q li{counter-increment:q;background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1rem 1.1rem 1rem 3.2rem;position:relative;margin-bottom:.7rem;font-size:.92rem}
-ol.q li::before{content:counter(q);position:absolute;left:1rem;top:1rem;width:1.6rem;height:1.6rem;border-radius:6px;background:var(--ac);color:#fff;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
-ul.plan{list-style:none;padding:0}
-ul.plan li{background:#fff;border:1px solid #E5E7EB;border-left:3px solid var(--ac);border-radius:0 8px 8px 0;padding:.7rem .9rem;margin-bottom:.5rem;font-size:.88rem;color:#475569}
-.note{background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:.9rem 1.05rem;font-size:.85rem;color:#7C2D12;margin-top:1.4rem}
-.note b{display:block;margin-bottom:.25rem}
-.meta{font-size:.78rem;color:#6B7280;margin-top:1.6rem}
-footer{background:#16233D;padding:1.8rem;text-align:center;color:#64748B;font-size:.75rem}
-footer strong{color:#0FA47F}
+<title>MASCO101 Unit 2 — Session Plan: Diagnostic Studio: Two CVs, One Role</title>
+<meta name="description" content="MASCO101 Unit 2 session plan: Diagnostic Studio, seven phases, materials, debrief and assessment link.">
+<style>
+:root{--navy:#173B35;--ink:#1F4E45;--teal:#5BC4A4;--teal-d:#2A8F75;--gray:#F3F6F5;--line:#E1E8E6;--muted:#56625F;--body:#222;--amber:#B8702A;--purple:#6A5BB5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--body);background:#FAFBFB;line-height:1.6}
+a{color:var(--teal-d)}a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.backbar{background:#E9F6F2;padding:12px 22px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.backbar a{text-decoration:none;font-weight:bold;font-size:14px}
+.backbar a:hover{text-decoration:underline}
+header.hero{background:var(--navy);color:#fff;padding:38px 24px 32px}
+.hero .in{max-width:820px;margin:0 auto}
+.hero .kick{margin:0;font-size:12px;font-weight:bold;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal)}
+.hero h1{margin:10px 0 8px;font-size:clamp(24px,4vw,36px);line-height:1.2}
+.hero .sub{margin:0;font-size:16px;opacity:.88}
+.hero .meta{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.hero .meta span{font-size:12px;font-weight:bold;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:3px 11px}
+.hero-accent{height:4px;background:var(--teal)}
+main{max-width:820px;margin:0 auto;padding:30px 22px 50px}
+.coremsg{background:#E9F6F2;border-radius:10px;padding:16px 18px;margin:0 0 26px}
+.coremsg .l{font-size:11px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-d)}
+.coremsg .t{font-size:17px;font-weight:bold;font-style:italic;color:var(--ink);margin:8px 0 0;line-height:1.45}
+.coremsg .ilo{font-size:13.5px;color:var(--muted);margin:12px 0 0}
+.coremsg .ilo strong{color:var(--ink)}
+h2{font-size:20px;color:var(--ink);margin:34px 0 12px;line-height:1.3}
+h3{font-size:16px;color:var(--ink);margin:0 0 8px}
+p{margin:0 0 14px}
+.lead{font-size:16px;color:var(--ink)}
+.box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 16px;box-shadow:0 2px 8px rgba(23,59,53,.05)}
+.task{background:#E9F6F2;border-left:5px solid var(--teal-d);border-radius:0 10px 10px 0;padding:16px 18px;margin:20px 0}
+.task .l,.lbl{display:block;font-size:11px;font-weight:bold;letter-spacing:1.3px;text-transform:uppercase;color:var(--teal-d);margin-bottom:6px}
+.note{background:var(--gray);border-left:5px solid var(--ink);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:14.5px}
+.ai{background:#F1EFFA;border-left:5px solid var(--purple);border-radius:0 10px 10px 0;padding:16px 18px;margin:24px 0}
+.ai .lbl{color:var(--purple)}
+.ai ul{margin:6px 0 10px;padding-left:20px}.ai li{margin:4px 0;font-size:14.5px}
+.ai .rule{font-size:14px;font-weight:bold;color:#3F3580;border-top:1px solid #D9D4F0;padding-top:10px;margin:10px 0 0}
+table.tl{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tl th{background:var(--ink);color:#fff;text-align:left;padding:9px 12px;font-size:12px;letter-spacing:.5px}
+.tl td{padding:9px 12px;border-top:1px solid var(--line)}
+.tl td:last-child,.tl th:last-child{text-align:right;white-space:nowrap}
+.tl tr.br td{background:var(--gray);color:var(--muted);font-style:italic}
+.tl tfoot td{font-weight:bold;background:var(--gray)}
+.wrap-x{overflow-x:auto}
+ul.plain{margin:0 0 14px;padding-left:20px}ul.plain li{margin:5px 0}
+.phase{background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 0 14px;overflow:hidden}
+.phase-h{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.phase-n{flex:none;width:34px;height:34px;border-radius:8px;background:var(--teal-d);color:#fff;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.phase-t{flex:1;font-weight:bold;color:var(--ink);font-size:16px}
+.phase-m{flex:none;font-size:12px;font-weight:bold;color:var(--muted);background:var(--gray);border-radius:12px;padding:3px 10px}
+.phase-b{padding:14px 16px}
+.phase-b p{font-size:14.5px}
+.phase-b .do{background:#E9F6F2;border-radius:8px;padding:10px 12px;margin:10px 0;font-size:14.5px}
+.phase-b .do strong{color:var(--teal-d)}
+.phase-b .fac{font-size:13.5px;color:var(--muted);font-style:italic;margin:0}
+.brk{text-align:center;color:var(--muted);font-size:13px;font-weight:bold;letter-spacing:1px;margin:6px 0 20px}
+.exh{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 16px}
+.exh .box{margin:0}
+.exh h3{font-size:14px}
+.exh ul{margin:0;padding-left:18px;font-size:13.5px}.exh li{margin:4px 0}
+ol.qs{margin:0 0 14px;padding-left:22px}ol.qs li{margin:8px 0;padding-left:4px}
+details.tn{background:#fff;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+details.tn summary{cursor:pointer;padding:14px 18px;font-weight:bold;color:var(--ink)}
+details.tn .in{padding:0 18px 16px;font-size:14.5px}
+.src{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:26px}
+.fwbox{background:#fff;border:1px solid var(--line);border-top:5px solid var(--teal);border-radius:12px;padding:18px 20px;margin:24px 0}
+.fwgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0 4px;counter-reset:f}
+.fwgrid div{counter-increment:f;background:var(--gray);border:1px solid var(--line);border-radius:9px;padding:12px 12px 12px 44px;position:relative;font-size:13.5px;color:var(--ink);font-weight:bold;line-height:1.35}
+.fwgrid div::before{content:counter(f);position:absolute;left:12px;top:11px;width:22px;height:22px;border-radius:6px;background:var(--teal-d);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.take ul{margin:0;padding-left:20px}.take li{margin:6px 0}
+ol.refs{padding-left:20px;font-size:14px}ol.refs li{margin:6px 0}
+.rq{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 60px;margin:0 0 12px;position:relative;font-size:15.5px;color:var(--ink)}
+.rq .n{position:absolute;left:16px;top:15px;width:30px;height:30px;border-radius:8px;background:var(--teal-d);color:#fff;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:30px 0 0}
+.links a{display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--ink);font-weight:bold;font-size:14px}
+.links a span{display:block;font-weight:normal;font-size:12px;color:var(--muted);margin-top:2px}
+.links a:hover{border-color:var(--teal-d);background:var(--gray)}
+footer{background:var(--navy);color:#fff;text-align:center;padding:24px;font-size:13px}
+footer .d{height:2px;width:54px;background:var(--teal);border:none;margin:0 auto 12px}
+footer strong{color:var(--teal)}footer .s{display:block;opacity:.65;font-size:12px;margin-top:4px}
+@media print{.backbar,.links{display:none}}
 </style>
 </head>
 <body>
-<a class="back" href="../">&#8592; Back to Course Overview</a>
-<header class="hero">
-  <div class="tag">MASCO101 &middot; Unit 2 &middot; Know Yourself</div>
-  <h1>Self-Diagnostic Workshop — Personal SWOT &amp; Johari Round</h1>
-  <p>Individual diagnostic, peer blind-spot round, development roadmap</p>
-</header>
+<nav class="backbar"><a href="../index.html#unit2">&larr; Back to Course Overview</a><a href="../unit2.html">Framework Gallery</a><a href="../slibrary.html#unit2">Framework Authors</a><a href="../glossary.html#unit2">Glossary</a></nav>
+<header class="hero"><div class="in">
+  <p class="kick">MASCO101 · Unit 2 · Session Plan</p>
+  <h1>Diagnostic Studio: Two CVs, One Role</h1>
+  <p class="sub">Seven phases, 150 minutes, no lecture</p>
+  <div class="meta"><span>Diagnostic Studio</span><span>150 minutes</span><span>7 phases</span><span>Slibraries 3 &amp; 4</span></div>
+</div></header>
+<div class="hero-accent"></div>
 <main>
-  <div class="core">
-    <div class="lab">Core message</div>
-    <div class="txt">You cannot position what you have not diagnosed — self-knowledge is the one input no model can generate for you.</div>
-    <div class="ilo"><b>Learning focus</b> Self-assessment &amp; personal positioning &middot; <b>ILO 1</b><br>ILO 1 — Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.</div>
-  </div>
-  <h2>What this page will carry</h2>
-  <ul class="plan">
-    <li>Learning intention and link to the unit ILO</li>
-    <li>Phase-by-phase timing and grouping</li>
-    <li>Materials, briefing sheets and role cards</li>
-    <li>Framework prompts drawn from this unit's Slibraries</li>
-    <li>Debrief questions and assessment link</li>
-  </ul>
-  <div class="note"><b>Not yet written</b>
-  This page is scaffolded and linked from the course overview. Replace this section with the
-  session plan content; the header, core message and ILO block above are already correct for Unit 2.</div>
+<div class="coremsg"><span class="l">Core message · Unit 2</span><p class="t">A self-assessment you cannot act on is a horoscope.</p><p class="ilo"><strong>Learning focus · ILO 1</strong> — Self-assessment &amp; personal positioning. ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.</p></div>
+
+<h2>Learning intention</h2>
+<p class="lead">Students leave able to build an evidenced Personal SWOT and convert it into four TOWS actions, distinguish instrument quality (why the Big Five outranks a typology), give and receive specific behavioural feedback, and turn a development priority into a verifiable SMART objective.</p>
+<div class="note"><strong>Guiding question:</strong> What can a profile of you never capture — and can you name it out loud?</div>
+
+<h2>Session at a glance</h2>
+<div class="wrap-x"><table class="tl"><thead><tr><th>Phase</th><th>Activity</th><th>Time</th></tr></thead>
+<tbody><tr><td>Phase 1</td><td>The Machine Reads You First</td><td>10 min</td></tr><tr><td>Phase 2</td><td>Gallery Exploration — Slibraries 3 &amp; 4</td><td>20 min</td></tr><tr><td>Phase 3</td><td>Personal SWOT → TOWS, built live</td><td>30 min</td></tr><tr><td>Phase 4</td><td>The Johari Exchange</td><td>25 min</td></tr><tr class="br"><td>—</td><td>Break</td><td>10 min</td></tr><tr><td>Phase 5</td><td>Case: Two CVs, One Role</td><td>25 min</td></tr><tr><td>Phase 6</td><td>Roadmap Build — GROW into SMART</td><td>20 min</td></tr><tr><td>Phase 7</td><td>Reflection &amp; Portfolio Entry</td><td>10 min</td></tr></tbody><tfoot><tr><td></td><td>Total</td><td>150 min</td></tr></tfoot></table></div>
+
+<h2>Materials and preparation</h2>
+<ul class="plain"><li>Unit 2 framework gallery (Slibraries 3 &amp; 4)</li><li>Each student&#x27;s short professional bio, submitted before the session, with a printed AI-generated profile</li><li>Personal SWOT/TOWS worksheet (four cells plus four strategy boxes)</li><li>Johari Exchange triad cards with the single feedback question</li><li>GROW-to-SMART roadmap sheet</li></ul>
+<p>Before the session, students read the <a href="../prereading/Unit2_PreReading.html">Unit 2 pre-reading</a> and review Slibraries 3 and 4 in the <a href="../unit2.html">framework gallery</a>.</p>
+
+<h2>Phase by phase</h2>
+<article class="phase" id="phase1"><div class="phase-h"><span class="phase-n">1</span><span class="phase-t">The Machine Reads You First</span><span class="phase-m">10 min</span></div><div class="phase-b"><p>Before the session you submitted a short professional bio. Each was run through an AI profiling prompt and printed.</p><p>You are about to read a machine&#x27;s description of you, written by something that has never met you.</p><p class="do"><strong>Your task:</strong> Read it silently. Mark one thing that is accurate and uncomfortable, and one thing that is confidently wrong.</p><p class="fac">We collect the confidently wrong items. The pattern in them is the first finding of this unit.</p></div></article><article class="phase" id="phase2"><div class="phase-h"><span class="phase-n">2</span><span class="phase-t">Gallery Exploration — Slibraries 3 &amp; 4</span><span class="phase-m">20 min</span></div><div class="phase-b"><p>Ten frameworks: five diagnostic instruments, five development and direction tools.</p><p>Note the deliberate range in evidential quality. The Big Five is empirically strong; MBTI is empirically weak and extremely widely used. Both are in the gallery.</p><p class="do"><strong>Your task:</strong> In pairs, identify which instruments you would accept a recruiter using on you and which you would object to. Be ready to defend the line you drew.</p><p class="fac">This is a question about what an instrument is legitimately for, not a trick question about validity.</p></div></article><article class="phase" id="phase3"><div class="phase-h"><span class="phase-n">3</span><span class="phase-t">Personal SWOT → TOWS, built live</span><span class="phase-m">30 min</span></div><div class="phase-b"><p>Individually, then in pairs: twenty minutes building, ten pairing.</p><p>Strengths and weaknesses must be evidenced. &#x27;Good communicator&#x27; is a claim. &#x27;Presented to a 40-person client group in March and was asked back&#x27; is a strength.</p><p class="do"><strong>Your task:</strong> Complete a four-cell Personal SWOT with at least three evidenced entries per cell. Then write one named action for each of SO, ST, WO and WT, each dated before the end of term.</p><p class="fac">A SWOT without a TOWS is a list. The four actions are assessed in the portfolio, not the four lists.</p></div></article><article class="phase" id="phase4"><div class="phase-h"><span class="phase-n">4</span><span class="phase-t">The Johari Exchange</span><span class="phase-m">25 min</span></div><div class="phase-b"><p>Triads, structured and timed.</p><p>Each person receives five minutes of feedback from the other two on one question: what do you observe about how I work that I might not see?</p><p class="do"><strong>Your task:</strong> Give specific, behavioural, non-evaluative feedback: describe what you observed, not what you concluded. Receive without defending — write it down, ask one clarifying question, say thank you, stop.</p><p class="fac">This is the only mechanism that touches the blind pane. Neither AI nor introspection can do it for you.</p></div></article><p class="brk">— Break · 10 min —</p><article class="phase" id="phase5"><div class="phase-h"><span class="phase-n">5</span><span class="phase-t">Case: Two CVs, One Role</span><span class="phase-m">25 min</span></div><div class="phase-b"><p>Teams of four. The case is short; the argument is not.</p><p class="do"><strong>Your task:</strong> Using at least two frameworks, determine which candidate the screening process actually selected for and whether that is what the role required. State what you would change in the process.</p><p class="fac">Watch for the moment your team starts justifying a decision it made in the first two minutes, and name it when it happens.</p></div></article><article class="phase" id="phase6"><div class="phase-h"><span class="phase-n">6</span><span class="phase-t">Roadmap Build — GROW into SMART</span><span class="phase-m">20 min</span></div><div class="phase-b"><p>Individually, then a two-minute pair check.</p><p>Your Personal Development Roadmap covers the master&#x27;s year and the twelve months after it.</p><p class="do"><strong>Your task:</strong> Run GROW on one development priority: the goal, the honest reality, at least four options before choosing, and the will. Convert the chosen option into a SMART objective with a number and a date.</p><p class="fac">Your partner asks one question only: could someone else verify whether you did this?</p></div></article><article class="phase" id="phase7"><div class="phase-h"><span class="phase-n">7</span><span class="phase-t">Reflection &amp; Portfolio Entry</span><span class="phase-m">10 min</span></div><div class="phase-b"><p>Individually, in writing.</p><p class="do"><strong>Your task:</strong> Write three entries: what the machine profile got confidently wrong and why; what the Johari Exchange told you that you did not know; and your SMART objective, verbatim.</p><p class="fac">This entry is the spine of Assessment 2. Write it as though you will reread it in June.</p></div></article>
+
+<section class="ai"><span class="lbl">AI in this unit</span><h3>What we teach</h3><ul><li>What AI profiling actually reads: register, vocabulary, topic distribution and surface pattern — not motivation, integrity or behaviour under pressure.</li><li>Feedback loops in AI-assisted screening: how optimising for similarity to past hires quietly encodes yesterday&#x27;s definition of merit.</li><li>Why the blind pane is unreachable by any system that has not observed you working with other people.</li></ul><p style="font-size:14.5px;margin:0"><strong>Practised in session:</strong> Phase 1 machine profiles, read against Phase 4 human feedback on the same person.</p><p class="rule">Rule: AI may be used to structure and stress-test your Personal SWOT. It may not generate its content. The evidence in each cell must be yours and must be verifiable.</p></section>
+
+<h2>Debrief questions</h2>
+<ol class="qs"><li>What did the AI profiles consistently misread, and what were they actually reading?</li><li>Which instruments did the room accept for selection decisions, and on what evidence?</li><li>How many of the SWOT strengths in the room survived the evidence test?</li></ol>
+
+<div class="task"><span class="l">Link to assessment</span>Assessment 2 — Human Edge Portfolio: Personal SWOT/TOWS, Johari feedback record, SMART development roadmap.</div>
+<p>After the session, students answer the <a href="../reflections/Unit2_Reflection.html">three reflection questions</a> within 48 hours and add them to their Personal Slibrary.</p>
+<nav class="links" aria-label="Unit resources"><a href="../cases/Unit2_Case.html">Case study<span>Two CVs, One Role</span></a><a href="../prereading/Unit2_PreReading.html">Pre-reading<span>The Blind Spot You Cannot Google</span></a><a href="../reflections/Unit2_Reflection.html">Reflection prompt<span>3 questions, 48 hours</span></a><a href="../unit2.html">Framework gallery<span>Slibraries 3–4</span></a><a href="../glossary.html#unit2">Glossary<span>Unit 2 definitions</span></a></nav>
 </main>
-<footer><strong>MASCO101</strong> &middot; Tools for Success &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</footer>
+<footer><hr class="d"><strong>MASCO101</strong> · Tools for Success · Unit 2: Know Yourself: Self-Assessment as a Strategic Tool<span class="s">© 2026 Dr. Hildegard Haas · EU Business School · Genedia AG Education</span></footer>
+<style id="masco-protect-css">
+  *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+  @media print{html,body{display:none !important}}
+</style>
+<script id="masco-protect-js">
+(function(){
+  // block context menu (right-click)
+  document.addEventListener('contextmenu',function(e){e.preventDefault();},{capture:true});
+  // block copy / cut
+  ['copy','cut'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();},{capture:true});});
+  // block drag of text/images
+  document.addEventListener('dragstart',function(e){e.preventDefault();},{capture:true});
+  // block common keyboard shortcuts: Ctrl/Cmd + C, X, S, P, U, A  and F12 / devtools
+  document.addEventListener('keydown',function(e){
+    var k=(e.key||'').toLowerCase();
+    var meta=e.ctrlKey||e.metaKey;
+    if(meta && ['c','x','s','p','u','a'].indexOf(k)!==-1){e.preventDefault();return false;}
+    if(k==='f12'){e.preventDefault();return false;}
+    if(meta && e.shiftKey && ['i','j','c'].indexOf(k)!==-1){e.preventDefault();return false;} // devtools
+    if(e.key==='PrintScreen'){e.preventDefault();return false;}
+  },{capture:true});
+  // block print()
+  window.addEventListener('beforeprint',function(e){/* CSS hides body */});
+})();
+</script>
+
 </body>
 </html>
