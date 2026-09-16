@@ -4,640 +4,633 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MASCO101 — Tools for Success</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --navy:#16233D;--teal:#0FA47F;--amber:#D4872C;--coral:#E85D4A;
-  --bg:#FAFBFC;--card:#FFF;--text:#16233D;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626;
-  --core-bg:#EEF4FF;--core-line:#2563EB;--core-ink:#1E3A8A;
-  --unit1:#1E40AF;--unit2:#6D28D9;--unit3:#BE123C;--unit4:#C2410C;--unit5:#0F766E;--unit6:#1D4ED8;--unit7:#475569;--unit8:#047857;
-  --unit1-muted:#3B82F6;--unit2-muted:#8B5CF6;--unit3-muted:#E11D48;--unit4-muted:#EA580C;--unit5-muted:#14B8A6;--unit6-muted:#3B82F6;--unit7-muted:#64748B;--unit8-muted:#10B981;
-}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
+<meta name="description" content="MASCO101 — Tools for Success. Your Human Edge in an AI World. Eight active-learning units, 16 Slibraries, 80 frameworks, 72 authors and 64 definitions. Dr. Hildegard Haas, EU Business School.">
+<style>  :root{--navy:#173B35;--ink:#1F4E45;--teal:#5BC4A4;--teal-d:#2A8F75;--purple:#6A5BB5;--orange:#D9704A;--gray:#F3F6F5;--body:#222;--muted:#56625F;--border:#E1E8E6;--shadow:0 2px 8px rgba(23,59,53,.08);--shadow-hover:0 8px 24px rgba(23,59,53,.16)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--body);background:#FAFBFB;line-height:1.55}
+  a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 
-/* ─── HERO ─────────────────────────────────────────── */
-.hero{background:var(--navy);padding:3rem 2rem 2.5rem;text-align:center;position:relative}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
-.hero-pre{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.6rem}
-.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.3rem}
-.hero .sub{color:#94A3B8;font-size:1rem;margin-bottom:.35rem}
-.hero .thread{color:var(--teal);font-size:.85rem;font-weight:600;margin-bottom:.55rem}
-.hero .copy{color:#64748B;font-size:.78rem;font-style:italic}
-.stats{display:flex;justify-content:center;gap:2.5rem;margin-top:1.5rem;flex-wrap:wrap}
-.stat{text-align:center}
-.stat .n{font-size:2rem;color:var(--teal);font-weight:700;line-height:1}
-.stat .l{font-size:.65rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.15em;margin-top:.2rem}
+  header.hero{background:var(--navy);color:#fff;padding:52px 24px 40px;text-align:center}
+  header.hero .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin:0 0 14px;font-weight:bold}
+  header.hero h1{margin:0 0 8px;font-size:clamp(30px,5.5vw,50px);letter-spacing:.3px}
+  header.hero .thread{margin:0 0 10px;font-size:clamp(16px,2.4vw,20px);color:var(--teal);font-weight:bold}
+  header.hero .tag{margin:0;font-size:clamp(14px,2vw,16px);opacity:.9}
+  header.hero .copyright{margin:12px 0 0;font-size:13px;opacity:.65;font-style:italic}
+  .stats{max-width:1000px;margin:30px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:38px}
+  .stat{text-align:center;text-decoration:none;color:inherit}
+  .stat .num{font-size:32px;font-weight:bold;color:var(--teal);line-height:1}
+  .stat .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;margin-top:6px;color:#fff}
+  a.stat:hover .lbl{opacity:1;text-decoration:underline}
+  .hero-accent{height:4px;background:var(--teal);width:100%}
 
-/* ─── SEARCH ───────────────────────────────────────── */
-.search-wrap{max-width:900px;margin:1.5rem auto .5rem;padding:0 1.5rem}
-.search-box{position:relative}
-.search-box input{width:100%;padding:.7rem 1rem .7rem 2.6rem;border:1px solid var(--border);border-radius:10px;font-family:Arial,Helvetica,sans-serif;font-size:.9rem;background:#fff;color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s}
-.search-box input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,164,127,.14)}
-.search-box input::placeholder{color:#94A3B8}
-.search-icon{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:#94A3B8;font-size:.95rem;pointer-events:none}
-.search-results{margin-top:.5rem;display:none}
-.search-results.active{display:block}
-.sr-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;cursor:pointer;transition:background .1s}
-.sr-item:hover{background:#F1F5F9}
-.sr-badge{width:1.6rem;height:1.6rem;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
-.sr-title{font-size:.85rem;font-weight:600;color:var(--navy)}
-.sr-sub{font-size:.72rem;color:var(--muted)}
-.sr-empty{padding:.8rem;text-align:center;font-size:.85rem;color:var(--muted);font-style:italic}
+  .track{max-width:1000px;margin:0 auto;padding:22px 20px 0}
+  .track-bar{display:grid;grid-template-columns:repeat(3,1fr);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+  .track-bar div{padding:12px 14px;color:#fff;font-size:13px;line-height:1.35}
+  .track-bar b{display:block;font-size:14.5px;margin-bottom:2px}
+  .track-bar .t1{background:var(--teal-d)}
+  .track-bar .t2{background:var(--purple)}
+  .track-bar .t3{background:var(--orange)}
+  .track-bar .t2,.track-bar .t3{filter:saturate(.55) brightness(1.08)}
+  .track-bar .here{display:inline-block;font-size:10.5px;font-weight:bold;background:#fff;color:var(--ink);border-radius:4px;padding:1px 7px;margin-left:4px}
 
-.section-title{max-width:900px;margin:2rem auto 1rem;padding:0 1.5rem;font-size:1.1rem;color:var(--navy);font-weight:700}
+  main{max-width:1000px;margin:0 auto;padding:30px 20px 20px}
+  .search-wrap{margin:0 0 34px;position:relative}
+  .search-wrap input{width:100%;font-family:inherit;font-size:15px;color:var(--body);padding:14px 16px 14px 44px;border:1px solid #D5DEDB;border-radius:10px;background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>") no-repeat 16px center;box-shadow:var(--shadow)}
+  .search-wrap input:focus{outline:none;border-color:var(--teal-d)}
+  .sres{display:none;position:absolute;left:0;right:0;z-index:20;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-hover);margin-top:8px;max-height:430px;overflow:auto}
+  .sres.on{display:block}
+  .sres a{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;text-decoration:none;color:inherit;border-bottom:1px solid var(--border)}
+  .sres a:hover,.sres a:focus{background:var(--gray)}
+  .sres .k{flex:none;font-size:10px;font-weight:bold;color:#fff;border-radius:5px;padding:3px 0;margin-top:2px;width:74px;text-align:center}
+  .sres .t{display:block;font-size:14px;font-weight:bold;color:var(--ink)}
+  .sres .s{display:block;font-size:12.5px;color:var(--muted)}
+  .sres .none{padding:12px 14px;font-size:13.5px;color:var(--muted)}
 
-/* ─── UNIT ACCORDION ───────────────────────────────── */
-.units{max-width:900px;margin:0 auto 2rem;padding:0 1.5rem;display:flex;flex-direction:column;gap:.8rem}
-.unit{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.unit.search-hidden{display:none}
-.unit-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;cursor:pointer;user-select:none;transition:background .15s}
-.unit-header:hover{background:#F8FAFC}
-.unit-header:focus-visible{outline:3px solid var(--teal);outline-offset:-3px}
-.unit-num{width:2.2rem;height:2.2rem;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
-.unit-info{flex:1;min-width:0}
-.unit-title{font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.3}
-.unit-format{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;margin-top:.2rem;color:var(--muted);background:#F1F5F9;border:1px solid var(--border)}
-.unit-toggle{font-size:1.2rem;color:var(--muted);transition:transform .2s;flex-shrink:0}
-.unit.open .unit-toggle{transform:rotate(180deg)}
-.unit-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.unit.open .unit-body{max-height:1200px}
+  section.block{margin:0 0 40px}
+  h2.block-label{font-size:15px;color:var(--ink);margin:0 0 6px;font-weight:bold}
+  p.block-lead{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:820px}
+  p.block-lead strong{color:var(--ink)}
 
-/* ─── CORE MESSAGE ─────────────────────────────────── */
-.unit-core{margin:.1rem 1.2rem .7rem;background:var(--core-bg);border-left:3px solid var(--core-line);border-radius:0 8px 8px 0;padding:.75rem .95rem .7rem}
-.core-label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--core-line);margin-bottom:.3rem}
-.core-text{font-size:.88rem;line-height:1.55;color:var(--core-ink);font-weight:600}
-.core-ilo{margin-top:.55rem;padding-top:.5rem;border-top:1px solid rgba(37,99,235,.15);font-size:.73rem;color:#475569}
-.core-ilo-key{font-weight:700;color:var(--core-ink)}
-.core-sep{color:#94A3B8;margin:0 .15rem}
-.core-ilo-badge{display:inline-block;background:#fff;border:1px solid rgba(37,99,235,.3);color:var(--core-line);font-weight:700;font-size:.68rem;padding:.06rem .4rem;border-radius:4px;cursor:help}
+  .profile{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .profile div{background:#fff;border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:10px;padding:14px 16px}
+  .profile .pl{display:block;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:var(--teal-d)}
+  .profile .pv{display:block;font-size:14.5px;font-weight:bold;color:var(--ink);margin-top:6px;line-height:1.35}
 
-/* ─── RESOURCE ROWS ────────────────────────────────── */
-.unit-links{padding:0 1.2rem 1rem;display:flex;flex-direction:column;gap:.4rem}
-.link-card{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;border:1px solid var(--border);transition:all .15s;text-decoration:none}
-.link-card:hover{border-color:var(--teal);box-shadow:0 2px 8px rgba(15,164,127,.12);transform:translateY(-1px)}
-.link-card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
-.link-card.search-highlight{border-color:var(--teal);background:#F0FDF9}
-.link-badge{width:1.8rem;height:1.8rem;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
-.link-body{flex:1;min-width:0}
-.link-title{font-size:.85rem;font-weight:600;color:var(--navy)}
-.link-desc{font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.link-tag{font-size:.62rem;color:var(--muted);font-weight:500;flex-shrink:0}
+  .core-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .core-grid a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-left:5px solid var(--teal);border-radius:9px;padding:12px 14px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+  .core-grid a:hover{border-color:var(--teal-d);box-shadow:var(--shadow)}
+  .core-grid .cn{font-size:14px;font-weight:bold;color:var(--ink);line-height:1.3;flex:1}
+  .core-grid .cu{flex:none;font-size:11px;font-weight:bold;color:var(--teal-d);background:#E7F6F1;border-radius:5px;padding:3px 8px;white-space:nowrap}
 
-.gallery-link{max-width:900px;margin:1rem auto 2rem;padding:0 1.5rem}
-.gallery-link a,.gallery-link button{display:block;width:100%;padding:1rem 1.5rem;background:var(--navy);color:#fff;border:none;border-radius:10px;text-align:center;font-weight:700;font-size:.95rem;font-family:inherit;cursor:pointer;transition:all .15s}
-.gallery-link a:hover,.gallery-link button:hover{background:#22314F;transform:translateY(-1px)}
-.gallery-link span{color:var(--teal)}
+  details.unit{background:#fff;border:1px solid var(--border);border-radius:12px;margin:0 0 16px;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:16px}
+  details.unit[open]{box-shadow:var(--shadow-hover)}
+  summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 22px}
+  summary::-webkit-details-marker{display:none}
+  .u-badge{flex:none;width:38px;height:38px;border-radius:9px;color:#fff;font-weight:bold;font-size:17px;display:flex;align-items:center;justify-content:center;background:var(--teal-d)}
+  .u-headings{flex:1;display:flex;flex-direction:column;gap:8px}
+  .u-title{font-size:17px;font-weight:bold;color:var(--ink);line-height:1.25}
+  .u-format{align-self:flex-start;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:var(--gray);border:1px solid var(--border);padding:5px 11px;border-radius:6px}
+  .u-chevron{flex:none;color:var(--muted);font-size:16px;transition:transform .2s}
+  details.unit[open] .u-chevron{transform:rotate(180deg)}
 
-footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem}
-footer strong{color:var(--teal)}
+  .u-body{padding:0 22px 22px}
+  .coremsg{background:#E9F6F2;border-radius:10px;padding:16px 18px;margin:0 0 14px}
+  .coremsg-label{font-size:11px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-d)}
+  .coremsg-text{font-size:15.5px;font-weight:bold;font-style:italic;color:var(--ink);margin:8px 0 0;line-height:1.45}
+  .coremsg-ilo{font-size:13px;color:var(--muted);margin:12px 0 0}
+  .coremsg-ilo strong{color:var(--ink)}
+  .topics{margin:0 0 14px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  .topics li{font-size:12.5px;color:var(--ink);background:var(--gray);border:1px solid var(--border);border-radius:14px;padding:4px 11px}
+  .boost{font-size:13px;color:#6B430F;background:#FFF6E5;border:1px solid #F0D9A8;border-radius:8px;padding:9px 12px;margin:0 0 16px}
 
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-@media(max-width:600px){
-  .hero h1{font-size:1.5rem}
-  .stats{gap:1.4rem}
-  .stat .n{font-size:1.5rem}
-  .link-desc{white-space:normal}
-}
+  h3.sub{font-size:12px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:6px 0 10px}
+  .slibs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 20px}
+  .slib{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+  .slib-h{background:var(--ink);color:#fff;padding:9px 12px;font-size:13.5px;font-weight:bold}
+  .slib-h span{color:var(--teal);margin-right:8px}
+  .slib ol{list-style:none;margin:0;padding:0}
+  .slib li a{display:block;padding:8px 12px;text-decoration:none;color:inherit;border-bottom:1px solid #EEF2F1}
+  .slib li:last-child a{border-bottom:none}
+  .slib li a:hover{background:var(--gray)}
+  .fw-n{display:block;font-size:13.5px;font-weight:bold;color:var(--ink)}
+  .fw-d{display:block;font-size:12px;color:var(--muted)}
+  .fw-a{display:block;font-size:11.5px;color:var(--teal-d);font-weight:bold;margin-top:1px}
 
-/* ---- site navigation ------------------------------------------------ */
-.topnav{display:flex;gap:18px;margin-top:1.4rem;flex-wrap:wrap;justify-content:center}
-.topnav a{font-size:13px;font-weight:700;color:#cdd9ea;text-decoration:none;
-  border-bottom:2px solid transparent;padding-bottom:3px;
-  transition:color .2s ease,border-color .2s ease}
-.topnav a:hover,.topnav a.active{color:#fff;border-color:var(--teal)}
+  .rows{display:flex;flex-direction:column;gap:10px}
+  .rrow{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:9px;padding:13px 16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+  a.rrow:hover{border-color:var(--teal-d);box-shadow:var(--shadow);transform:translateY(-1px)}
+  .rrow-badge{flex:none;width:36px;height:36px;border-radius:8px;color:#fff;font-weight:bold;font-size:12px;display:flex;align-items:center;justify-content:center;letter-spacing:.5px}
+  .rrow-main{flex:1;min-width:0}
+  .rrow-title{font-size:14.5px;font-weight:bold;color:var(--ink);line-height:1.3}
+  .rrow-sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .rrow-right{flex:none;font-size:11px;font-weight:bold;letter-spacing:.5px;color:var(--muted)}
+
+  .assess{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .as{background:#fff;border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+  .as .aw{font-size:30px;font-weight:bold;color:var(--teal-d);line-height:1}
+  .as .an{font-size:11px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .as h3{font-size:15.5px;color:var(--ink);margin:6px 0 4px;line-height:1.3}
+  .as .am{font-size:12.5px;color:var(--teal-d);font-weight:bold;margin:0 0 8px}
+  .as ul{margin:0;padding-left:18px;font-size:13px}
+  .as li{margin:4px 0}
+
+  .big-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0}
+  .big-links a{display:block;background:var(--navy);color:#fff;text-decoration:none;border-radius:10px;padding:22px 24px;font-weight:bold;font-size:15.5px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+  .big-links a:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);background:var(--ink)}
+  .big-links a .sub{display:block;font-weight:normal;font-size:12.5px;opacity:.8;margin-top:6px}
+  .big-links a .mark{color:var(--teal);margin-right:8px}
+
+  footer.site{background:var(--navy);color:#fff;padding:30px 24px;text-align:center;margin-top:48px}
+  footer.site p{margin:4px 0;font-size:13.5px;opacity:.9}
+  footer.site .divider{height:2px;width:60px;background:var(--teal);margin:0 auto 14px;border:none}
+  footer.site strong{color:var(--teal)}
+
+  .hidden{display:none !important}
+  @media(max-width:800px){.profile{grid-template-columns:1fr 1fr}.core-grid{grid-template-columns:1fr 1fr}.assess{grid-template-columns:1fr}.slibs{grid-template-columns:1fr}}
+  @media(max-width:640px){.big-links,.core-grid{grid-template-columns:1fr}.u-title{font-size:15.5px}.track-bar div{font-size:11.5px;padding:10px}.track-bar b{font-size:12.5px}.stats{gap:24px}.rrow-right{display:none}}
+  @media(prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
 </style>
-<link rel="stylesheet" href="assets/css/framework-viewer.css">
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-pre">MASCO101 — Masters Level 7 · AY 2026/27</div>
+  <p class="kicker">MASCO101 · Masters Level 7 · Term I · 5 ECTS · AY 2026/27</p>
   <h1>Tools for Success</h1>
-  <div class="sub">5 ECTS · Term 1 · FHEQ Level 7</div>
-  <div class="thread">Your Human Edge in an AI World</div>
-  <div class="copy">© 2026 Dr. Hildegard Haas · EU Business School</div>
+  <p class="thread">Your Human Edge in an AI World</p>
+  <p class="tag">Active-Learning Units · Slibraries · Frameworks · Authors · Definitions</p>
+  <p class="copyright">© 2026 Dr. Hildegard Haas · EU Business School</p>
   <div class="stats">
-    <div class="stat"><div class="n">8</div><div class="l">Units</div></div>
-    <div class="stat"><div class="n">16</div><div class="l">Slibraries</div></div>
-    <div class="stat"><div class="n">80</div><div class="l">Frameworks</div></div>
-    <div class="stat"><div class="n">72</div><div class="l">Authors</div></div>
+    <a class="stat" href="#units"><div class="num">8</div><div class="lbl">Units</div></a>
+    <a class="stat" href="gallery.html"><div class="num">16</div><div class="lbl">Slibraries</div></a>
+    <a class="stat" href="gallery.html"><div class="num">80</div><div class="lbl">Frameworks</div></a>
+    <a class="stat" href="slibrary.html"><div class="num">72</div><div class="lbl">Authors</div></a>
+    <a class="stat" href="glossary.html"><div class="num">64</div><div class="lbl">Definitions</div></a>
   </div>
-  <nav class="topnav">
-    <a href="index.html" class="active">Course Units</a>
-    <a href="gallery.html">Framework Gallery</a>
-    <a href="slibrary.html">Framework Authors</a>
-  </nav>
 </header>
+<div class="hero-accent"></div>
 
-<div class="search-wrap">
-  <div class="search-box">
-    <span class="search-icon">⌕</span>
-    <input type="text" id="searchInput" placeholder="Search frameworks, cases, activities, units…" autocomplete="off">
+<nav class="track" aria-label="MASCO Skills Track: Self, Leader, Team">
+  <div class="track-bar">
+    <div class="t1"><b>MASCO101 · Self</b>Tools for Success <span class="here">You are here</span></div>
+    <div class="t2"><b>MASCO201 · Leader</b>Developing a Leadership Edge</div>
+    <div class="t3"><b>MASCO301 · Team</b>Building Successful Teams</div>
   </div>
-  <div class="search-results" id="searchResults"></div>
-</div>
+</nav>
 
-<div class="section-title">Course Units</div>
-
-<div class="units" id="unitContainer">
-
-  <div class="unit open" data-unit="1">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="true">
-      <div class="unit-num" style="background:var(--unit1)">1</div>
-      <div class="unit-info">
-        <div class="unit-title">Introduction to Tools for Success &amp; Digital/AI Literacy</div>
-        <div class="unit-format">Guided Discovery</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit1)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">Your value at work is no longer what you can execute — it is what you can judge, and judgment has to be built on purpose.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Foundations &amp; digital fluency
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit1.html" data-search="framework gallery slibraries 1–2 smart goal frame kolb experiential learning cycle bloom's taxonomy (revised) dreyfus skill acquisition model deliberate practice loop digcomp 2.2 competence wheel craap source test technology acceptance model automation bias curve co-intelligence working rules">
-          <div class="link-badge" style="background:var(--unit1)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 1–2</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit1_Activities.html" data-search="guided discovery gallery walk source audit framework pitch digital literacy AI tools onboarding">
-          <div class="link-badge" style="background:var(--unit1-muted)">GD</div>
-          <div class="link-body"><div class="link-title">Guided Discovery — Framework Exploration</div><div class="link-desc">7-phase session — gallery walk, source audit, framework pitch</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit1_Case.html" data-search="vantage consulting case hallucination fabricated citation client deliverable accountability">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Vantage Consulting — The Intern Who Cited a Ghost</div><div class="link-desc">A fabricated AI citation reaches a client deliverable</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit1_PreReading.html" data-search="pre-reading skills beat tools digcomp competence wheel digital literacy">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: Why Skills Beat Tools</div><div class="link-desc">Key framework: DigComp 2.2 Competence Wheel</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit1_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit1" data-search="framework authors slibrary thinkers george t. doran david a. kolb anderson & krathwohl dreyfus & dreyfus k. anders ericsson european commission (jrc) sarah blakeslee fred d. davis parasuraman & riley ethan mollick">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · George T. Doran, David A. Kolb, Anderson &amp; Krathwohl, Dreyfus &amp; Dreyfus, K. Anders Ericsson, European Commission (JRC), …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="2">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit2)">2</div>
-      <div class="unit-info">
-        <div class="unit-title">Know Yourself: Self-Assessment as a Strategic Tool</div>
-        <div class="unit-format">Self-Diagnostic Workshop</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit2)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">You cannot position what you have not diagnosed — self-knowledge is the one input no model can generate for you.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Self-assessment &amp; personal positioning
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit2.html" data-search="framework gallery slibraries 3–4 personal swot matrix johari window ikigai purpose venn firm foundation: vision, mission, values personal energy model mbti four dichotomies disc behavioural quadrant big five (ocean) honey & mumford learning styles growth vs. fixed mindset fork">
-          <div class="link-badge" style="background:var(--unit2)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 3–4</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit2_Activities.html" data-search="self diagnostic workshop personal swot johari window peer feedback blind spot development roadmap">
-          <div class="link-badge" style="background:var(--unit2-muted)">SW</div>
-          <div class="link-body"><div class="link-title">Self-Diagnostic Workshop — Personal SWOT &amp; Johari Round</div><div class="link-desc">Individual diagnostic, peer blind-spot round, development roadmap</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit2_Case.html" data-search="lea fontaine case two offers blind spot career decision self assessment">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Léa Fontaine — Two Offers, One Blind Spot</div><div class="link-desc">A graduate chooses between roles using the wrong self-model</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit2_PreReading.html" data-search="pre-reading profiling johari window self awareness human edge">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: What AI Can Profile About You, and What It Cannot</div><div class="link-desc">Key framework: Johari Window</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit2_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit2" data-search="framework authors slibrary thinkers heinz weihrich luft & ingham garcía & miralles j.d. meier myers & briggs william m. marston costa & mccrae honey & mumford carol s. dweck">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Heinz Weihrich, Luft &amp; Ingham, García &amp; Miralles, J.D. Meier, Myers &amp; Briggs, William M. Marston, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="3">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit3)">3</div>
-      <div class="unit-info">
-        <div class="unit-title">Think Better: Critical Thinking &amp; Analytical Reasoning</div>
-        <div class="unit-format">Head-to-Head Analysis Lab</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit3)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">AI accelerates answers; only structured thinking decides whether the answer was the right one to look for.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Critical thinking &amp; structured problem-solving
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.">ILO 1</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit3.html" data-search="framework gallery slibraries 5–6 scqa structure mece issue tree first principles decomposition double diamond cynefin framework system 1 / system 2 confirmation bias loop anchoring & adjustment ladder of inference dunning–kruger curve">
-          <div class="link-badge" style="background:var(--unit3)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 5–6</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit3_Activities.html" data-search="head to head lab ai assisted unaided analysis reasoning comparison bias mece issue tree">
-          <div class="link-badge" style="background:var(--unit3-muted)">HL</div>
-          <div class="link-body"><div class="link-title">Head-to-Head Lab — AI-Assisted vs. Unaided Analysis</div><div class="link-desc">Two teams, one problem, one hour — then compare the reasoning trail</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit3_Case.html" data-search="nordwind logistics case margin problem statement root cause analysis critical thinking">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Nordwind Logistics — The Margin That Disappeared</div><div class="link-desc">A confident diagnosis built on the wrong problem statement</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit3_PreReading.html" data-search="pre-reading structure before search mece issue tree problem decomposition">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: Structure Before Search</div><div class="link-desc">Key framework: MECE Issue Tree</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit3_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit3" data-search="framework authors slibrary thinkers barbara minto ethan m. rasiel max wertheimer design council snowden & boone daniel kahneman raymond s. nickerson tversky & kahneman chris argyris kruger & dunning">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · Barbara Minto, Ethan M. Rasiel, Max Wertheimer, Design Council, Snowden &amp; Boone, Daniel Kahneman, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="4">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit4)">4</div>
-      <div class="unit-info">
-        <div class="unit-title">Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills</div>
-        <div class="unit-format">Pitch Arena</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit4)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">A personal brand is not what you claim about yourself; it is the one sentence other people can repeat when you are not in the room.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Personal branding &amp; persuasive delivery
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 5: Critically review the communication process, stakeholder communication and communication in diverse work groups.">ILO 5</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit4.html" data-search="framework gallery slibraries 7–8 brand pyramid twelve brand archetypes storybrand sb7 framework golden circle personal value proposition canvas message strategy spectrum problem → insight → recommendation assertion–evidence slide model mehrabian 7–38–55 anxiety reappraisal">
-          <div class="link-badge" style="background:var(--unit4)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 7–8</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit4_Activities.html" data-search="pitch arena elevator pitch live scoring rubric personal brand delivery rebuild">
-          <div class="link-badge" style="background:var(--unit4-muted)">PA</div>
-          <div class="link-body"><div class="link-title">Pitch Arena — 90 Seconds, Live Scoring, Two Rebuilds</div><div class="link-desc">Pitch, peer scoring against a rubric, rebuild, pitch again</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit4_Case.html" data-search="marco ruiz case cv positioning personal brand narrative interview linkedin">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Marco Ruiz — Same CV, Three Different Stories</div><div class="link-desc">One candidate, three positioning choices, three outcomes</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit4_PreReading.html" data-search="pre-reading one sentence test message strategy spectrum convince clarify bostelaar">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: The One-Sentence Test</div><div class="link-desc">Key framework: Message Strategy Spectrum (Convince ↔ Clarify)</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit4_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit4" data-search="framework authors slibrary thinkers david a. aaker mark & pearson donald miller simon sinek osterwalder et al. kurt bostelaar carmine gallo michael alley albert mehrabian alison wood brooks">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · David A. Aaker, Mark &amp; Pearson, Donald Miller, Simon Sinek, Osterwalder et al., Kurt Bostelaar, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="5">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit5)">5</div>
-      <div class="unit-info">
-        <div class="unit-title">Communicate with Impact: Executive Presence &amp; Business Communication</div>
-        <div class="unit-format">Message Clinic</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit5)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">Executives do not read to discover your conclusion — put it first, then make every sentence after it earn its place.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Business communication &amp; executive presence
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 5: Critically review the communication process, stakeholder communication and communication in diverse work groups.">ILO 5</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit5.html" data-search="framework gallery slibraries 9–10 pyramid principle distil → decompose → prioritise toulmin argument model bluf executive structure storyline canvas shannon–weaver model hofstede cultural dimensions the culture map (eight scales) high- and low-context communication power–interest grid">
-          <div class="link-badge" style="background:var(--unit5)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 9–10</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit5_Activities.html" data-search="message clinic distil decompose prioritise rewrite core message executive summary pyramid principle">
-          <div class="link-badge" style="background:var(--unit5-muted)">MC</div>
-          <div class="link-body"><div class="link-title">Message Clinic — Distil, Decompose, Prioritise, Rewrite</div><div class="link-desc">Four rounds from a full paragraph to a single defensible sentence</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit5_Case.html" data-search="helvetia medtech case email contract executive summary miscommunication bluf">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Helvetia Medtech — The Email That Cost a Contract</div><div class="link-desc">A technically correct message that buried its own conclusion</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit5_PreReading.html" data-search="pre-reading answer first pyramid principle minto executive writing">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: Answer First</div><div class="link-desc">Key framework: Pyramid Principle</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit5_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit5" data-search="framework authors slibrary thinkers barbara minto kurt bostelaar stephen e. toulmin jean-luc doumont shannon & weaver geert hofstede erin meyer edward t. hall aubrey l. mendelow">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Barbara Minto, Kurt Bostelaar, Stephen E. Toulmin, Jean-luc Doumont, Shannon &amp; Weaver, Geert Hofstede, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="6">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit6)">6</div>
-      <div class="unit-info">
-        <div class="unit-title">Deliver Results: Project Management Fundamentals</div>
-        <div class="unit-format">Project Simulation</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit6)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">A plan is not a schedule — it is an argument about scope, risk and trade-offs that has to survive contact with reality.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Project planning, scheduling &amp; risk
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 2: Critically assess the roles and responsibilities of a project manager as part of an organisation&#x27;s strategy. ILO 3: Investigate how to select, develop, plan, schedule and measure project outcomes and risks.">ILO 2 &amp; 3</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit6.html" data-search="framework gallery slibraries 11–12 project lifecycle iron triangle work breakdown structure gantt chart critical path method agile manifesto values scrum sprint cycle stacey matrix probability–impact risk matrix earned value s-curve">
-          <div class="link-badge" style="background:var(--unit6)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 11–12</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit6_Activities.html" data-search="project simulation scope work breakdown structure stakeholder map risk register gantt scope change">
-          <div class="link-badge" style="background:var(--unit6-muted)">PS</div>
-          <div class="link-body"><div class="link-title">Project Simulation — Scope, WBS, Stakeholders, Risk Register</div><div class="link-desc">Build a defensible project plan, then absorb an unannounced scope change</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit6_Case.html" data-search="aurora rail case project status dashboard reporting risk escalation earned value">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Aurora Rail — Green Until It Wasn't</div><div class="link-desc">A status dashboard that stayed green three months too long</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit6_PreReading.html" data-search="pre-reading projects fail iron triangle scope time cost quality constraints">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: Why Projects Fail Before They Start</div><div class="link-desc">Key framework: Iron Triangle</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit6_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit6" data-search="framework authors slibrary thinkers project management institute roger atkinson henry l. gantt kelley & walker beck et al. schwaber & sutherland ralph d. stacey iso 31000">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">8 thinkers · Project Management Institute, Roger Atkinson, Henry L. Gantt, Kelley &amp; Walker, Beck et al., Schwaber &amp; Sutherland, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="7">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit7)">7</div>
-      <div class="unit-info">
-        <div class="unit-title">Negotiate &amp; Influence: Getting What You Need Without Formal Authority</div>
-        <div class="unit-format">Negotiation Simulation</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit7)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">Leverage is prepared, not improvised — know your walk-away before you walk in.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Negotiation, influence &amp; ethical boundaries
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 4: Evaluate the keys to successful negotiation and differentiate negotiation styles, strategies, and tactics.">ILO 4</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit7.html" data-search="framework gallery slibraries 13–14 batna zone of possible agreement principled negotiation dual concerns conflict modes distributive ↔ integrative spectrum six principles of influence french & raven power bases influence currencies tactical empathy persuasion ↔ manipulation line">
-          <div class="link-badge" style="background:var(--unit7)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 13–14</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit7_Activities.html" data-search="negotiation simulation role play batna zopa concessions ethics debrief influence tactics">
-          <div class="link-badge" style="background:var(--unit7-muted)">NS</div>
-          <div class="link-body"><div class="link-title">Negotiation Simulation — Three Rounds, Then the Ethics Debrief</div><div class="link-desc">Paired role play with hidden constraints and a manipulation-line review</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit7_Case.html" data-search="brightline studio case budget negotiation resources influence without authority stakeholders">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Brightline Studio — The Budget Nobody Would Move</div><div class="link-desc">A junior lead negotiating resources across three unwilling departments</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit7_PreReading.html" data-search="pre-reading batna zopa fisher ury walk away reservation price negotiation preparation">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: Your BATNA Is Your Only Real Power</div><div class="link-desc">Key framework: BATNA ↔ ZOPA</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit7_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit7" data-search="framework authors slibrary thinkers fisher & ury howard raiffa fisher, ury & patton thomas & kilmann walton & mckersie robert b. cialdini french & raven cohen & bradford chris voss cass r. sunstein">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">10 thinkers · Fisher &amp; Ury, Howard Raiffa, Fisher, Ury &amp; Patton, Thomas &amp; Kilmann, Walton &amp; McKersie, Robert B. Cialdini, …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="unit" data-unit="8">
-    <div class="unit-header" onclick="toggle(this)" tabindex="0" role="button" aria-expanded="false">
-      <div class="unit-num" style="background:var(--unit8)">8</div>
-      <div class="unit-info">
-        <div class="unit-title">Work Smarter with AI: Productivity, Tools and Professional Judgment</div>
-        <div class="unit-format">Mini-Hackathon · Capstone</div>
-      </div>
-      <div class="unit-toggle">▾</div>
-    </div>
-    <div class="unit-body">
-      <div class="unit-core" style="--core-line:var(--unit8)">
-        <div class="core-label">Core message</div>
-        <p class="core-text">Delegate the task, never the judgment — and be able to show exactly where you drew the line.</p>
-        <div class="core-ilo"><span class="core-ilo-key">Learning focus</span> Productivity systems &amp; AI workflow judgment
-          <span class="core-sep">·</span>
-          <span class="core-ilo-badge" title="ILO 1: Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation. ILO 3: Investigate how to select, develop, plan, schedule and measure project outcomes and risks.">ILO 1 &amp; 3</span>
-        </div>
-      </div>
-      <div class="unit-links">
-        <a class="link-card" href="unit8.html" data-search="framework gallery slibraries 15–16 eisenhower matrix objectives & key results the rule of 3 monday vision, daily wins, friday reflection pareto 80/20 prompt anatomy delegate–verify–own loop automation–augmentation spectrum the jagged frontier ai attribution ladder">
-          <div class="link-badge" style="background:var(--unit8)">FG</div>
-          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">10 interactive frameworks · Slibraries 15–16</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="activities/Unit8_Activities.html" data-search="mini hackathon capstone personal ai workflow prompt library delegation defence productivity system">
-          <div class="link-badge" style="background:var(--unit8-muted)">MH</div>
-          <div class="link-body"><div class="link-title">Mini-Hackathon — Build and Defend a Personal AI Workflow</div><div class="link-desc">Three hours to build a workflow, ten minutes to defend every delegation</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="cases/Unit8_Case.html" data-search="talia berg case automation analyst deskilling judgment attribution productivity">
-          <div class="link-badge" style="background:#059669">CS</div>
-          <div class="link-body"><div class="link-title">Case: Talia Berg — The Analyst Who Automated Herself</div><div class="link-desc">Efficiency gains that quietly removed the analyst's own judgment</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="prereading/Unit8_PreReading.html" data-search="pre-reading delegate keep automation augmentation spectrum human in the loop judgment">
-          <div class="link-badge" style="background:var(--amber)">PR</div>
-          <div class="link-body"><div class="link-title">Pre-Reading: What to Delegate, What to Keep</div><div class="link-desc">Key framework: Automation–Augmentation Spectrum</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="reflections/Unit8_Reflection.html" data-search="reflection prompt questions independent study">
-          <div class="link-badge" style="background:#7C3AED">RF</div>
-          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-        <a class="link-card" href="slibrary.html#unit8" data-search="framework authors slibrary thinkers stephen r. covey john doerr j.d. meier richard koch white et al. amershi et al. raisch & krakowski dell'acqua et al. unesco">
-          <div class="link-badge" style="background:var(--teal)">AU</div>
-          <div class="link-body"><div class="link-title">Framework Authors — Slibrary</div><div class="link-desc">9 thinkers · Stephen R. Covey, John Doerr, J.D. Meier, Richard Koch, White et al., Amershi et al., …</div></div>
-          <div class="link-tag">HTML</div>
-        </a>
-      </div>
-    </div>
+<main>
+  <div class="search-wrap">
+    <input id="siteSearch" type="text" placeholder="Search units, Slibraries, frameworks, authors, definitions…" aria-label="Search the course" autocomplete="off">
+    <div id="sres" class="sres"></div>
   </div>
 
-</div>
+  <section class="block">
+    <h2 class="block-label">Module Profile</h2>
+    <p class="block-lead">MASCO101 opens the MASCO Skills Track <strong>Self → Leader → Team</strong>. Every unit asks the same question from a different angle: which skills make you irreplaceable?</p>
+    <div class="profile">
+      <div><span class="pl">Unifying thread</span><span class="pv">Your Human Edge in an AI World</span></div>
+      <div><span class="pl">Unit of analysis</span><span class="pv">The individual (you)</span></div>
+      <div><span class="pl">Register</span><span class="pv">Tactical — personal positioning tools</span></div>
+      <div><span class="pl">AI angle</span><span class="pv">A personal productivity tool</span></div>
+    </div>
+  </section>
 
-<div class="section-title">Complete Gallery</div>
-<div class="gallery-link">
-  <button type="button" onclick="FrameworkSheets.openPicker()">■ All 80 Frameworks — <span>Complete Reference Sheet Library</span></button>
-</div>
+  <section class="block">
+    <h2 class="block-label">Core Frameworks</h2>
+    <p class="block-lead">The nine anchor frameworks MASCO101 owns in the Skills Track — none of them is repeated in MASCO201 or MASCO301. Select one to open its unit.</p>
+    <div class="core-grid"><a href="#unit2"><span class="cn">Personal SWOT Analysis</span><span class="cu">Unit 2</span></a><a href="#unit2"><span class="cn">MBTI / Mini-DISC</span><span class="cu">Unit 2</span></a><a href="#unit3"><span class="cn">SCQA / Pyramid Principle</span><span class="cu">Unit 3 & 5</span></a><a href="#unit3"><span class="cn">First Principles / Design Thinking</span><span class="cu">Unit 3</span></a><a href="#unit4"><span class="cn">Personal branding &amp; narrative structuring</span><span class="cu">Unit 4</span></a><a href="#unit7"><span class="cn">BATNA / ZOPA / Harvard Negotiation Method</span><span class="cu">Unit 7</span></a><a href="#unit6"><span class="cn">Waterfall / Agile / Hybrid methodologies</span><span class="cu">Unit 6</span></a><a href="#unit8"><span class="cn">Eisenhower Matrix / OKRs</span><span class="cu">Unit 8</span></a><a href="#unit8"><span class="cn">AI prompt literacy</span><span class="cu">Unit 8</span></a></div>
+  </section>
 
-<div class="section-title">Framework Authors</div>
-<div class="gallery-link">
-  <a href="slibrary.html">■ 72 Framework Authors — <span>The Thinkers Behind the Frameworks</span></a>
-</div>
+  <section class="block" id="units">
+    <h2 class="block-label">Course Units</h2>
+    <p class="block-lead">Eight teaching units in the EU Business School active-learning model. Each unit pairs a signature dynamic format with a core message distilled in Kurt Bostelaar's method, its Intended Learning Outcome, two Thumbnail-Thinking <strong>Slibraries</strong> of five <strong>frameworks</strong> each, a case, pre-reading, a reflection prompt, the framework <strong>authors</strong> and a unit glossary of <strong>definitions</strong>. Expand a unit to begin.</p>
+    <div id="unitList">
+      <details class="unit" id="unit1" open>
+        <summary>
+          <span class="u-badge">1</span>
+          <span class="u-headings">
+            <span class="u-title">Introduction to Tools for Success &amp; Digital/AI Literacy</span>
+            <span class="u-format">GUIDED DISCOVERY</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 1</span>
+            <p class="coremsg-text">Your value at work is no longer what you can execute — it is what you can judge, and judgment has to be built on purpose.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 1</strong> — Foundations &amp; digital fluency. Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Course objectives, expectations and assessment</li><li>Self-assessment and goal setting</li><li>Digital and AI tools for research, collaboration and productivity</li><li>Evaluating sources in the age of generative AI</li><li>Digital and AI platforms for professional communication</li></ul>
+          
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 1</span>Learning &amp; Goal Architecture</div><ol><li><a href="unit1.html"><span class="fw-n">SMART Goal Frame</span><span class="fw-d">Specific · Measurable · Achievable · Relevant · Time-bound</span><span class="fw-a">George T. Doran</span></a></li><li><a href="unit1.html"><span class="fw-n">Kolb Experiential Learning Cycle</span><span class="fw-d">Experience · Reflect · Conceptualise · Test</span><span class="fw-a">David A. Kolb</span></a></li><li><a href="unit1.html"><span class="fw-n">Bloom&#x27;s Taxonomy (Revised)</span><span class="fw-d">Remember · Understand · Apply · Analyse · Evaluate · Create</span><span class="fw-a">Anderson &amp; Krathwohl</span></a></li><li><a href="unit1.html"><span class="fw-n">Dreyfus Skill Acquisition Model</span><span class="fw-d">Novice · Advanced beginner · Competent · Proficient · Expert</span><span class="fw-a">Dreyfus &amp; Dreyfus</span></a></li><li><a href="unit1.html"><span class="fw-n">Deliberate Practice Loop</span><span class="fw-d">Stretch task · Immediate feedback · Targeted repetition</span><span class="fw-a">K. Anders Ericsson</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 2</span>Digital &amp; AI Literacy</div><ol><li><a href="unit1.html"><span class="fw-n">DigComp 2.2 Competence Wheel</span><span class="fw-d">Five competence areas, twenty-one competences, eight proficiency levels</span><span class="fw-a">European Commission (JRC)</span></a></li><li><a href="unit1.html"><span class="fw-n">CRAAP Source Test</span><span class="fw-d">Currency · Relevance · Authority · Accuracy · Purpose</span><span class="fw-a">Sarah Blakeslee</span></a></li><li><a href="unit1.html"><span class="fw-n">Technology Acceptance Model</span><span class="fw-d">Perceived usefulness × perceived ease of use → intention → actual use</span><span class="fw-a">Fred D. Davis</span></a></li><li><a href="unit1.html"><span class="fw-n">Automation Bias Curve</span><span class="fw-d">Use · Misuse · Disuse · Abuse</span><span class="fw-a">Parasuraman &amp; Riley</span></a></li><li><a href="unit1.html"><span class="fw-n">Co-Intelligence Working Rules</span><span class="fw-d">Invite it to the table · Be the human in the loop · Tell it who to be ·…</span><span class="fw-a">Ethan Mollick</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit1.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 1–2</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit1_Activities.html"><div class="rrow-badge" style="background:#2A8F75">GD</div>
+      <div class="rrow-main"><div class="rrow-title">Guided Discovery — Framework Exploration</div><div class="rrow-sub">7-phase session — gallery walk, source audit, framework pitch</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit1_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Vantage Consulting — The Intern Who Cited a Ghost</div><div class="rrow-sub">A fabricated AI citation reaches a client deliverable</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit1_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: Why Skills Beat Tools</div><div class="rrow-sub">Key framework: DigComp 2.2 Competence Wheel</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit1_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit1"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">10 thinkers · George T. Doran, David A. Kolb, Anderson &amp; Krathwohl, Dreyfus &amp; Dreyfus, K. Anders Ericsson, European Commission (JRC)…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit1"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 1</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Digital Literacy, AI Literacy, Generative AI, AI Hallucination…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit2">
+        <summary>
+          <span class="u-badge">2</span>
+          <span class="u-headings">
+            <span class="u-title">Know Yourself: Self-Assessment as a Strategic Tool</span>
+            <span class="u-format">SELF-DIAGNOSTIC WORKSHOP</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 2</span>
+            <p class="coremsg-text">You cannot position what you have not diagnosed — self-knowledge is the one input no model can generate for you.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 1</strong> — Self-assessment &amp; personal positioning. Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Personal SWOT as a professional diagnostic</li><li>Work, thinking and decision styles (MBTI / Mini-DISC)</li><li>What AI can profile about you, and what only you know</li><li>Personal Development Roadmap</li><li>The Human Edge</li></ul>
+          
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 3</span>Self-Diagnosis</div><ol><li><a href="unit2.html"><span class="fw-n">Personal SWOT Matrix</span><span class="fw-d">Strengths · Weaknesses · Opportunities · Threats</span><span class="fw-a">Heinz Weihrich</span></a></li><li><a href="unit2.html"><span class="fw-n">Johari Window</span><span class="fw-d">Open · Blind · Hidden · Unknown</span><span class="fw-a">Luft &amp; Ingham</span></a></li><li><a href="unit2.html"><span class="fw-n">Ikigai Purpose Venn</span><span class="fw-d">Love · Skill · Need · Payment</span><span class="fw-a">García &amp; Miralles</span></a></li><li><a href="unit2.html"><span class="fw-n">Firm Foundation: Vision, Mission, Values</span><span class="fw-d">Where you are going · what you do · what you will not trade</span><span class="fw-a">J.D. Meier</span></a></li><li><a href="unit2.html"><span class="fw-n">Personal Energy Model</span><span class="fw-d">Physical · Emotional · Mental · Spiritual</span><span class="fw-a">J.D. Meier</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 4</span>Style &amp; Preference Profiling</div><ol><li><a href="unit2.html"><span class="fw-n">MBTI Four Dichotomies</span><span class="fw-d">E–I · S–N · T–F · J–P</span><span class="fw-a">Myers &amp; Briggs</span></a></li><li><a href="unit2.html"><span class="fw-n">DISC Behavioural Quadrant</span><span class="fw-d">Dominance · Influence · Steadiness · Conscientiousness</span><span class="fw-a">William M. Marston</span></a></li><li><a href="unit2.html"><span class="fw-n">Big Five (OCEAN)</span><span class="fw-d">Openness · Conscientiousness · Extraversion · Agreeableness · Neuroticism</span><span class="fw-a">Costa &amp; McCrae</span></a></li><li><a href="unit2.html"><span class="fw-n">Honey &amp; Mumford Learning Styles</span><span class="fw-d">Activist · Reflector · Theorist · Pragmatist</span><span class="fw-a">Honey &amp; Mumford</span></a></li><li><a href="unit2.html"><span class="fw-n">Growth vs. Fixed Mindset Fork</span><span class="fw-d">Ability as trainable or as fixed</span><span class="fw-a">Carol S. Dweck</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit2.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 3–4</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit2_Activities.html"><div class="rrow-badge" style="background:#2A8F75">SW</div>
+      <div class="rrow-main"><div class="rrow-title">Self-Diagnostic Workshop — Personal SWOT &amp; Johari Round</div><div class="rrow-sub">Individual diagnostic, peer blind-spot round, development roadmap</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit2_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Léa Fontaine — Two Offers, One Blind Spot</div><div class="rrow-sub">A graduate chooses between roles using the wrong self-model</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit2_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: What AI Can Profile About You, and What It Cannot</div><div class="rrow-sub">Key framework: Johari Window</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit2_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit2"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">9 thinkers · Heinz Weihrich, Luft &amp; Ingham, García &amp; Miralles, J.D. Meier, Myers &amp; Briggs, William M. Marston…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit2"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 2</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Self-Awareness, Personal SWOT Analysis, Blind Spot, Personality Type…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit3">
+        <summary>
+          <span class="u-badge">3</span>
+          <span class="u-headings">
+            <span class="u-title">Think Better: Critical Thinking &amp; Analytical Reasoning</span>
+            <span class="u-format">HEAD-TO-HEAD ANALYSIS LAB</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 3</span>
+            <p class="coremsg-text">AI accelerates answers; only structured thinking decides whether the answer was the right one to look for.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 1</strong> — Critical thinking &amp; structured problem-solving. Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>How humans think vs. how AI processes</li><li>SCQA, First Principles, Design Thinking</li><li>Cognitive biases AI exploits and humans can correct</li><li>AI-assisted analysis without outsourcing judgment</li><li>AI-assisted vs. unaided team practical</li></ul>
+          
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 5</span>Structured Problem-Solving</div><ol><li><a href="unit3.html"><span class="fw-n">SCQA Structure</span><span class="fw-d">Situation · Complication · Question · Answer</span><span class="fw-a">Barbara Minto</span></a></li><li><a href="unit3.html"><span class="fw-n">MECE Issue Tree</span><span class="fw-d">Mutually exclusive, collectively exhaustive</span><span class="fw-a">Ethan M. Rasiel</span></a></li><li><a href="unit3.html"><span class="fw-n">First Principles Decomposition</span><span class="fw-d">Strip the assumption · reach the fundamentals · rebuild from there</span><span class="fw-a">Max Wertheimer</span></a></li><li><a href="unit3.html"><span class="fw-n">Double Diamond</span><span class="fw-d">Discover · Define · Develop · Deliver</span><span class="fw-a">Design Council</span></a></li><li><a href="unit3.html"><span class="fw-n">Cynefin Framework</span><span class="fw-d">Clear · Complicated · Complex · Chaotic</span><span class="fw-a">Snowden &amp; Boone</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 6</span>Judgment &amp; Bias</div><ol><li><a href="unit3.html"><span class="fw-n">System 1 / System 2</span><span class="fw-d">Fast, automatic, always on · slow, effortful, easily displaced</span><span class="fw-a">Daniel Kahneman</span></a></li><li><a href="unit3.html"><span class="fw-n">Confirmation Bias Loop</span><span class="fw-d">Hypothesis · selective search · biased interpretation · reinforced belief</span><span class="fw-a">Raymond S. Nickerson</span></a></li><li><a href="unit3.html"><span class="fw-n">Anchoring &amp; Adjustment</span><span class="fw-d">An arbitrary starting number moves the final estimate</span><span class="fw-a">Tversky &amp; Kahneman</span></a></li><li><a href="unit3.html"><span class="fw-n">Ladder of Inference</span><span class="fw-d">Data · selection · meaning · assumption · conclusion · belief · action</span><span class="fw-a">Chris Argyris</span></a></li><li><a href="unit3.html"><span class="fw-n">Dunning–Kruger Curve</span><span class="fw-d">Least competent, least able to know it</span><span class="fw-a">Kruger &amp; Dunning</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit3.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 5–6</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit3_Activities.html"><div class="rrow-badge" style="background:#2A8F75">HL</div>
+      <div class="rrow-main"><div class="rrow-title">Head-to-Head Lab — AI-Assisted vs. Unaided Analysis</div><div class="rrow-sub">Two teams, one problem, one hour — then compare the reasoning trail</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit3_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Nordwind Logistics — The Margin That Disappeared</div><div class="rrow-sub">A confident diagnosis built on the wrong problem statement</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit3_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: Structure Before Search</div><div class="rrow-sub">Key framework: MECE Issue Tree</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit3_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit3"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">10 thinkers · Barbara Minto, Ethan M. Rasiel, Max Wertheimer, Design Council, Snowden &amp; Boone, Daniel Kahneman…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit3"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 3</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Critical Thinking, SCQA, MECE, First Principles Thinking…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit4">
+        <summary>
+          <span class="u-badge">4</span>
+          <span class="u-headings">
+            <span class="u-title">Present &amp; Position Yourself: Personal Branding &amp; Presentation Skills</span>
+            <span class="u-format">PITCH ARENA</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 4</span>
+            <p class="coremsg-text">A personal brand is not what you claim about yourself; it is the one sentence other people can repeat when you are not in the room.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 5</strong> — Personal branding &amp; persuasive delivery. Critically review the communication process, stakeholder communication and communication in diverse work groups.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Personal brand in an AI-saturated market</li><li>Elevator pitch, interview story, LinkedIn</li><li>Problem → insight → recommendation</li><li>Voice, pace, body language, nerves</li><li>Digital reputation and visibility</li></ul>
+          <p class="boost"><strong>Boostcamp before Unit 5:</strong> complete the episode “Communication strategies for team success”.</p>
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 7</span>Personal Brand &amp; Positioning</div><ol><li><a href="unit4.html"><span class="fw-n">Brand Pyramid</span><span class="fw-d">Attributes · Functional benefits · Emotional rewards · Values · Essence</span><span class="fw-a">David A. Aaker</span></a></li><li><a href="unit4.html"><span class="fw-n">Twelve Brand Archetypes</span><span class="fw-d">Twelve recurring characters</span><span class="fw-a">Mark &amp; Pearson</span></a></li><li><a href="unit4.html"><span class="fw-n">StoryBrand SB7 Framework</span><span class="fw-d">The customer is the hero; you are the guide</span><span class="fw-a">Donald Miller</span></a></li><li><a href="unit4.html"><span class="fw-n">Golden Circle</span><span class="fw-d">Why · How · What</span><span class="fw-a">Simon Sinek</span></a></li><li><a href="unit4.html"><span class="fw-n">Personal Value Proposition Canvas</span><span class="fw-d">Their jobs, pains and gains against your services, relievers and creators</span><span class="fw-a">Osterwalder et al.</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 8</span>Pitch &amp; Delivery</div><ol><li><a href="unit4.html"><span class="fw-n">Message Strategy Spectrum</span><span class="fw-d">Convince ←→ Clarify</span><span class="fw-a">Kurt Bostelaar</span></a></li><li><a href="unit4.html"><span class="fw-n">Problem → Insight → Recommendation</span><span class="fw-d">Three moves that turn analysis into a decision someone can take</span><span class="fw-a">Carmine Gallo</span></a></li><li><a href="unit4.html"><span class="fw-n">Assertion–Evidence Slide Model</span><span class="fw-d">A sentence headline carrying the claim, supported by a visual</span><span class="fw-a">Michael Alley</span></a></li><li><a href="unit4.html"><span class="fw-n">Mehrabian 7–38–55</span><span class="fw-d">Words · tone · face</span><span class="fw-a">Albert Mehrabian</span></a></li><li><a href="unit4.html"><span class="fw-n">Anxiety Reappraisal</span><span class="fw-d">Say &#x27;I am excited&#x27;</span><span class="fw-a">Alison Wood Brooks</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit4.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 7–8</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit4_Activities.html"><div class="rrow-badge" style="background:#2A8F75">PA</div>
+      <div class="rrow-main"><div class="rrow-title">Pitch Arena — 90 Seconds, Live Scoring, Two Rebuilds</div><div class="rrow-sub">Pitch, peer scoring against a rubric, rebuild, pitch again</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit4_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Marco Ruiz — Same CV, Three Different Stories</div><div class="rrow-sub">One candidate, three positioning choices, three outcomes</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit4_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: The One-Sentence Test</div><div class="rrow-sub">Key framework: Message Strategy Spectrum (Convince ↔ Clarify)</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit4_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit4"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">10 thinkers · David A. Aaker, Mark &amp; Pearson, Donald Miller, Simon Sinek, Osterwalder et al., Kurt Bostelaar…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit4"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 4</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Personal Brand, Professional Narrative, Elevator Pitch, Personal Value Proposition…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit5">
+        <summary>
+          <span class="u-badge">5</span>
+          <span class="u-headings">
+            <span class="u-title">Communicate with Impact: Executive Presence &amp; Business Communication</span>
+            <span class="u-format">MESSAGE CLINIC</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 5</span>
+            <p class="coremsg-text">Executives do not read to discover your conclusion — put it first, then make every sentence after it earn its place.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 5</strong> — Business communication &amp; executive presence. Critically review the communication process, stakeholder communication and communication in diverse work groups.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Boostcamp wrap-up: team communication</li><li>Pyramid Principle and SCQA arguments</li><li>Emails, executive summaries, reports</li><li>Adapting to audience, context and culture</li><li>Making AI-assisted writing unmistakably human</li></ul>
+          <p class="boost"><strong>Boostcamp before Unit 6:</strong> complete the episodes “Project management: sustainable and socially responsible projects” and “Project management: risk management in the digital world”.</p>
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 9</span>Argument Architecture</div><ol><li><a href="unit5.html"><span class="fw-n">Pyramid Principle</span><span class="fw-d">Answer first, then grouped support, then data</span><span class="fw-a">Barbara Minto</span></a></li><li><a href="unit5.html"><span class="fw-n">Distil → Decompose → Prioritise</span><span class="fw-d">Write long, break it apart, force a ranking</span><span class="fw-a">Kurt Bostelaar</span></a></li><li><a href="unit5.html"><span class="fw-n">Toulmin Argument Model</span><span class="fw-d">Claim · grounds · warrant · backing · qualifier · rebuttal</span><span class="fw-a">Stephen E. Toulmin</span></a></li><li><a href="unit5.html"><span class="fw-n">BLUF Executive Structure</span><span class="fw-d">Bottom line up front</span><span class="fw-a">Jean-luc Doumont</span></a></li><li><a href="unit5.html"><span class="fw-n">Storyline Canvas</span><span class="fw-d">Plot, character and story mapped across beginning, middle and end</span><span class="fw-a">Kurt Bostelaar</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 10</span>Audience &amp; Culture</div><ol><li><a href="unit5.html"><span class="fw-n">Shannon–Weaver Model</span><span class="fw-d">Source · transmitter · channel · receiver · destination</span><span class="fw-a">Shannon &amp; Weaver</span></a></li><li><a href="unit5.html"><span class="fw-n">Hofstede Cultural Dimensions</span><span class="fw-d">Six dimensions on which national cultures differ</span><span class="fw-a">Geert Hofstede</span></a></li><li><a href="unit5.html"><span class="fw-n">The Culture Map (Eight Scales)</span><span class="fw-d">Communicating · evaluating · persuading · leading · deciding · trusting ·…</span><span class="fw-a">Erin Meyer</span></a></li><li><a href="unit5.html"><span class="fw-n">High- and Low-Context Communication</span><span class="fw-d">How much meaning sits in the words, and how much in everything around them</span><span class="fw-a">Edward T. Hall</span></a></li><li><a href="unit5.html"><span class="fw-n">Power–Interest Grid</span><span class="fw-d">Who can affect the outcome, and who cares</span><span class="fw-a">Aubrey L. Mendelow</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit5.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 9–10</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit5_Activities.html"><div class="rrow-badge" style="background:#2A8F75">MC</div>
+      <div class="rrow-main"><div class="rrow-title">Message Clinic — Distil, Decompose, Prioritise, Rewrite</div><div class="rrow-sub">Four rounds from a full paragraph to a single defensible sentence</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit5_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Helvetia Medtech — The Email That Cost a Contract</div><div class="rrow-sub">A technically correct message that buried its own conclusion</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit5_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: Answer First</div><div class="rrow-sub">Key framework: Pyramid Principle</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit5_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit5"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">9 thinkers · Barbara Minto, Kurt Bostelaar, Stephen E. Toulmin, Jean-luc Doumont, Shannon &amp; Weaver, Geert Hofstede…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit5"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 5</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Pyramid Principle, Executive Presence, Bottom Line Up Front (BLUF), Executive Summary…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit6">
+        <summary>
+          <span class="u-badge">6</span>
+          <span class="u-headings">
+            <span class="u-title">Deliver Results: Project Management Fundamentals</span>
+            <span class="u-format">PROJECT SIMULATION</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 6</span>
+            <p class="coremsg-text">A plan is not a schedule — it is an argument about scope, risk and trade-offs that has to survive contact with reality.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILOs 2 & 3</strong> — Project planning, scheduling &amp; risk. Critically assess the roles and responsibilities of a project manager as part of an organization&#x27;s strategy. Investigate how to select, develop, plan, schedule and measure projects outcomes and risks.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Boostcamp wrap-up: sustainable projects and digital risk</li><li>Waterfall, Agile, Hybrid: when to use what</li><li>Scope, stakeholders and a workable plan</li><li>Risk under uncertainty</li><li>Monitoring and status communication</li></ul>
+          <p class="boost"><strong>Boostcamp before Unit 7:</strong> complete the episodes “Negotiation Mastery: balancing power, influence, and ethics”.</p>
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 11</span>Project Lifecycle &amp; Planning</div><ol><li><a href="unit6.html"><span class="fw-n">Project Lifecycle</span><span class="fw-d">Initiating · planning · executing · monitoring and controlling · closing</span><span class="fw-a">Project Management Institute</span></a></li><li><a href="unit6.html"><span class="fw-n">Iron Triangle</span><span class="fw-d">Scope · time · cost, with quality in the middle</span><span class="fw-a">Roger Atkinson</span></a></li><li><a href="unit6.html"><span class="fw-n">Work Breakdown Structure</span><span class="fw-d">Deliverables decomposed until each package can be estimated, assigned and…</span><span class="fw-a">Project Management Institute</span></a></li><li><a href="unit6.html"><span class="fw-n">Gantt Chart</span><span class="fw-d">Tasks against a calendar</span><span class="fw-a">Henry L. Gantt</span></a></li><li><a href="unit6.html"><span class="fw-n">Critical Path Method</span><span class="fw-d">The longest path sets the duration</span><span class="fw-a">Kelley &amp; Walker</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 12</span>Agile, Risk &amp; Control</div><ol><li><a href="unit6.html"><span class="fw-n">Agile Manifesto Values</span><span class="fw-d">Four preferences, each stated as &#x27;over&#x27; rather than &#x27;instead of&#x27;</span><span class="fw-a">Beck et al.</span></a></li><li><a href="unit6.html"><span class="fw-n">Scrum Sprint Cycle</span><span class="fw-d">Plan · work daily · review · retrospect</span><span class="fw-a">Schwaber &amp; Sutherland</span></a></li><li><a href="unit6.html"><span class="fw-n">Stacey Matrix</span><span class="fw-d">Agreement on what, certainty about how</span><span class="fw-a">Ralph D. Stacey</span></a></li><li><a href="unit6.html"><span class="fw-n">Probability–Impact Risk Matrix</span><span class="fw-d">How likely, how bad</span><span class="fw-a">ISO 31000</span></a></li><li><a href="unit6.html"><span class="fw-n">Earned Value S-Curve</span><span class="fw-d">Planned value, earned value, actual cost</span><span class="fw-a">Project Management Institute</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit6.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 11–12</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit6_Activities.html"><div class="rrow-badge" style="background:#2A8F75">PS</div>
+      <div class="rrow-main"><div class="rrow-title">Project Simulation — Scope, WBS, Stakeholders, Risk Register</div><div class="rrow-sub">Build a defensible project plan, then absorb an unannounced scope change</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit6_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Aurora Rail — Green Until It Wasn&#x27;t</div><div class="rrow-sub">A status dashboard that stayed green three months too long</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit6_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: Why Projects Fail Before They Start</div><div class="rrow-sub">Key framework: Iron Triangle</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit6_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit6"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">8 thinkers · Project Management Institute, Roger Atkinson, Henry L. Gantt, Kelley &amp; Walker, Beck et al., Schwaber &amp; Sutherland…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit6"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 6</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Project, Project Scope, Waterfall Methodology, Agile Methodology…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit7">
+        <summary>
+          <span class="u-badge">7</span>
+          <span class="u-headings">
+            <span class="u-title">Negotiate &amp; Influence: Getting What You Need Without Formal Authority</span>
+            <span class="u-format">NEGOTIATION SIMULATION</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 7</span>
+            <p class="coremsg-text">Leverage is prepared, not improvised — know your walk-away before you walk in.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILO 4</strong> — Negotiation, influence &amp; ethical boundaries. Evaluate the keys to successful negotiation and differentiate negotiation styles, strategies, and tactics.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Boostcamp wrap-up: power, influence, ethics</li><li>BATNA, ZOPA, Harvard Method</li><li>Distributive vs. integrative negotiation</li><li>Influence without formal power</li><li>Where negotiation ends and manipulation begins</li></ul>
+          
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 13</span>Negotiation Architecture</div><ol><li><a href="unit7.html"><span class="fw-n">BATNA</span><span class="fw-d">Best Alternative To a Negotiated Agreement</span><span class="fw-a">Fisher &amp; Ury</span></a></li><li><a href="unit7.html"><span class="fw-n">Zone of Possible Agreement</span><span class="fw-d">The overlap between two reservation values</span><span class="fw-a">Howard Raiffa</span></a></li><li><a href="unit7.html"><span class="fw-n">Principled Negotiation</span><span class="fw-d">People · interests · options · criteria</span><span class="fw-a">Fisher, Ury &amp; Patton</span></a></li><li><a href="unit7.html"><span class="fw-n">Dual Concerns Conflict Modes</span><span class="fw-d">Assertiveness against cooperativeness</span><span class="fw-a">Thomas &amp; Kilmann</span></a></li><li><a href="unit7.html"><span class="fw-n">Distributive ↔ Integrative Spectrum</span><span class="fw-d">Claiming value and creating it</span><span class="fw-a">Walton &amp; McKersie</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 14</span>Influence Without Authority</div><ol><li><a href="unit7.html"><span class="fw-n">Six Principles of Influence</span><span class="fw-d">Reciprocity · commitment · social proof · authority · liking · scarcity</span><span class="fw-a">Robert B. Cialdini</span></a></li><li><a href="unit7.html"><span class="fw-n">French &amp; Raven Power Bases</span><span class="fw-d">Legitimate · reward · coercive · expert · referent</span><span class="fw-a">French &amp; Raven</span></a></li><li><a href="unit7.html"><span class="fw-n">Influence Currencies</span><span class="fw-d">Find what they value, then trade for it</span><span class="fw-a">Cohen &amp; Bradford</span></a></li><li><a href="unit7.html"><span class="fw-n">Tactical Empathy</span><span class="fw-d">Demonstrate that you understand their position</span><span class="fw-a">Chris Voss</span></a></li><li><a href="unit7.html"><span class="fw-n">Persuasion ↔ Manipulation Line</span><span class="fw-d">Does the technique work through their reasoning, or around it?</span><span class="fw-a">Cass R. Sunstein</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit7.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 13–14</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit7_Activities.html"><div class="rrow-badge" style="background:#2A8F75">NS</div>
+      <div class="rrow-main"><div class="rrow-title">Negotiation Simulation — Three Rounds, Then the Ethics Debrief</div><div class="rrow-sub">Paired role play with hidden constraints and a manipulation-line review</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit7_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Brightline Studio — The Budget Nobody Would Move</div><div class="rrow-sub">A junior lead negotiating resources across three unwilling departments</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit7_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: Your BATNA Is Your Only Real Power</div><div class="rrow-sub">Key framework: BATNA ↔ ZOPA</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit7_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit7"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">10 thinkers · Fisher &amp; Ury, Howard Raiffa, Fisher, Ury &amp; Patton, Thomas &amp; Kilmann, Walton &amp; McKersie, Robert B. Cialdini…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit7"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 7</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Negotiation, BATNA, ZOPA, Principled Negotiation…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+      <details class="unit" id="unit8">
+        <summary>
+          <span class="u-badge">8</span>
+          <span class="u-headings">
+            <span class="u-title">Work Smarter with AI: Productivity, Tools and Professional Judgment</span>
+            <span class="u-format">MINI-HACKATHON · CAPSTONE</span>
+          </span>
+          <span class="u-chevron" aria-hidden="true">&#9662;</span>
+        </summary>
+        <div class="u-body">
+          <div class="coremsg">
+            <span class="coremsg-label">Core Message · Unit 8</span>
+            <p class="coremsg-text">Delegate the task, never the judgment — and be able to show exactly where you drew the line.</p>
+            <p class="coremsg-ilo"><strong>Learning focus · ILOs 1 & 3</strong> — Productivity systems &amp; AI workflow judgment. Systematically select key concepts and principles of operations and technology management that need to be implemented to support value creation. Investigate how to select, develop, plan, schedule and measure projects outcomes and risks.</p>
+          </div>
+          <ul class="topics" aria-label="Unit topics"><li>Energy management over time management</li><li>Eisenhower Matrix and personal OKRs</li><li>What to delegate to AI vs. keep</li><li>Prompt literacy and a practical AI workflow</li><li>Trust, override, attribution, integrity</li></ul>
+          
+          <h3 class="sub">Slibraries and frameworks</h3>
+          <div class="slibs"><div class="slib"><div class="slib-h"><span>Slibrary 15</span>Prioritisation &amp; Energy</div><ol><li><a href="unit8.html"><span class="fw-n">Eisenhower Matrix</span><span class="fw-d">Urgent against important</span><span class="fw-a">Stephen R. Covey</span></a></li><li><a href="unit8.html"><span class="fw-n">Objectives &amp; Key Results</span><span class="fw-d">One qualitative objective, three to five measurable key results</span><span class="fw-a">John Doerr</span></a></li><li><a href="unit8.html"><span class="fw-n">The Rule of 3</span><span class="fw-d">Three outcomes for the day, three for the week, three for the year</span><span class="fw-a">J.D. Meier</span></a></li><li><a href="unit8.html"><span class="fw-n">Monday Vision, Daily Wins, Friday Reflection</span><span class="fw-d">Set the week, work the day, close the loop</span><span class="fw-a">J.D. Meier</span></a></li><li><a href="unit8.html"><span class="fw-n">Pareto 80/20</span><span class="fw-d">A minority of inputs accounts for a majority of outputs</span><span class="fw-a">Richard Koch</span></a></li></ol></div><div class="slib"><div class="slib-h"><span>Slibrary 16</span>AI Workflow &amp; Judgment</div><ol><li><a href="unit8.html"><span class="fw-n">Prompt Anatomy</span><span class="fw-d">Role · task · context · format · constraints · examples</span><span class="fw-a">White et al.</span></a></li><li><a href="unit8.html"><span class="fw-n">Delegate–Verify–Own Loop</span><span class="fw-d">Delegate the task, verify the output, own the result</span><span class="fw-a">Amershi et al.</span></a></li><li><a href="unit8.html"><span class="fw-n">Automation–Augmentation Spectrum</span><span class="fw-d">Replace the task or amplify the person</span><span class="fw-a">Raisch &amp; Krakowski</span></a></li><li><a href="unit8.html"><span class="fw-n">The Jagged Frontier</span><span class="fw-d">AI capability has an uneven boundary</span><span class="fw-a">Dell&#x27;Acqua et al.</span></a></li><li><a href="unit8.html"><span class="fw-n">AI Attribution Ladder</span><span class="fw-d">From no use to generated content</span><span class="fw-a">UNESCO</span></a></li></ol></div></div>
+          <h3 class="sub">Unit resources</h3>
+          <div class="rows">
+      <a class="rrow" href="unit8.html"><div class="rrow-badge" style="background:#1F4E45">FG</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Gallery</div><div class="rrow-sub">10 interactive frameworks · Slibraries 15–16</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="activities/Unit8_Activities.html"><div class="rrow-badge" style="background:#2A8F75">MH</div>
+      <div class="rrow-main"><div class="rrow-title">Mini-Hackathon — Build and Defend a Personal AI Workflow</div><div class="rrow-sub">Three hours to build a workflow, ten minutes to defend every delegation</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="cases/Unit8_Case.html"><div class="rrow-badge" style="background:#3C7D5B">CS</div>
+      <div class="rrow-main"><div class="rrow-title">Case: Talia Berg — The Analyst Who Automated Herself</div><div class="rrow-sub">Efficiency gains that quietly removed the analyst&#x27;s own judgment</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="prereading/Unit8_PreReading.html"><div class="rrow-badge" style="background:#B8702A">PR</div>
+      <div class="rrow-main"><div class="rrow-title">Pre-Reading: What to Delegate, What to Keep</div><div class="rrow-sub">Key framework: Automation–Augmentation Spectrum</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="reflections/Unit8_Reflection.html"><div class="rrow-badge" style="background:#6A5BB5">RF</div>
+      <div class="rrow-main"><div class="rrow-title">Reflection Prompt</div><div class="rrow-sub">3 questions for independent study</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="slibrary.html#unit8"><div class="rrow-badge" style="background:#3E8E7E">AU</div>
+      <div class="rrow-main"><div class="rrow-title">Framework Authors — Slibrary</div><div class="rrow-sub">9 thinkers · Stephen R. Covey, John Doerr, J.D. Meier, Richard Koch, White et al., Amershi et al.…</div></div>
+      <div class="rrow-right">HTML</div></a>
+      <a class="rrow" href="glossary.html#unit8"><div class="rrow-badge" style="background:#2F5D8C">GL</div>
+      <div class="rrow-main"><div class="rrow-title">Glossary — Unit 8</div><div class="rrow-sub">8 professional definitions · Harvard-referenced · Energy Management, Eisenhower Matrix, OKRs, Prompt Literacy…</div></div>
+      <div class="rrow-right">HTML</div></a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
 
-<footer>
-  <strong>MASCO101</strong> · Tools for Success · © 2026 Dr. Hildegard Haas<br>
-  Applying JD Meier’s <strong>Thumbnail Thinking</strong> (2025) and Kurt Bostelaar’s <strong>core-message method</strong> across the entire course
+  <section class="block">
+    <h2 class="block-label">Assessments</h2>
+    <p class="block-lead">Three assessments, weighted 20 / 40 / 40.</p>
+    <div class="assess">
+      <div class="as"><div class="aw">20%</div><div class="an">Assessment 1 · Individual</div><h3>Asynchronous Component Summative Assessments</h3><p class="am">ILOs 1–5</p><ul><li>Boostcamp multiple-choice questions at the end of each chapter</li><li>Final examination</li></ul></div>
+      <div class="as"><div class="aw">40%</div><div class="an">Assessment 2 · Individual</div><h3>Human Edge Portfolio</h3><p class="am">ILOs 1 &amp; 5</p><ul><li>Personal SWOT Analysis + Development Roadmap (Unit 2)</li><li>AI &amp; Digital Tools Reflection: critical, ethical AI use on a real business task</li><li>LinkedIn Profile Audit + revised professional narrative</li><li>90-second elevator pitch</li></ul></div>
+      <div class="as"><div class="aw">40%</div><div class="an">Assessment 3 · Group</div><h3>Pitch the Plan: Project Defense &amp; Stakeholder Negotiation</h3><p class="am">ILOs 2, 3 &amp; 4</p><ul><li>Part 1: scope, stakeholder map, risk register, project plan</li><li>Part 2: Shark Tank–style pitch to “investors” who approve, reject or counter with tough conditions</li><li>The team negotiates those conditions live with BATNA / ZOPA / Harvard Method; executive summary + oral pitch</li></ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="block-label">Complete Gallery</h2>
+    <div class="big-links">
+      <a href="gallery.html"><span class="mark">■</span>All 80 Frameworks — 16 Slibraries<span class="sub">Every framework with thumbnail, definition and reference sheet · searchable by unit</span></a>
+      <a href="slibrary.html"><span class="mark">■</span>72 Framework Authors — The Thinkers Behind the Frameworks<span class="sub">Eight units · 16 Slibraries · Harvard reference for every framework</span></a>
+      <a href="glossary.html"><span class="mark">■</span>64 Professional Definitions — Glossary Reference Library<span class="sub">Eight unit glossaries · Harvard-referenced · filterable</span></a>
+      <a href="assets/pdf/framework-library.pdf" target="_blank" rel="noopener"><span class="mark">■</span>Framework Library — Complete PDF<span class="sub">Cover, master index, how-to-use guide and all 80 framework sheets</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <hr class="divider">
+  <p><strong>MASCO101</strong> · Tools for Success · © 2026 Dr. Hildegard Haas</p>
+  <p style="font-size:12px;opacity:.7">EU Business School · MASCO Skills Track · Applying JD Meier's <strong>Thumbnail Thinking</strong> (2025) and Kurt Bostelaar's core-message method across the entire course</p>
 </footer>
 
-<script>
-function toggle(h){ const u=h.parentElement; u.classList.toggle('open');
-  h.setAttribute('aria-expanded', u.classList.contains('open')); }
-document.querySelectorAll('.unit-header').forEach(h=>{
-  h.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(h);} });
-});
-
-const searchInput=document.getElementById('searchInput');
-const searchResults=document.getElementById('searchResults');
-const units=Array.from(document.querySelectorAll('.unit'));
-const searchIndex=[];
-units.forEach(u=>{
-  const unitNum=u.dataset.unit;
-  const unitTitle=u.querySelector('.unit-title').textContent;
-  const core=u.querySelector('.core-text').textContent;
-  u.querySelectorAll('.link-card').forEach(card=>{
-    searchIndex.push({
-      card, unitNum, href:card.getAttribute('href'),
-      title:card.querySelector('.link-title').textContent,
-      desc:card.querySelector('.link-desc').textContent,
-      badgeText:card.querySelector('.link-badge').textContent,
-      badgeColor:card.querySelector('.link-badge').style.background,
-      haystack:(unitTitle+' '+core+' '+card.querySelector('.link-title').textContent+' '+
-                card.querySelector('.link-desc').textContent+' '+
-                (card.dataset.search||'')+' unit '+unitNum).toLowerCase()
-    });
-  });
-});
-
-let debounceTimer;
-searchInput.addEventListener('input',()=>{clearTimeout(debounceTimer);debounceTimer=setTimeout(runSearch,150);});
-
-function runSearch(){
-  const q=searchInput.value.trim().toLowerCase();
-  document.querySelectorAll('.link-card.search-highlight').forEach(c=>c.classList.remove('search-highlight'));
-  units.forEach(u=>u.classList.remove('search-hidden'));
-  if(q.length<2){searchResults.classList.remove('active');searchResults.innerHTML='';return;}
-  const terms=q.split(/\s+/);
-  const matches=searchIndex.filter(i=>terms.every(t=>i.haystack.includes(t)));
-  if(matches.length===0){
-    searchResults.innerHTML='<div class="sr-empty">No results for "'+q.replace(/</g,'&lt;')+'"</div>';
-    searchResults.classList.add('active');
-    units.forEach(u=>u.classList.add('search-hidden'));
-    return;
-  }
-  const matched=new Set(matches.map(m=>m.unitNum));
-  units.forEach(u=>{
-    if(matched.has(u.dataset.unit)){u.classList.remove('search-hidden');u.classList.add('open');}
-    else u.classList.add('search-hidden');
-  });
-  matches.forEach(m=>m.card.classList.add('search-highlight'));
-  searchResults.innerHTML=matches.slice(0,8).map(m=>
-    '<a class="sr-item" href="'+m.href+'"><div class="sr-badge" style="background:'+m.badgeColor+'">'+
-    m.badgeText+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">Unit '+
-    m.unitNum+' · '+m.desc+'</div></div></a>').join('')+
-    (matches.length>8?'<div class="sr-empty">'+(matches.length-8)+' more results…</div>':'');
-  searchResults.classList.add('active');
-}
-document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))searchResults.classList.remove('active');});
-searchInput.addEventListener('keydown',e=>{if(e.key==='Escape'){searchInput.value='';runSearch();searchInput.blur();}});
+<script>  (function(){
+    var IDX=[["Unit", "Unit 1 · Introduction to Tools for Success & Digital/AI Literacy", "Your value at work is no longer what you can execute — it is what you can judge, and judgment has to be built on purpose.", "#unit1"], ["Framework", "SMART Goal Frame", "Specific · Measurable · Achievable · Relevant · Time-bound · George T. Doran · Unit 1, Slibrary 1", "unit1.html"], ["Framework", "Kolb Experiential Learning Cycle", "Experience · Reflect · Conceptualise · Test · David A. Kolb · Unit 1, Slibrary 1", "unit1.html"], ["Framework", "Bloom's Taxonomy (Revised)", "Remember · Understand · Apply · Analyse · Evaluate · Create · Anderson & Krathwohl · Unit 1, Slibrary 1", "unit1.html"], ["Framework", "Dreyfus Skill Acquisition Model", "Novice · Advanced beginner · Competent · Proficient · Expert · Dreyfus & Dreyfus · Unit 1, Slibrary 1", "unit1.html"], ["Framework", "Deliberate Practice Loop", "Stretch task · Immediate feedback · Targeted repetition · K. Anders Ericsson · Unit 1, Slibrary 1", "unit1.html"], ["Slibrary", "Slibrary 1 · Learning & Goal Architecture", "Unit 1 · 5 frameworks", "unit1.html"], ["Framework", "DigComp 2.2 Competence Wheel", "Five competence areas, twenty-one competences, eight proficiency levels · European Commission (JRC) · Unit 1, Slibrary 2", "unit1.html"], ["Framework", "CRAAP Source Test", "Currency · Relevance · Authority · Accuracy · Purpose · Sarah Blakeslee · Unit 1, Slibrary 2", "unit1.html"], ["Framework", "Technology Acceptance Model", "Perceived usefulness × perceived ease of use → intention → actual use · Fred D. Davis · Unit 1, Slibrary 2", "unit1.html"], ["Framework", "Automation Bias Curve", "Use · Misuse · Disuse · Abuse · Parasuraman & Riley · Unit 1, Slibrary 2", "unit1.html"], ["Framework", "Co-Intelligence Working Rules", "Invite it to the table · Be the human in the loop · Tell it who to be ·… · Ethan Mollick · Unit 1, Slibrary 2", "unit1.html"], ["Slibrary", "Slibrary 2 · Digital & AI Literacy", "Unit 1 · 5 frameworks", "unit1.html"], ["Author", "George T. Doran", "SMART Goal Frame · Unit 1", "slibrary.html#unit1"], ["Author", "David A. Kolb", "Kolb Experiential Learning Cycle · Unit 1", "slibrary.html#unit1"], ["Author", "Anderson & Krathwohl", "Bloom's Taxonomy (Revised) · Unit 1", "slibrary.html#unit1"], ["Author", "Dreyfus & Dreyfus", "Dreyfus Skill Acquisition Model · Unit 1", "slibrary.html#unit1"], ["Author", "K. Anders Ericsson", "Deliberate Practice Loop · Unit 1", "slibrary.html#unit1"], ["Author", "European Commission (JRC)", "DigComp 2.2 Competence Wheel · Unit 1", "slibrary.html#unit1"], ["Author", "Sarah Blakeslee", "CRAAP Source Test · Unit 1", "slibrary.html#unit1"], ["Author", "Fred D. Davis", "Technology Acceptance Model · Unit 1", "slibrary.html#unit1"], ["Author", "Parasuraman & Riley", "Automation Bias Curve · Unit 1", "slibrary.html#unit1"], ["Author", "Ethan Mollick", "Co-Intelligence Working Rules · Unit 1", "slibrary.html#unit1"], ["Definition", "Digital Literacy", "The confident, critical and responsible use of digital technologies · Glossary 1.1", "glossary.html#g1-1"], ["Definition", "AI Literacy", "Knowing what AI can do, what it cannot do, and how to question it · Glossary 1.2", "glossary.html#g1-2"], ["Definition", "Generative AI", "Systems that produce new text, images, code or audio from learned patterns · Glossary 1.3", "glossary.html#g1-3"], ["Definition", "AI Hallucination", "Fluent output that is unfaithful to the source or to the facts · Glossary 1.4", "glossary.html#g1-4"], ["Definition", "Source Evaluation", "Testing information for currency, relevance, authority, accuracy and purpose · Glossary 1.5", "glossary.html#g1-5"], ["Definition", "Automation Bias", "Over-reliance on automated output at the expense of one's own checks · Glossary 1.6", "glossary.html#g1-6"], ["Definition", "Experiential Learning", "Learning as a cycle of doing, reflecting, conceptualising and testing · Glossary 1.7", "glossary.html#g1-7"], ["Definition", "Deliberate Practice", "Effortful, feedback-rich practice aimed at a specific weakness · Glossary 1.8", "glossary.html#g1-8"], ["Resource", "Guided Discovery — Framework Exploration", "Unit 1 · 7-phase session — gallery walk, source audit, framework pitch", "activities/Unit1_Activities.html"], ["Resource", "Case: Vantage Consulting — The Intern Who Cited a Ghost", "Unit 1 · A fabricated AI citation reaches a client deliverable", "cases/Unit1_Case.html"], ["Resource", "Pre-Reading: Why Skills Beat Tools", "Unit 1 · Key framework: DigComp 2.2 Competence Wheel", "prereading/Unit1_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 1 · 3 questions for independent study", "reflections/Unit1_Reflection.html"], ["Unit", "Unit 2 · Know Yourself: Self-Assessment as a Strategic Tool", "You cannot position what you have not diagnosed — self-knowledge is the one input no model can generate for you.", "#unit2"], ["Framework", "Personal SWOT Matrix", "Strengths · Weaknesses · Opportunities · Threats · Heinz Weihrich · Unit 2, Slibrary 3", "unit2.html"], ["Framework", "Johari Window", "Open · Blind · Hidden · Unknown · Luft & Ingham · Unit 2, Slibrary 3", "unit2.html"], ["Framework", "Ikigai Purpose Venn", "Love · Skill · Need · Payment · García & Miralles · Unit 2, Slibrary 3", "unit2.html"], ["Framework", "Firm Foundation: Vision, Mission, Values", "Where you are going · what you do · what you will not trade · J.D. Meier · Unit 2, Slibrary 3", "unit2.html"], ["Framework", "Personal Energy Model", "Physical · Emotional · Mental · Spiritual · J.D. Meier · Unit 2, Slibrary 3", "unit2.html"], ["Slibrary", "Slibrary 3 · Self-Diagnosis", "Unit 2 · 5 frameworks", "unit2.html"], ["Framework", "MBTI Four Dichotomies", "E–I · S–N · T–F · J–P · Myers & Briggs · Unit 2, Slibrary 4", "unit2.html"], ["Framework", "DISC Behavioural Quadrant", "Dominance · Influence · Steadiness · Conscientiousness · William M. Marston · Unit 2, Slibrary 4", "unit2.html"], ["Framework", "Big Five (OCEAN)", "Openness · Conscientiousness · Extraversion · Agreeableness · Neuroticism · Costa & McCrae · Unit 2, Slibrary 4", "unit2.html"], ["Framework", "Honey & Mumford Learning Styles", "Activist · Reflector · Theorist · Pragmatist · Honey & Mumford · Unit 2, Slibrary 4", "unit2.html"], ["Framework", "Growth vs. Fixed Mindset Fork", "Ability as trainable or as fixed · Carol S. Dweck · Unit 2, Slibrary 4", "unit2.html"], ["Slibrary", "Slibrary 4 · Style & Preference Profiling", "Unit 2 · 5 frameworks", "unit2.html"], ["Author", "Heinz Weihrich", "Personal SWOT Matrix · Unit 2", "slibrary.html#unit2"], ["Author", "Luft & Ingham", "Johari Window · Unit 2", "slibrary.html#unit2"], ["Author", "García & Miralles", "Ikigai Purpose Venn · Unit 2", "slibrary.html#unit2"], ["Author", "J.D. Meier", "Firm Foundation: Vision, Mission, Values, Personal Energy Model · Unit 2", "slibrary.html#unit2"], ["Author", "Myers & Briggs", "MBTI Four Dichotomies · Unit 2", "slibrary.html#unit2"], ["Author", "William M. Marston", "DISC Behavioural Quadrant · Unit 2", "slibrary.html#unit2"], ["Author", "Costa & McCrae", "Big Five (OCEAN) · Unit 2", "slibrary.html#unit2"], ["Author", "Honey & Mumford", "Honey & Mumford Learning Styles · Unit 2", "slibrary.html#unit2"], ["Author", "Carol S. Dweck", "Growth vs. Fixed Mindset Fork · Unit 2", "slibrary.html#unit2"], ["Definition", "Self-Awareness", "Attending to oneself as an object of evaluation against internal standards · Glossary 2.1", "glossary.html#g2-1"], ["Definition", "Personal SWOT Analysis", "Strengths, weaknesses, opportunities and threats applied to a career · Glossary 2.2", "glossary.html#g2-2"], ["Definition", "Blind Spot", "What others see in you that you do not see yourself · Glossary 2.3", "glossary.html#g2-3"], ["Definition", "Personality Type", "A preference profile across four dichotomies of perception and judgement · Glossary 2.4", "glossary.html#g2-4"], ["Definition", "Behavioural Style (DISC)", "Observable working style along dominance, influence, steadiness and compliance · Glossary 2.5", "glossary.html#g2-5"], ["Definition", "Growth Mindset", "The belief that abilities can be developed through effort and strategy · Glossary 2.6", "glossary.html#g2-6"], ["Definition", "Personal Development Roadmap", "A time-bound plan that turns a self-diagnosis into verifiable actions · Glossary 2.7", "glossary.html#g2-7"], ["Definition", "Human Edge", "The capabilities that remain distinctly valuable when machines automate routine work · Glossary 2.8", "glossary.html#g2-8"], ["Resource", "Self-Diagnostic Workshop — Personal SWOT & Johari Round", "Unit 2 · Individual diagnostic, peer blind-spot round, development roadmap", "activities/Unit2_Activities.html"], ["Resource", "Case: Léa Fontaine — Two Offers, One Blind Spot", "Unit 2 · A graduate chooses between roles using the wrong self-model", "cases/Unit2_Case.html"], ["Resource", "Pre-Reading: What AI Can Profile About You, and What It Cannot", "Unit 2 · Key framework: Johari Window", "prereading/Unit2_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 2 · 3 questions for independent study", "reflections/Unit2_Reflection.html"], ["Unit", "Unit 3 · Think Better: Critical Thinking & Analytical Reasoning", "AI accelerates answers; only structured thinking decides whether the answer was the right one to look for.", "#unit3"], ["Framework", "SCQA Structure", "Situation · Complication · Question · Answer · Barbara Minto · Unit 3, Slibrary 5", "unit3.html"], ["Framework", "MECE Issue Tree", "Mutually exclusive, collectively exhaustive · Ethan M. Rasiel · Unit 3, Slibrary 5", "unit3.html"], ["Framework", "First Principles Decomposition", "Strip the assumption · reach the fundamentals · rebuild from there · Max Wertheimer · Unit 3, Slibrary 5", "unit3.html"], ["Framework", "Double Diamond", "Discover · Define · Develop · Deliver · Design Council · Unit 3, Slibrary 5", "unit3.html"], ["Framework", "Cynefin Framework", "Clear · Complicated · Complex · Chaotic · Snowden & Boone · Unit 3, Slibrary 5", "unit3.html"], ["Slibrary", "Slibrary 5 · Structured Problem-Solving", "Unit 3 · 5 frameworks", "unit3.html"], ["Framework", "System 1 / System 2", "Fast, automatic, always on · slow, effortful, easily displaced · Daniel Kahneman · Unit 3, Slibrary 6", "unit3.html"], ["Framework", "Confirmation Bias Loop", "Hypothesis · selective search · biased interpretation · reinforced belief · Raymond S. Nickerson · Unit 3, Slibrary 6", "unit3.html"], ["Framework", "Anchoring & Adjustment", "An arbitrary starting number moves the final estimate · Tversky & Kahneman · Unit 3, Slibrary 6", "unit3.html"], ["Framework", "Ladder of Inference", "Data · selection · meaning · assumption · conclusion · belief · action · Chris Argyris · Unit 3, Slibrary 6", "unit3.html"], ["Framework", "Dunning–Kruger Curve", "Least competent, least able to know it · Kruger & Dunning · Unit 3, Slibrary 6", "unit3.html"], ["Slibrary", "Slibrary 6 · Judgment & Bias", "Unit 3 · 5 frameworks", "unit3.html"], ["Author", "Barbara Minto", "SCQA Structure · Unit 3", "slibrary.html#unit3"], ["Author", "Ethan M. Rasiel", "MECE Issue Tree · Unit 3", "slibrary.html#unit3"], ["Author", "Max Wertheimer", "First Principles Decomposition · Unit 3", "slibrary.html#unit3"], ["Author", "Design Council", "Double Diamond · Unit 3", "slibrary.html#unit3"], ["Author", "Snowden & Boone", "Cynefin Framework · Unit 3", "slibrary.html#unit3"], ["Author", "Daniel Kahneman", "System 1 / System 2 · Unit 3", "slibrary.html#unit3"], ["Author", "Raymond S. Nickerson", "Confirmation Bias Loop · Unit 3", "slibrary.html#unit3"], ["Author", "Tversky & Kahneman", "Anchoring & Adjustment · Unit 3", "slibrary.html#unit3"], ["Author", "Chris Argyris", "Ladder of Inference · Unit 3", "slibrary.html#unit3"], ["Author", "Kruger & Dunning", "Dunning–Kruger Curve · Unit 3", "slibrary.html#unit3"], ["Definition", "Critical Thinking", "Purposeful, self-regulatory judgement based on evidence and reasoning · Glossary 3.1", "glossary.html#g3-1"], ["Definition", "SCQA", "Situation, Complication, Question, Answer: the introduction that frames a problem · Glossary 3.2", "glossary.html#g3-2"], ["Definition", "MECE", "Mutually exclusive, collectively exhaustive: no overlaps, no gaps · Glossary 3.3", "glossary.html#g3-3"], ["Definition", "First Principles Thinking", "Reasoning from fundamental truths rather than from analogy or convention · Glossary 3.4", "glossary.html#g3-4"], ["Definition", "Design Thinking", "A human-centred approach that alternates divergent and convergent thinking · Glossary 3.5", "glossary.html#g3-5"], ["Definition", "Cognitive Bias", "A systematic deviation from rational judgement caused by mental shortcuts · Glossary 3.6", "glossary.html#g3-6"], ["Definition", "Dual-Process Thinking", "Fast, intuitive System 1 versus slow, deliberate System 2 · Glossary 3.7", "glossary.html#g3-7"], ["Definition", "Confirmation Bias", "Seeking and weighting evidence that supports what one already believes · Glossary 3.8", "glossary.html#g3-8"], ["Resource", "Head-to-Head Lab — AI-Assisted vs. Unaided Analysis", "Unit 3 · Two teams, one problem, one hour — then compare the reasoning trail", "activities/Unit3_Activities.html"], ["Resource", "Case: Nordwind Logistics — The Margin That Disappeared", "Unit 3 · A confident diagnosis built on the wrong problem statement", "cases/Unit3_Case.html"], ["Resource", "Pre-Reading: Structure Before Search", "Unit 3 · Key framework: MECE Issue Tree", "prereading/Unit3_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 3 · 3 questions for independent study", "reflections/Unit3_Reflection.html"], ["Unit", "Unit 4 · Present & Position Yourself: Personal Branding & Presentation Skills", "A personal brand is not what you claim about yourself; it is the one sentence other people can repeat when you are not in the room.", "#unit4"], ["Framework", "Brand Pyramid", "Attributes · Functional benefits · Emotional rewards · Values · Essence · David A. Aaker · Unit 4, Slibrary 7", "unit4.html"], ["Framework", "Twelve Brand Archetypes", "Twelve recurring characters · Mark & Pearson · Unit 4, Slibrary 7", "unit4.html"], ["Framework", "StoryBrand SB7 Framework", "The customer is the hero; you are the guide · Donald Miller · Unit 4, Slibrary 7", "unit4.html"], ["Framework", "Golden Circle", "Why · How · What · Simon Sinek · Unit 4, Slibrary 7", "unit4.html"], ["Framework", "Personal Value Proposition Canvas", "Their jobs, pains and gains against your services, relievers and creators · Osterwalder et al. · Unit 4, Slibrary 7", "unit4.html"], ["Slibrary", "Slibrary 7 · Personal Brand & Positioning", "Unit 4 · 5 frameworks", "unit4.html"], ["Framework", "Message Strategy Spectrum", "Convince ←→ Clarify · Kurt Bostelaar · Unit 4, Slibrary 8", "unit4.html"], ["Framework", "Problem → Insight → Recommendation", "Three moves that turn analysis into a decision someone can take · Carmine Gallo · Unit 4, Slibrary 8", "unit4.html"], ["Framework", "Assertion–Evidence Slide Model", "A sentence headline carrying the claim, supported by a visual · Michael Alley · Unit 4, Slibrary 8", "unit4.html"], ["Framework", "Mehrabian 7–38–55", "Words · tone · face · Albert Mehrabian · Unit 4, Slibrary 8", "unit4.html"], ["Framework", "Anxiety Reappraisal", "Say 'I am excited' · Alison Wood Brooks · Unit 4, Slibrary 8", "unit4.html"], ["Slibrary", "Slibrary 8 · Pitch & Delivery", "Unit 4 · 5 frameworks", "unit4.html"], ["Author", "David A. Aaker", "Brand Pyramid · Unit 4", "slibrary.html#unit4"], ["Author", "Mark & Pearson", "Twelve Brand Archetypes · Unit 4", "slibrary.html#unit4"], ["Author", "Donald Miller", "StoryBrand SB7 Framework · Unit 4", "slibrary.html#unit4"], ["Author", "Simon Sinek", "Golden Circle · Unit 4", "slibrary.html#unit4"], ["Author", "Osterwalder et al.", "Personal Value Proposition Canvas · Unit 4", "slibrary.html#unit4"], ["Author", "Kurt Bostelaar", "Message Strategy Spectrum · Unit 4", "slibrary.html#unit4"], ["Author", "Carmine Gallo", "Problem → Insight → Recommendation · Unit 4", "slibrary.html#unit4"], ["Author", "Michael Alley", "Assertion–Evidence Slide Model · Unit 4", "slibrary.html#unit4"], ["Author", "Albert Mehrabian", "Mehrabian 7–38–55 · Unit 4", "slibrary.html#unit4"], ["Author", "Alison Wood Brooks", "Anxiety Reappraisal · Unit 4", "slibrary.html#unit4"], ["Definition", "Personal Brand", "The distinctive promise others associate with you as a professional · Glossary 4.1", "glossary.html#g4-1"], ["Definition", "Professional Narrative", "The story that connects your past choices to your next move · Glossary 4.2", "glossary.html#g4-2"], ["Definition", "Elevator Pitch", "A brief, structured spoken case designed to earn a next conversation · Glossary 4.3", "glossary.html#g4-3"], ["Definition", "Personal Value Proposition", "The fit between what you offer and what an employer needs · Glossary 4.4", "glossary.html#g4-4"], ["Definition", "Digital Reputation", "The impression of you formed by what is findable online · Glossary 4.5", "glossary.html#g4-5"], ["Definition", "Assertion–Evidence Structure", "A slide headline that states a claim, supported by visual evidence · Glossary 4.6", "glossary.html#g4-6"], ["Definition", "Nonverbal Communication", "Meaning carried by voice, face and body rather than words · Glossary 4.7", "glossary.html#g4-7"], ["Definition", "Anxiety Reappraisal", "Relabelling pre-performance nerves as excitement · Glossary 4.8", "glossary.html#g4-8"], ["Resource", "Pitch Arena — 90 Seconds, Live Scoring, Two Rebuilds", "Unit 4 · Pitch, peer scoring against a rubric, rebuild, pitch again", "activities/Unit4_Activities.html"], ["Resource", "Case: Marco Ruiz — Same CV, Three Different Stories", "Unit 4 · One candidate, three positioning choices, three outcomes", "cases/Unit4_Case.html"], ["Resource", "Pre-Reading: The One-Sentence Test", "Unit 4 · Key framework: Message Strategy Spectrum (Convince ↔ Clarify)", "prereading/Unit4_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 4 · 3 questions for independent study", "reflections/Unit4_Reflection.html"], ["Unit", "Unit 5 · Communicate with Impact: Executive Presence & Business Communication", "Executives do not read to discover your conclusion — put it first, then make every sentence after it earn its place.", "#unit5"], ["Framework", "Pyramid Principle", "Answer first, then grouped support, then data · Barbara Minto · Unit 5, Slibrary 9", "unit5.html"], ["Framework", "Distil → Decompose → Prioritise", "Write long, break it apart, force a ranking · Kurt Bostelaar · Unit 5, Slibrary 9", "unit5.html"], ["Framework", "Toulmin Argument Model", "Claim · grounds · warrant · backing · qualifier · rebuttal · Stephen E. Toulmin · Unit 5, Slibrary 9", "unit5.html"], ["Framework", "BLUF Executive Structure", "Bottom line up front · Jean-luc Doumont · Unit 5, Slibrary 9", "unit5.html"], ["Framework", "Storyline Canvas", "Plot, character and story mapped across beginning, middle and end · Kurt Bostelaar · Unit 5, Slibrary 9", "unit5.html"], ["Slibrary", "Slibrary 9 · Argument Architecture", "Unit 5 · 5 frameworks", "unit5.html"], ["Framework", "Shannon–Weaver Model", "Source · transmitter · channel · receiver · destination · Shannon & Weaver · Unit 5, Slibrary 10", "unit5.html"], ["Framework", "Hofstede Cultural Dimensions", "Six dimensions on which national cultures differ · Geert Hofstede · Unit 5, Slibrary 10", "unit5.html"], ["Framework", "The Culture Map (Eight Scales)", "Communicating · evaluating · persuading · leading · deciding · trusting ·… · Erin Meyer · Unit 5, Slibrary 10", "unit5.html"], ["Framework", "High- and Low-Context Communication", "How much meaning sits in the words, and how much in everything around them · Edward T. Hall · Unit 5, Slibrary 10", "unit5.html"], ["Framework", "Power–Interest Grid", "Who can affect the outcome, and who cares · Aubrey L. Mendelow · Unit 5, Slibrary 10", "unit5.html"], ["Slibrary", "Slibrary 10 · Audience & Culture", "Unit 5 · 5 frameworks", "unit5.html"], ["Author", "Barbara Minto", "Pyramid Principle · Unit 5", "slibrary.html#unit5"], ["Author", "Kurt Bostelaar", "Distil → Decompose → Prioritise, Storyline Canvas · Unit 5", "slibrary.html#unit5"], ["Author", "Stephen E. Toulmin", "Toulmin Argument Model · Unit 5", "slibrary.html#unit5"], ["Author", "Jean-luc Doumont", "BLUF Executive Structure · Unit 5", "slibrary.html#unit5"], ["Author", "Shannon & Weaver", "Shannon–Weaver Model · Unit 5", "slibrary.html#unit5"], ["Author", "Geert Hofstede", "Hofstede Cultural Dimensions · Unit 5", "slibrary.html#unit5"], ["Author", "Erin Meyer", "The Culture Map (Eight Scales) · Unit 5", "slibrary.html#unit5"], ["Author", "Edward T. Hall", "High- and Low-Context Communication · Unit 5", "slibrary.html#unit5"], ["Author", "Aubrey L. Mendelow", "Power–Interest Grid · Unit 5", "slibrary.html#unit5"], ["Definition", "Pyramid Principle", "Lead with the answer, then support it with grouped, logical reasons · Glossary 5.1", "glossary.html#g5-1"], ["Definition", "Executive Presence", "The combination of gravitas, communication and appearance that signals leadership readiness · Glossary 5.2", "glossary.html#g5-2"], ["Definition", "Bottom Line Up Front (BLUF)", "State the conclusion or request in the first lines · Glossary 5.3", "glossary.html#g5-3"], ["Definition", "Executive Summary", "A stand-alone digest that lets a reader decide without reading the whole · Glossary 5.4", "glossary.html#g5-4"], ["Definition", "Argument (Toulmin)", "A claim supported by grounds, linked by a warrant and qualified · Glossary 5.5", "glossary.html#g5-5"], ["Definition", "Communication Noise", "Anything that distorts a message between sender and receiver · Glossary 5.6", "glossary.html#g5-6"], ["Definition", "High- and Low-Context Communication", "How much meaning is carried by context rather than explicit words · Glossary 5.7", "glossary.html#g5-7"], ["Definition", "Cultural Dimensions", "Comparable scales on which national cultures differ in values · Glossary 5.8", "glossary.html#g5-8"], ["Resource", "Message Clinic — Distil, Decompose, Prioritise, Rewrite", "Unit 5 · Four rounds from a full paragraph to a single defensible sentence", "activities/Unit5_Activities.html"], ["Resource", "Case: Helvetia Medtech — The Email That Cost a Contract", "Unit 5 · A technically correct message that buried its own conclusion", "cases/Unit5_Case.html"], ["Resource", "Pre-Reading: Answer First", "Unit 5 · Key framework: Pyramid Principle", "prereading/Unit5_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 5 · 3 questions for independent study", "reflections/Unit5_Reflection.html"], ["Unit", "Unit 6 · Deliver Results: Project Management Fundamentals", "A plan is not a schedule — it is an argument about scope, risk and trade-offs that has to survive contact with reality.", "#unit6"], ["Framework", "Project Lifecycle", "Initiating · planning · executing · monitoring and controlling · closing · Project Management Institute · Unit 6, Slibrary 11", "unit6.html"], ["Framework", "Iron Triangle", "Scope · time · cost, with quality in the middle · Roger Atkinson · Unit 6, Slibrary 11", "unit6.html"], ["Framework", "Work Breakdown Structure", "Deliverables decomposed until each package can be estimated, assigned and… · Project Management Institute · Unit 6, Slibrary 11", "unit6.html"], ["Framework", "Gantt Chart", "Tasks against a calendar · Henry L. Gantt · Unit 6, Slibrary 11", "unit6.html"], ["Framework", "Critical Path Method", "The longest path sets the duration · Kelley & Walker · Unit 6, Slibrary 11", "unit6.html"], ["Slibrary", "Slibrary 11 · Project Lifecycle & Planning", "Unit 6 · 5 frameworks", "unit6.html"], ["Framework", "Agile Manifesto Values", "Four preferences, each stated as 'over' rather than 'instead of' · Beck et al. · Unit 6, Slibrary 12", "unit6.html"], ["Framework", "Scrum Sprint Cycle", "Plan · work daily · review · retrospect · Schwaber & Sutherland · Unit 6, Slibrary 12", "unit6.html"], ["Framework", "Stacey Matrix", "Agreement on what, certainty about how · Ralph D. Stacey · Unit 6, Slibrary 12", "unit6.html"], ["Framework", "Probability–Impact Risk Matrix", "How likely, how bad · ISO 31000 · Unit 6, Slibrary 12", "unit6.html"], ["Framework", "Earned Value S-Curve", "Planned value, earned value, actual cost · Project Management Institute · Unit 6, Slibrary 12", "unit6.html"], ["Slibrary", "Slibrary 12 · Agile, Risk & Control", "Unit 6 · 5 frameworks", "unit6.html"], ["Author", "Project Management Institute", "Project Lifecycle, Work Breakdown Structure, Earned Value S-Curve · Unit 6", "slibrary.html#unit6"], ["Author", "Roger Atkinson", "Iron Triangle · Unit 6", "slibrary.html#unit6"], ["Author", "Henry L. Gantt", "Gantt Chart · Unit 6", "slibrary.html#unit6"], ["Author", "Kelley & Walker", "Critical Path Method · Unit 6", "slibrary.html#unit6"], ["Author", "Beck et al.", "Agile Manifesto Values · Unit 6", "slibrary.html#unit6"], ["Author", "Schwaber & Sutherland", "Scrum Sprint Cycle · Unit 6", "slibrary.html#unit6"], ["Author", "Ralph D. Stacey", "Stacey Matrix · Unit 6", "slibrary.html#unit6"], ["Author", "ISO 31000", "Probability–Impact Risk Matrix · Unit 6", "slibrary.html#unit6"], ["Definition", "Project", "A temporary endeavour undertaken to create a unique product, service or result · Glossary 6.1", "glossary.html#g6-1"], ["Definition", "Project Scope", "The work required, and only the work required, to deliver the result · Glossary 6.2", "glossary.html#g6-2"], ["Definition", "Waterfall Methodology", "Sequential phases, each completed and signed off before the next · Glossary 6.3", "glossary.html#g6-3"], ["Definition", "Agile Methodology", "Iterative delivery that values responding to change over following a plan · Glossary 6.4", "glossary.html#g6-4"], ["Definition", "Hybrid Project Management", "Combining plan-driven and agile practices according to the risk profile · Glossary 6.5", "glossary.html#g6-5"], ["Definition", "Stakeholder", "Any group or individual who can affect or is affected by the project · Glossary 6.6", "glossary.html#g6-6"], ["Definition", "Project Risk", "The effect of uncertainty on objectives, positive or negative · Glossary 6.7", "glossary.html#g6-7"], ["Definition", "Sustainable Project Management", "Managing projects with explicit regard for economic, social and environmental impact · Glossary 6.8", "glossary.html#g6-8"], ["Resource", "Project Simulation — Scope, WBS, Stakeholders, Risk Register", "Unit 6 · Build a defensible project plan, then absorb an unannounced scope change", "activities/Unit6_Activities.html"], ["Resource", "Case: Aurora Rail — Green Until It Wasn't", "Unit 6 · A status dashboard that stayed green three months too long", "cases/Unit6_Case.html"], ["Resource", "Pre-Reading: Why Projects Fail Before They Start", "Unit 6 · Key framework: Iron Triangle", "prereading/Unit6_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 6 · 3 questions for independent study", "reflections/Unit6_Reflection.html"], ["Unit", "Unit 7 · Negotiate & Influence: Getting What You Need Without Formal Authority", "Leverage is prepared, not improvised — know your walk-away before you walk in.", "#unit7"], ["Framework", "BATNA", "Best Alternative To a Negotiated Agreement · Fisher & Ury · Unit 7, Slibrary 13", "unit7.html"], ["Framework", "Zone of Possible Agreement", "The overlap between two reservation values · Howard Raiffa · Unit 7, Slibrary 13", "unit7.html"], ["Framework", "Principled Negotiation", "People · interests · options · criteria · Fisher, Ury & Patton · Unit 7, Slibrary 13", "unit7.html"], ["Framework", "Dual Concerns Conflict Modes", "Assertiveness against cooperativeness · Thomas & Kilmann · Unit 7, Slibrary 13", "unit7.html"], ["Framework", "Distributive ↔ Integrative Spectrum", "Claiming value and creating it · Walton & McKersie · Unit 7, Slibrary 13", "unit7.html"], ["Slibrary", "Slibrary 13 · Negotiation Architecture", "Unit 7 · 5 frameworks", "unit7.html"], ["Framework", "Six Principles of Influence", "Reciprocity · commitment · social proof · authority · liking · scarcity · Robert B. Cialdini · Unit 7, Slibrary 14", "unit7.html"], ["Framework", "French & Raven Power Bases", "Legitimate · reward · coercive · expert · referent · French & Raven · Unit 7, Slibrary 14", "unit7.html"], ["Framework", "Influence Currencies", "Find what they value, then trade for it · Cohen & Bradford · Unit 7, Slibrary 14", "unit7.html"], ["Framework", "Tactical Empathy", "Demonstrate that you understand their position · Chris Voss · Unit 7, Slibrary 14", "unit7.html"], ["Framework", "Persuasion ↔ Manipulation Line", "Does the technique work through their reasoning, or around it? · Cass R. Sunstein · Unit 7, Slibrary 14", "unit7.html"], ["Slibrary", "Slibrary 14 · Influence Without Authority", "Unit 7 · 5 frameworks", "unit7.html"], ["Author", "Fisher & Ury", "BATNA · Unit 7", "slibrary.html#unit7"], ["Author", "Howard Raiffa", "Zone of Possible Agreement · Unit 7", "slibrary.html#unit7"], ["Author", "Fisher, Ury & Patton", "Principled Negotiation · Unit 7", "slibrary.html#unit7"], ["Author", "Thomas & Kilmann", "Dual Concerns Conflict Modes · Unit 7", "slibrary.html#unit7"], ["Author", "Walton & McKersie", "Distributive ↔ Integrative Spectrum · Unit 7", "slibrary.html#unit7"], ["Author", "Robert B. Cialdini", "Six Principles of Influence · Unit 7", "slibrary.html#unit7"], ["Author", "French & Raven", "French & Raven Power Bases · Unit 7", "slibrary.html#unit7"], ["Author", "Cohen & Bradford", "Influence Currencies · Unit 7", "slibrary.html#unit7"], ["Author", "Chris Voss", "Tactical Empathy · Unit 7", "slibrary.html#unit7"], ["Author", "Cass R. Sunstein", "Persuasion ↔ Manipulation Line · Unit 7", "slibrary.html#unit7"], ["Definition", "Negotiation", "Joint decision-making by parties with partly conflicting interests · Glossary 7.1", "glossary.html#g7-1"], ["Definition", "BATNA", "Best Alternative To a Negotiated Agreement: your walk-away option · Glossary 7.2", "glossary.html#g7-2"], ["Definition", "ZOPA", "Zone Of Possible Agreement: the overlap between the parties' reservation points · Glossary 7.3", "glossary.html#g7-3"], ["Definition", "Principled Negotiation", "The Harvard Method: interests, options, criteria, and people separated from problem · Glossary 7.4", "glossary.html#g7-4"], ["Definition", "Distributive vs. Integrative Negotiation", "Dividing a fixed pie versus expanding it · Glossary 7.5", "glossary.html#g7-5"], ["Definition", "Influence Without Authority", "Gaining cooperation through exchange rather than hierarchy · Glossary 7.6", "glossary.html#g7-6"], ["Definition", "Tactical Empathy", "Deliberately understanding and naming the other side's emotions · Glossary 7.7", "glossary.html#g7-7"], ["Definition", "Manipulation", "Influence that bypasses a person's capacity for reflective choice · Glossary 7.8", "glossary.html#g7-8"], ["Resource", "Negotiation Simulation — Three Rounds, Then the Ethics Debrief", "Unit 7 · Paired role play with hidden constraints and a manipulation-line review", "activities/Unit7_Activities.html"], ["Resource", "Case: Brightline Studio — The Budget Nobody Would Move", "Unit 7 · A junior lead negotiating resources across three unwilling departments", "cases/Unit7_Case.html"], ["Resource", "Pre-Reading: Your BATNA Is Your Only Real Power", "Unit 7 · Key framework: BATNA ↔ ZOPA", "prereading/Unit7_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 7 · 3 questions for independent study", "reflections/Unit7_Reflection.html"], ["Unit", "Unit 8 · Work Smarter with AI: Productivity, Tools and Professional Judgment", "Delegate the task, never the judgment — and be able to show exactly where you drew the line.", "#unit8"], ["Framework", "Eisenhower Matrix", "Urgent against important · Stephen R. Covey · Unit 8, Slibrary 15", "unit8.html"], ["Framework", "Objectives & Key Results", "One qualitative objective, three to five measurable key results · John Doerr · Unit 8, Slibrary 15", "unit8.html"], ["Framework", "The Rule of 3", "Three outcomes for the day, three for the week, three for the year · J.D. Meier · Unit 8, Slibrary 15", "unit8.html"], ["Framework", "Monday Vision, Daily Wins, Friday Reflection", "Set the week, work the day, close the loop · J.D. Meier · Unit 8, Slibrary 15", "unit8.html"], ["Framework", "Pareto 80/20", "A minority of inputs accounts for a majority of outputs · Richard Koch · Unit 8, Slibrary 15", "unit8.html"], ["Slibrary", "Slibrary 15 · Prioritisation & Energy", "Unit 8 · 5 frameworks", "unit8.html"], ["Framework", "Prompt Anatomy", "Role · task · context · format · constraints · examples · White et al. · Unit 8, Slibrary 16", "unit8.html"], ["Framework", "Delegate–Verify–Own Loop", "Delegate the task, verify the output, own the result · Amershi et al. · Unit 8, Slibrary 16", "unit8.html"], ["Framework", "Automation–Augmentation Spectrum", "Replace the task or amplify the person · Raisch & Krakowski · Unit 8, Slibrary 16", "unit8.html"], ["Framework", "The Jagged Frontier", "AI capability has an uneven boundary · Dell'Acqua et al. · Unit 8, Slibrary 16", "unit8.html"], ["Framework", "AI Attribution Ladder", "From no use to generated content · UNESCO · Unit 8, Slibrary 16", "unit8.html"], ["Slibrary", "Slibrary 16 · AI Workflow & Judgment", "Unit 8 · 5 frameworks", "unit8.html"], ["Author", "Stephen R. Covey", "Eisenhower Matrix · Unit 8", "slibrary.html#unit8"], ["Author", "John Doerr", "Objectives & Key Results · Unit 8", "slibrary.html#unit8"], ["Author", "J.D. Meier", "The Rule of 3, Monday Vision, Daily Wins, Friday Reflection · Unit 8", "slibrary.html#unit8"], ["Author", "Richard Koch", "Pareto 80/20 · Unit 8", "slibrary.html#unit8"], ["Author", "White et al.", "Prompt Anatomy · Unit 8", "slibrary.html#unit8"], ["Author", "Amershi et al.", "Delegate–Verify–Own Loop · Unit 8", "slibrary.html#unit8"], ["Author", "Raisch & Krakowski", "Automation–Augmentation Spectrum · Unit 8", "slibrary.html#unit8"], ["Author", "Dell'Acqua et al.", "The Jagged Frontier · Unit 8", "slibrary.html#unit8"], ["Author", "UNESCO", "AI Attribution Ladder · Unit 8", "slibrary.html#unit8"], ["Definition", "Energy Management", "Managing physical, emotional, mental and spiritual capacity, not just hours · Glossary 8.1", "glossary.html#g8-1"], ["Definition", "Eisenhower Matrix", "Sorting tasks by urgency and importance · Glossary 8.2", "glossary.html#g8-2"], ["Definition", "OKRs", "Objectives and Key Results: an ambitious goal and its measurable evidence · Glossary 8.3", "glossary.html#g8-3"], ["Definition", "Prompt Literacy", "The ability to instruct an AI system clearly and evaluate what it returns · Glossary 8.4", "glossary.html#g8-4"], ["Definition", "Human-in-the-Loop", "Keeping a person responsible for checking and owning AI-supported outcomes · Glossary 8.5", "glossary.html#g8-5"], ["Definition", "Automation vs. Augmentation", "Letting the machine take over a task, or using it to amplify the person · Glossary 8.6", "glossary.html#g8-6"], ["Definition", "Jagged Technological Frontier", "AI performs well on some tasks and poorly on similar-looking ones · Glossary 8.7", "glossary.html#g8-7"], ["Definition", "AI Attribution", "Transparent disclosure of how AI contributed to a piece of work · Glossary 8.8", "glossary.html#g8-8"], ["Resource", "Mini-Hackathon — Build and Defend a Personal AI Workflow", "Unit 8 · Three hours to build a workflow, ten minutes to defend every delegation", "activities/Unit8_Activities.html"], ["Resource", "Case: Talia Berg — The Analyst Who Automated Herself", "Unit 8 · Efficiency gains that quietly removed the analyst's own judgment", "cases/Unit8_Case.html"], ["Resource", "Pre-Reading: What to Delegate, What to Keep", "Unit 8 · Key framework: Automation–Augmentation Spectrum", "prereading/Unit8_PreReading.html"], ["Resource", "Reflection Prompt", "Unit 8 · 3 questions for independent study", "reflections/Unit8_Reflection.html"]];
+    var COL={"Unit": "#173B35", "Slibrary": "#1F4E45", "Framework": "#2A8F75", "Author": "#3E8E7E", "Definition": "#2F5D8C", "Resource": "#B8702A"};
+    var box=document.getElementById('siteSearch'),out=document.getElementById('sres');
+    var units=Array.prototype.slice.call(document.querySelectorAll('details.unit'));
+    function e(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    function run(){
+      var q=box.value.toLowerCase().trim();
+      units.forEach(function(u){
+        var hit=!q||u.textContent.toLowerCase().indexOf(q)!==-1;
+        u.classList.toggle('hidden',!hit);
+        if(q&&hit)u.open=true; if(!q)u.open=(u===units[0]);
+      });
+      if(q.length<2){out.classList.remove('on');out.innerHTML='';return;}
+      var terms=q.split(/\s+/);
+      var m=IDX.filter(function(i){var h=(i[0]+' '+i[1]+' '+i[2]).toLowerCase();return terms.every(function(t){return h.indexOf(t)!==-1;});});
+      out.innerHTML=m.length
+        ? m.slice(0,12).map(function(i){return '<a href="'+e(i[3])+'"><span class="k" style="background:'+COL[i[0]]+'">'+e(i[0])+'</span><span><span class="t">'+e(i[1])+'</span><span class="s">'+e(i[2])+'</span></span></a>';}).join('')
+          +(m.length>12?'<div class="none">'+(m.length-12)+' more matches. Add a word to narrow the search.</div>':'')
+        : '<div class="none">No matches for “'+e(q)+'”. Try a framework, author or term.</div>';
+      out.classList.add('on');
+    }
+    box.addEventListener('input',run);
+    box.addEventListener('focus',function(){if(box.value.trim().length>1)out.classList.add('on');});
+    box.addEventListener('keydown',function(ev){if(ev.key==='Escape'){box.value='';run();}});
+    document.addEventListener('click',function(ev){if(!ev.target.closest('.search-wrap'))out.classList.remove('on');});
+    out.addEventListener('click',function(ev){var a=ev.target.closest('a');if(a&&a.getAttribute('href').charAt(0)==='#'){out.classList.remove('on');setTimeout(openHash,0);}});
+    function openHash(){var t=location.hash&&document.getElementById(location.hash.slice(1));if(t&&t.tagName==='DETAILS'){t.open=true;t.classList.remove('hidden');}}
+    window.addEventListener('hashchange',openHash);openHash();
+  })();
 </script>
-<script src="assets/js/framework-viewer.js"></script>
+<style id="masco-protect-css">
+  *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+  @media print{html,body{display:none !important}}
+</style>
+<script id="masco-protect-js">
+(function(){
+  // block context menu (right-click)
+  document.addEventListener('contextmenu',function(e){e.preventDefault();},{capture:true});
+  // block copy / cut
+  ['copy','cut'].forEach(function(ev){document.addEventListener(ev,function(e){e.preventDefault();},{capture:true});});
+  // block drag of text/images
+  document.addEventListener('dragstart',function(e){e.preventDefault();},{capture:true});
+  // block common keyboard shortcuts: Ctrl/Cmd + C, X, S, P, U, A  and F12 / devtools
+  document.addEventListener('keydown',function(e){
+    var k=(e.key||'').toLowerCase();
+    var meta=e.ctrlKey||e.metaKey;
+    if(meta && ['c','x','s','p','u','a'].indexOf(k)!==-1){e.preventDefault();return false;}
+    if(k==='f12'){e.preventDefault();return false;}
+    if(meta && e.shiftKey && ['i','j','c'].indexOf(k)!==-1){e.preventDefault();return false;} // devtools
+    if(e.key==='PrintScreen'){e.preventDefault();return false;}
+  },{capture:true});
+  // block print()
+  window.addEventListener('beforeprint',function(e){/* CSS hides body */});
+})();
+</script>
+
 </body>
 </html>
